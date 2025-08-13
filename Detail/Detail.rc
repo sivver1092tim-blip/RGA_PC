@@ -1,0 +1,1792 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#ifndef APSTUDIO_INVOKED
+#include "targetver.h"
+#endif
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Chinese (Simplified, China) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
+#pragma code_page(936)
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MENU2 MENU
+BEGIN
+    POPUP "R"
+    BEGIN
+        MENUITEM "全部应用当前设定",                    ID_R_APPLYALLSETTINGS
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE
+BEGIN
+    IDS_DETAILTITLE         "%s 账户设置"
+    IDS_APPLYSETTING        "设置适用"
+    IDS_HIDESETTING         "隐藏"
+    IDS_STARTGAME           "游戏开始"
+    IDS_SCHEDULE            "日程安排"
+    IDS_MAINSCHEDULE        "主要日程"
+    IDS_SUBSCHEDULE         "回避日程"
+    IDS_ADD                 "添加"
+    IDS_DEL                 "删除"
+    IDS_LOGINFO             "登录"
+    IDS_VERIFY              "确认"
+    IDS_CANCEL              "取消"
+    IDS_HUNT                "狩猎"
+    IDS_MOVEHUNT            "进入"
+    IDS_BUY                 "购买"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_ITEM                "装备"
+    IDS_OTHER               "其他"
+    IDS_EMPTY               "无"
+    IDS_WORLD               "世界"
+    IDS_DUNGEON             "地下城"
+    IDS_TARGETRANGE         "目标范围"
+    IDS_MONTELEPORT         "秒内没有怪物 瞬间移动"
+    IDS_MANNERMODE          "不抢怪模式"
+    IDS_RETURN              "回城"
+    IDS_HP                  "体力"
+    IDS_PERCENTABOVE        "%以上"
+    IDS_SECONDRETURN        "超秒以上 回城"
+    IDS_WEIGHT              "重量"
+    IDS_PERCENTBELOW        "%以下"
+    IDS_LACKITEM            "单品不足时"
+    IDS_GATHER              "采集"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_STONE               "矿石"
+    IDS_WOOD                "树"
+    IDS_GRASS               "亚麻草"
+    IDS_PARTY               "组队"
+    IDS_PARTYMASTER         "移动到 队长周围"
+    IDS_DIASHOP             "钻石店"
+    IDS_GOLDABOVE           "黄金异常时"
+    IDS_BUYAVATAR_1         "召唤化身 I"
+    IDS_BUYAVATAR_2         "召唤化身 II"
+    IDS_BUYAVATAR_3         "召唤化身 III"
+    IDS_BUYRIDER_1          "召唤坐骑 I"
+    IDS_BUYRIDER_2          "召唤坐骑 II"
+    IDS_BUYRIDER_3          "召唤坐骑 III"
+    IDS_BUYRUNE_1           "坐骑传唤 I"
+    IDS_BUYRUNE_2           "坐骑传唤 II"
+    IDS_WEAPONPAPER         "武器强化石"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_ARMORPAPER          "防具强化石"
+    IDS_WEAPONBOX           "武器箱"
+    IDS_ARMORBOX            "防具箱子"
+    IDS_BUYCOUNT            "个购买"
+    IDS_POTIONNPC           "消耗品商人"
+    IDS_EXCHANGENPC         "易货商"
+    IDS_GOLD                "金色"
+    IDS_KEEPGOLDSKILL       "剩余购买技能"
+    IDS_DEFAULTSETTING      "批量设置"
+    IDS_DETAILSETTING       "详细设置"
+    IDS_VILLAGEREQUEST      "每日任务"
+    IDS_VALHALLA            "瓦尔哈拉 大战"
+    IDS_RECOVERFREE         "恢复经验（免费）"
+    IDS_RECOVERGOLD         "恢复经验（金币）"
+    IDS_ACHIEVEMENT         "业绩奖励"
+    IDS_AUTOEQUIP           "自动安装"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_EVENTREWARD         "活动奖励"
+    IDS_GUILDCHECK          "公会"
+    IDS_GUILDDONATE         "以上时公会捐献"
+    IDS_COUNT               "个数"
+    IDS_REALLYDELETE        "真的要删除吗？"
+    IDS_NOTICE              "通知"
+    IDS_CURCOUNT            "數量"
+    IDS_TARCOUNT            "目标"
+    IDS_IFBELOW             "以下"
+    IDS_IFABOVE             "以上"
+    IDS_FILLCOUNT           "补充"
+    IDS_WEAPON              "武器"
+    IDS_ARMOR               "防具"
+    IDS_ACCESSORY           "首饰"
+    IDS_MATERIAL            "材料"
+    IDS_EXPANDABLES         "消耗品"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_LOOT                "战利品"
+    IDS_SKILLBOOK           "技能书"
+    IDS_COMMON              "一般"
+    IDS_UNCOMMON            "高级"
+    IDS_RARE                "稀有"
+    IDS_HERO                "英雄"
+    IDS_LEGEND              "传说"
+    IDS_MYTH                "神话"
+    IDS_MODE                "模式"
+    IDS_ITEMMODE_1          "无处理"
+    IDS_ITEMMODE_2          "商店销售"
+    IDS_ITEMMODE_3          "装备分解"
+    IDS_ITEMMODE_4          "仓库保管"
+    IDS_ITEMMODE_5          "删除物品"
+    IDS_ITEMMODE_6          "自动使用"
+    IDS_ITEMMODE_7          "交易登记"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_BLOCKCOUNT          "数目"
+    IDS_MARKETPRICE         "交易所价格"
+    IDS_FIXEDPRICE          "固定价格"
+    IDS_MINIMUMPRICE        "最低价格"
+    IDS_STRING60100         "号"
+    IDS_STRING60101         ", 价格"
+    IDS_SCHEDULETIME        "时间设定"
+    IDS_MINUTE              "分"
+    IDS_NAME                "文件名"
+    IDS_LOADING             "装入"
+    IDS_REALLYCANCEL        "真的要取消吗?"
+    IDS_SCHEDULESAVE        "你确定将设定被的保存为日程吗？"
+    IDS_CHARACMAIL          "邮寄"
+    IDS_ACCOUNTMAIL         "账号邮寄"
+    IDS_STOREEQUIPS         "完成任务后保存装备仓库"
+    IDS_CHARSLOT            "%d号 角色"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_SERVER              "服务器"
+    IDS_CHAR                "角色"
+    IDS_TIMEDISPLAY         "%d时 %d分 ~ %d时 %d分"
+    IDS_AUTOSTART           "自动启动"
+    IDS_AUTOSTOP            "自动停止"
+    IDS_DAY                 "天"
+    IDS_HOUR                "个时间"
+    IDS_EXPIRED             "经过"
+    IDS_STATUS              "状态"
+    IDS_FINISHED            "已完成"
+    IDS_WAITING             "待机中"
+    IDS_DOING               "进行中"
+    IDS_INITALERT           "要重置所有日程吗 ? "
+    IDS_INITNOTICE          "调度状态已全部初始化"
+    IDS_GETSTOREEQUIPS      "日程开始时寻找装备仓库"
+    IDS_PARTYMODE1          "自动狩猎"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_PARTYMODE2          "队长周边"
+    IDS_PARTYMODE3          "队长目标"
+    IDS_DEADSTOP            "次死亡 停止"
+    IDS_RECONNECTSTOP       "重新连接结束"
+    IDS_INITTIME            "清零时间"
+    IDS_INIT                "清零"
+    IDS_STRING60134         "发生了意想不到的错误 (Code: %d)"
+    IDS_STRING60135         "等待执行顺序"
+    IDS_STRING60136         "运行游戏"
+    IDS_STRING60137         "游戏已弹出， 重新运行游戏"
+    IDS_STRING60138         "游戏已运行"
+    IDS_STRING60139         "启动自动"
+    IDS_STRING60140         "自动停止"
+    IDS_STRING60141         "呼出键盘 [Delete]"
+    IDS_STRING60142         "呼出键盘 [Insert]"
+    IDS_STRING60143         "检查网络环境"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_STRING60144         "进行序列"
+    IDS_STRING60145         "角色已死亡"
+    IDS_STRING60146         "没有要进行的日程信息"
+    IDS_STRING60147         "等待下一个日程"
+    IDS_STRING60148         "等待访问中..."
+    IDS_STRING60149         "连接服务器 [%s%02d]"
+    IDS_STRING60150         "进入上次连接的服务器"
+    IDS_STRING60151         "点击屏幕"
+    IDS_STRING60152         "选择%d号角色"
+    IDS_STRING60153         "因没有 %d号角色 自动创建"
+    IDS_STRING60154         "登录游戏中"
+    IDS_STRING60155         "自动生成角色名 [%s]"
+    IDS_STRING60156         "Skip 视频"
+    IDS_STRING60157         "进行主任务 [%s] "
+    IDS_STRING60158         "进行副任务 [%s]"
+    IDS_STRING60159         "任务已完成 自动进入狩猎模式"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_STRING60160         "在仓库里找装备安装"
+    IDS_STRING60161         "进行坐骑的合成和安装"
+    IDS_STRING60162         "进行技能学习及快速登录"
+    IDS_STRING60163         "进行变身合成和安装"
+    IDS_STRING60164         "确认任务补偿"
+    IDS_STRING60165         "检查邮箱"
+    IDS_STRING60166         "确认活动补偿"
+    IDS_STRING60167         "进行付费商店的购买"
+    IDS_STRING60168         "进行死亡经验值修复"
+    IDS_STRING60169         "强化穿戴的装备"
+    IDS_STRING60170         "设置快技能栏设置"
+    IDS_STRING60171         "确认村庄委托任务"
+    IDS_STRING60172         "在角色移动中发现异常动作"
+    IDS_STRING60173         "因为访问的服务器不同 变更服务器"
+    IDS_STRING60174         "登录的角色不同 重新变更"
+    IDS_STRING60175         "进行任务培养"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_STRING60176         "使用HP恢复药水"
+    IDS_STRING60177         "登记要合成的材料"
+    IDS_STRING60178         "合成已登记的材料"
+    IDS_STRING60179         "装备人物 [%s]"
+    IDS_STRING60180         "已完成 人物合成及装备"
+    IDS_STRING60181         "装备坐骑（空中） [%s]"
+    IDS_STRING60182         "装备坐骑（地上） [%s]"
+    IDS_STRING60183         "已进行坐骑合成与装备"
+    IDS_STRING60184         "从副本退出"
+    IDS_STRING60185         "回到村庄"
+    IDS_STRING60186         "%d 分 重新登录  %d 回以上游戏结束"
+    IDS_STRING60187         "网络连接已断开， 重新连接"
+    IDS_STRING60188         "Kakao 认证失败， 退出游戏"
+    IDS_STRING60189         "服务器维护中， 退出游戏"
+    IDS_STRING60190         "进行游戏更新"
+    IDS_STRING60191         "网络或重复更新导致下载失败"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_STRING60192         "经验值恢复已完成"
+    IDS_STRING60193         "免费恢复次数更新( %d) (剩余次数 )"
+    IDS_STRING60194         "移动到交换商"
+    IDS_STRING60195         "移动到消耗品商"
+    IDS_STRING60196         "选择道具 [%s]"
+    IDS_STRING60197         "出售选中的单品"
+    IDS_STRING60198         "道具[%s] %d个 购买"
+    IDS_STRING60199         "商店已处理完毕"
+    IDS_STRING60200         "将道具[%s] 登记为]快捷栏（%d, %d）号"
+    IDS_STRING60201         "进行自动安装"
+    IDS_STRING60202         "分解道具 [%s]"
+    IDS_STRING60203         "删除道具 [%s]"
+    IDS_STRING60204         "使用道具 [%s]"
+    IDS_STRING60205         "自动登录[技能]快捷栏"
+    IDS_STRING60206         "购买物品 [%s]"
+    IDS_STRING60207         "进行了技能学习及快速登录栏"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_STRING60208         "移动到 技能 商店"
+    IDS_STRING60209         "配置信息已更新"
+    IDS_STRING60210         "日程[%s] 已完成"
+    IDS_STRING60211         "日程[%s] 进行"
+    IDS_STRING60212         "将货物存放在仓库中"
+    IDS_STRING60213         "装备 [%s] 卸载"
+    IDS_STRING60214         "移动到仓库"
+    IDS_STRING60215         "将选中的物品放入仓库"
+    IDS_STRING60216         "从仓库取出选中的物品"
+    IDS_STRING60217         "仓库里找到了装备"
+    IDS_STRING60218         "仓库中没有装备，跳过阶段"
+    IDS_STRING60219         "移动到仓库"
+    IDS_STRING60220         "%d秒以上体力低于%d%%返回"
+    IDS_STRING60221         "%d秒以上重量%d%%以上返回"
+    IDS_STRING60222         "道具[%s]不足返回"
+    IDS_STRING60223         "因为有要出售的物品，所以要去找消耗品商人"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_STRING60224         "道具[%s]不足，前往寻找消耗品商人"
+    IDS_STRING60225         "等待体力恢复（数值：%d%%）"
+    IDS_STRING60226         "在村子里复活"
+    IDS_STRING60227         "从速溶赛副本出去"
+    IDS_STRING60228         "进行观战"
+    IDS_STRING60229         "%d分钟内死亡%d次以上"
+    IDS_STRING60230         "进行死亡经验值恢复"
+    IDS_STRING60231         "等级过低不可进入副本[%s]"
+    IDS_STRING60232         "副本[%s]入场任务 未能完成"
+    IDS_STRING60233         "副本 [%s] 入场费用不足"
+    IDS_STRING60234         "副本 [%s] 入场券不足"
+    IDS_STRING60235         "副本[%s]  没有剩余时间了"
+    IDS_STRING60236         "[%s] 任务还没有完成"
+    IDS_STRING60237         "到了猎场"
+    IDS_STRING60238         "超过%d秒没有猎物， 瞬间移动"
+    IDS_STRING60239         "开始狩猎"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_STRING60240         "设定目标范围为%dm"
+    IDS_STRING60241         "设置目标范围不受限制"
+    IDS_STRING60242         "设置礼仪模式"
+    IDS_STRING60243         "取消礼仪模式"
+    IDS_STRING60244         "将节电模式设置为开启"
+    IDS_STRING60245         "已确认任务补偿"
+    IDS_STRING60246         "进行了邮件确认"
+    IDS_STRING60247         "活动奖励已确认"
+    IDS_STRING60248         "商品[%s] 购买[%d]个"
+    IDS_STRING60249         "已购买现金商店物品"
+    IDS_STRING60250         "装备[%s]强化"
+    IDS_STRING60251         "已强化装备的装备"
+    IDS_STRING60252         "接受了任务[%s]"
+    IDS_STRING60253         "刷新任务列表"
+    IDS_STRING60254         "完成任务[%s]"
+    IDS_STRING60255         "进行任务[%s]"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_STRING60256         "确认了村里的任务"
+    IDS_STRING60257         "确认了快捷栏（技能）设置"
+    IDS_STRING60258         "进入队伍副本[%s]"
+    IDS_STRING60259         "进入副本 [%s]"
+    IDS_CHARCLASS           "觉醒"
+    IDS_STRING60261         "组队副本出错，进入角色选择窗口"
+    IDS_STRING60262         "进行交易所物品确认"
+    IDS_STRING60263         "进行物品收藏注册"
+    IDS_STRING60264         "清算出售的物品"
+    IDS_STRING60265         "回收物品[%s]"
+    IDS_STRING60266         "登录[%s]在[%d]钻石[%d]个"
+    IDS_STRING60267         "没有物品[%s]的行情信息"
+    IDS_STRING60268         "搜索物品[%s]行情"
+    IDS_STRING60269         "进行了交易所物品确认"
+    IDS_STRING60270         "进行了物品收藏注册"
+    IDS_STRING60271         "中心点"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_STRING60272         "移动到中心点"
+    IDS_STRING60273         "加入军团"
+    IDS_STRING60274         "进行黄金捐赠"
+    IDS_STRING60275         "确认军团出席"
+    IDS_STRING60276         "自动加入军团"
+    IDS_STRING60277         "30 Lv 以上 购买技能书"
+    IDS_STRING60278         "进行主任务"
+    IDS_STRING60279         "使用村庄任务书 (角色归属)"
+    IDS_STRING60280         "角色生成受限的服务器"
+    IDS_STRING60281         "运行所需的文件不存在 (谬误 %d)"
+    IDS_STRING60282         "找不到Google Chrome"
+    IDS_STRING60283         "进行kakao账户登录"
+    IDS_STRING60284         "三次以上登录失败。 而中止。"
+    IDS_STRING60285         "连接失败, 重新尝试 (%d)"
+    IDS_STRING60286         "等待游戏运行 "
+    IDS_STRING60287         "确认游戏环境  (阶段 %d)"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_STRING60288         "在仓库中保存连接的卡通武器"
+    IDS_STRING60289         "进行 瓦尔哈拉大战"
+    IDS_STRING60290         "申请瓦尔哈拉大典"
+    IDS_STRING60291         "移动到队长"
+    IDS_STRING60292         "没有主任务. 所以重新连接"
+    IDS_STRING60293         "队员地下城 [%s] 进行"
+    IDS_STRING60294         "地下城 [%s] 创建团队"
+    IDS_STRING60295         "地下城 [%s] 报名参加"
+    IDS_STRING60296         "队长"
+    IDS_STRING60297         "队员"
+    IDS_STRING60298         "每个价格在10以下，所以会收集多个销售"
+    IDS_STRING60299         "接受派对邀请"
+    IDS_STRING60300         "移动到队长"
+    IDS_STRING60301         "改变打猎方式 (队长目标)"
+    IDS_STRING60302         "改变打猎方式 (队长周边)"
+    IDS_STRING60303         "改变打猎方式 (Auto)"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_STRING60304         "地下城 [%s] 战斗力不足"
+    IDS_STRING60305         "相关内容因运营商中止 (%d)"
+    IDS_STRING60306         "因为过了[%d]分钟 所以日程[%s]要结束了"
+    IDS_STRING60307         "加载状态持续[%d]分钟以上退出游戏"
+    IDS_STRING60308         "分钟内 移动问题"
+    IDS_STRING60309         "次以上时 回城"
+    IDS_STRING60310         "分钟以上无法进行时 角色重连接"
+    IDS_STRING60311         "角色重连接"
+    IDS_STRING60312         "任务没有超过 %d分钟的进度，所以它会进入角色选择窗口"
+    IDS_STRING60313         "由于%d分钟内移动错误超过%d次，回城"
+    IDS_STRING60314         "由于地形错误 逃脱"
+    IDS_STRING60315         "无法移动超过2分钟, 回城"
+    IDS_STRING60316         "仓库查找"
+    IDS_STRING60317         "由于它不是狩猎场，它会移动回狩猎地点"
+    IDS_STRING60318         "协同 地下城 入口 进行中"
+    IDS_STRING60319         "自动龙本"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_STRING60320         "物品收集"
+    IDS_STRING60321         "攻击"
+    IDS_STRING60322         "防御"
+    IDS_STRING60323         "事件"
+    IDS_STRING60324         "收集强化物品"
+    IDS_STRING60325         "过滤器"
+    IDS_STRING60326         "准确性"
+    IDS_STRING60327         "损坏"
+    IDS_STRING60328         "回避率"
+    IDS_STRING60329         "HP 恢复"
+    IDS_STRING60330         "MP 恢复"
+    IDS_STRING60331         "强化"
+    IDS_STRING60332         "制造"
+    IDS_STRING60333         "属于"
+    IDS_STRING60334         "无属于"
+    IDS_STRING60335         "世界boss 狩猎开始"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_STRING60336         "世界boss 猎杀完了"
+    IDS_STRING60337         "世界boss"
+    IDS_STRING60338         "地下城 [%s] 没有"
+    IDS_STRING60339         "不能狩猎超过30秒，所以手动操作"
+    IDS_STRING60340         "地下城 [%s] 门票不够"
+    IDS_STRING60341         "到"
+    IDS_STRING60342         "[%d] 级以上，不执行主要任务"
+    IDS_STRING60343         "世界[%s] 开放了. 不执行主要任务"
+    IDS_STRING60344         "NPC 未显示， 重新选择角色"
+    IDS_STRING60345         "采集宝箱"
+    IDS_STRING60346         "寻尽宝箱"
+    IDS_STRING60347         "正在确认%d号宝箱"
+    IDS_STRING60348         "宝盒"
+    IDS_STRING60349         "队伍副本"
+    IDS_STRING60350         "副本"
+    IDS_STRING60351         "难易度"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_STRING60352         "进入队伍副本"
+    IDS_STRING60353         "普通"
+    IDS_STRING60354         "困难"
+    IDS_STRING60355         "极难"
+    IDS_STRING60356         "极恶"
+    IDS_STRING60357         "进行 支线任务"
+    IDS_STRING60358         "条件技"
+    IDS_STRING60359         "因为无法进行3分钟以上的攻击, 所以移动到另的世界"
+    IDS_STRING60360         "与服务器连接不畅， 重新连接"
+    IDS_STRING60361         "黄金 印章"
+    IDS_STRING60362         "黄金 遗物"
+    IDS_STRING60363         "用户 ""%s"" 组里邀请"
+    IDS_STRING60364         "米米尔泉水"
+    IDS_STRING60365         "使用可交易的门票"
+    IDS_STRING60366         "由于屏幕停了5分钟以上，所以终止游戏"
+    IDS_STRING60367         "您确定要更改当前连接账户的行程安排吗 ？"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_STRING60368         "变更后的设置是否统一适用于Schedule文件夹？"
+    IDS_STRING60369         "级以上 进行"
+    IDS_STRING60370         "人以上 开始"
+    IDS_STRING60371         "平均 级"
+    IDS_STRING60372         "以下 退出派对"
+    IDS_STRING60373         "级角色的免费巴士"
+    IDS_STRING60374         "派对的平均等级在%d以下，故退出 (等待1分钟)"
+    IDS_STRING60375         "自动强化"
+    IDS_STRING60376         "以上"
+    IDS_STRING60377         "使用 可交易的强化石 (装备强化)"
+    IDS_STRING60378         "武器"
+    IDS_STRING60379         "防具"
+    IDS_STRING60380         "?品"
+    IDS_STRING60381         "进行装备强化"
+    IDS_STRING60382         "装备强化完毕"
+    IDS_WEAPONTYPE1         "军火 模样 ?"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_WEAPONTYPE2         "军火 模样 ?"
+    IDS_WEAPONTYPE3         "军火 模样 ?"
+    IDS_STRING60386         "加载失败超过5分钟， 退出游戏"
+    IDS_STRING60387         "游戏掉了，重新运行"
+    IDS_STRING60388         "进行武器形状合成及安装"
+    IDS_STRING60389         "进行了武器形状合成及安装"
+    IDS_STRING60390         "佩戴武器形状 ""%s"""
+    IDS_STRING60391         "第二大陆 购买大药"
+    IDS_STRING60392         "进行 支线任务"
+    IDS_STRING60393         "支线任务 结束了"
+    IDS_STRING60394         "移动速度"
+    IDS_STRING60395         "攻击速度"
+    IDS_STRING60396         "时电速度"
+    IDS_STRING60397         "减少冷却"
+    IDS_STRING60398         "命中"
+    IDS_STRING60399         "武器形象宝物"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_STRING60400         "采集武器形象宝物"
+    IDS_STRING60401         "分后 开始"
+    IDS_STRING60402         "%d分钟后自动开始"
+    IDS_MIMIRPOTION1        "密米爾泉水 1"
+    IDS_MIMIRPOTION2        "密米爾泉水 2"
+    IDS_MIMIRPOTION3        "密米爾泉水 3"
+    IDS_MIMIRPOTION4        "密米爾泉水 4"
+    IDS_MIMIRPOTION5        "密米爾泉水 5"
+    IDS_STRING60408         "交易价格"
+    IDS_STRING60409         "以下的装备 分解"
+    IDS_STRING60410         "价格在%d 以下，所以装备分解处理"
+    IDS_STRING60411         "1分钟内5次以上不能回城，所以选择角色"
+    IDS_STRING60412         "自动 合成"
+    IDS_STRING60413         "人物"
+    IDS_STRING60414         "坐骑"
+    IDS_STRING60415         "军火 模样"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_STRING60416         "随机行进"
+    IDS_STRING60417         "游戏框架"
+    IDS_STRING60418         "全都装备 卸载"
+    IDS_STRING60419         "装备 获取 等级 限制"
+    IDS_STRING60420         "无限制"
+    IDS_STRING60421         "高级以上"
+    IDS_STRING60422         "稀有异常"
+    IDS_STRING60423         "英雄理想"
+    IDS_STRING60424         "游戏掉了 (%d分钟后 重新运行)"
+    IDS_STRING60425         "召唤假虎石 ?"
+    IDS_STRING60426         "召唤假虎石 ?"
+    IDS_STRING60427         "排序"
+    IDS_STRING60428         "奥丁石像Buff"
+END
+
+#endif    // Chinese (Simplified, China) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// Korean (Korea) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_KOR)
+LANGUAGE LANG_KOREAN, SUBLANG_DEFAULT
+#pragma code_page(949)
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MENU1 MENU
+BEGIN
+    POPUP "R"
+    BEGIN
+        MENUITEM "泅犁 徘 傈眉利侩",                   ID_R_APPLYALLSETTINGS
+    END
+END
+
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#ifndef APSTUDIO_INVOKED\r\n"
+    "#include ""targetver.h""\r\n"
+    "#endif\r\n"
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)\r\n"
+    "LANGUAGE 9, 1\r\n"
+    "#pragma code_page(1252)\r\n"
+    "#include ""res\\Detail.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""afxres.rc""     // Standard components\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON                    "res\\Detail.ico"
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_DETAIL_DIALOG DIALOGEX 0, 0, 363, 320
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | DS_CENTER | WS_MINIMIZEBOX | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_APPWINDOW
+CAPTION "Detail"
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    CONTROL         "",IDC_TAB1,"SysTabControl32",0x0,0,1,363,302,WS_EX_DLGMODALFRAME
+    PUSHBUTTON      "汲沥利侩",IDC_BUTTON1,207,305,50,14
+    DEFPUSHBUTTON   "霸烙矫累",IDOK,259,305,50,14
+    PUSHBUTTON      "见扁扁",IDCANCEL,311,305,50,14
+    CONTROL         "橇饭烙",IDC_CHECK1,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,14,307,35,10
+    EDITTEXT        IDC_EDIT1,51,305,24,12,ES_CENTER | ES_AUTOHSCROLL | ES_NUMBER | WS_DISABLED
+END
+
+IDD_SUB_SCHEDULE DIALOGEX 0, 0, 360, 286
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_SYSMENU
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    GROUPBOX        "",IDC_STATIC,2,0,356,284
+    GROUPBOX        "皋牢 胶纳临",IDC_STATIC11,4,7,352,168
+    CONTROL         "",IDC_LIST1,"SysListView32",LVS_REPORT | LVS_SINGLESEL | LVS_SHOWSELALWAYS | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,4,16,352,142
+    PUSHBUTTON      "°",IDC_BUTTON3,10,159,18,14
+    PUSHBUTTON      "″",IDC_BUTTON4,30,159,18,14
+    LTEXT           "檬扁拳 矫埃",IDC_STATIC13,55,162,39,8
+    CONTROL         "",IDC_DATETIMEPICKER1,"SysDateTimePick32",DTS_RIGHTALIGN | DTS_UPDOWN | WS_TABSTOP | 0x8,96,160,48,12
+    LTEXT           "~",IDC_STATIC,148,163,8,8
+    CONTROL         "",IDC_DATETIMEPICKER2,"SysDateTimePick32",DTS_RIGHTALIGN | DTS_UPDOWN | WS_TABSTOP | 0x8,158,160,48,12
+    CONTROL         "罚待柳青",IDC_CHECK2,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,209,162,43,8
+    PUSHBUTTON      "檬扁拳",IDC_BUTTON7,256,159,32,14
+    PUSHBUTTON      "眠啊",IDC_BUTTON1,289,159,32,14
+    PUSHBUTTON      "昏力",IDC_BUTTON2,322,159,32,14
+    GROUPBOX        "雀乔 胶纳临",IDC_STATIC12,4,177,352,106
+    CONTROL         "",IDC_LIST2,"SysListView32",LVS_REPORT | LVS_SINGLESEL | LVS_SHOWSELALWAYS | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,4,187,352,80
+    LTEXT           "积己",IDC_STATIC14,19,272,20,8
+    COMBOBOX        IDC_COMBO1,39,269,58,86,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "傈流",IDC_STATIC15,104,272,21,8
+    COMBOBOX        IDC_COMBO2,124,269,58,88,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "竿刀狼 轨",IDC_CHECK1,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,195,271,47,10
+    PUSHBUTTON      "眠啊",IDC_BUTTON5,289,268,32,14
+    PUSHBUTTON      "昏力",IDC_BUTTON6,322,268,32,14
+END
+
+IDD_SUB_LOGINFO DIALOGEX 0, 0, 360, 286
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_SYSMENU
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CONTROL         "",IDC_LIST1,"SysListView32",LVS_REPORT | LVS_SINGLESEL | LVS_SHOWSELALWAYS | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,4,93,353,189
+    GROUPBOX        "",-1,2,0,356,284
+    EDITTEXT        IDC_EDIT1,36,15,291,13,ES_CENTER | ES_READONLY
+    EDITTEXT        IDC_EDIT2,36,31,140,13,ES_CENTER | ES_AUTOHSCROLL | ES_READONLY
+    EDITTEXT        IDC_EDIT3,187,31,140,13,ES_CENTER | ES_AUTOHSCROLL | ES_READONLY
+    CONTROL         "",IDC_PROGRESS1,"msctls_progress32",WS_BORDER,36,46,140,13
+    CONTROL         "",IDC_PROGRESS2,"msctls_progress32",WS_BORDER,36,61,140,13
+    EDITTEXT        IDC_EDIT4,187,46,140,13,ES_CENTER | ES_AUTOHSCROLL | ES_READONLY
+    EDITTEXT        IDC_EDIT5,187,61,140,13,ES_CENTER | ES_AUTOHSCROLL | ES_READONLY
+    CONTROL         "",IDC_PROGRESS3,"msctls_progress32",WS_BORDER,36,76,140,13
+    CONTROL         "",IDC_PROGRESS4,"msctls_progress32",WS_BORDER,187,76,140,13
+END
+
+IDD_SCHEDULE_DETAIL DIALOGEX 0, 0, 363, 346
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | DS_CENTER | WS_MINIMIZEBOX | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_APPWINDOW
+CAPTION "Schedule"
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    CONTROL         "",IDC_TAB1,"SysTabControl32",0x0,0,1,363,302,WS_EX_DLGMODALFRAME
+    GROUPBOX        "",IDC_STATIC,3,305,81,39
+    CONTROL         "",IDC_CHECK2,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,7,315,10,8
+    COMBOBOX        IDC_COMBO1,18,313,64,90,CBS_DROPDOWNLIST | WS_DISABLED | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "",IDC_CHECK3,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,7,330,10,8
+    COMBOBOX        IDC_COMBO2,18,328,64,139,CBS_DROPDOWNLIST | WS_DISABLED | WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "",IDC_STATIC,86,305,137,39
+    CONTROL         "矫埃汲沥",IDC_CHECK1,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,90,306,53,8
+    CONTROL         "",IDC_RADIO1,"Button",BS_AUTORADIOBUTTON | WS_DISABLED | WS_GROUP,92,318,15,8
+    CONTROL         "",IDC_RADIO2,"Button",BS_AUTORADIOBUTTON | WS_DISABLED,92,332,15,8
+    CONTROL         "",IDC_DATETIMEPICKER1,"SysDateTimePick32",DTS_RIGHTALIGN | DTS_UPDOWN | WS_DISABLED | WS_TABSTOP | 0x8,111,316,48,12
+    LTEXT           "~",IDC_STATIC,163,318,8,8
+    CONTROL         "",IDC_DATETIMEPICKER2,"SysDateTimePick32",DTS_RIGHTALIGN | DTS_UPDOWN | WS_DISABLED | WS_TABSTOP | 0x8,172,316,48,12
+    EDITTEXT        IDC_EDIT1,111,330,40,12,ES_CENTER | ES_AUTOHSCROLL | ES_NUMBER | WS_DISABLED
+    LTEXT           "盒",IDC_STATIC11,154,333,17,8
+    CTEXT           "捞抚",IDC_STATIC12,229,314,27,8
+    EDITTEXT        IDC_EDIT2,259,312,98,13,ES_CENTER | ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "犬牢",IDC_BUTTON1,276,328,37,14
+    PUSHBUTTON      "阂矾坷扁",IDC_BUTTON3,232,328,37,14
+    PUSHBUTTON      "秒家",IDC_BUTTON2,320,328,37,14
+END
+
+IDD_SCHEDULE_HUNT DIALOGEX 0, 0, 361, 286
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_SYSMENU
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    GROUPBOX        "",IDC_STATIC,2,0,356,284
+    GROUPBOX        "柳免",IDC_STATIC11,4,6,352,56
+    CONTROL         "绝澜",IDC_RADIO1,"Button",BS_AUTORADIOBUTTON | WS_GROUP,18,15,35,10
+    CONTROL         "岿靛",IDC_RADIO2,"Button",BS_AUTORADIOBUTTON,18,31,36,10
+    CONTROL         "带傈",IDC_RADIO3,"Button",BS_AUTORADIOBUTTON,18,47,36,10
+    LTEXT           "=>",IDC_STATIC,47,16,12,8
+    CONTROL         "皋牢 涅胶飘 柳青",IDC_CHECK13,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,62,15,77,10
+    LTEXT           "(",IDC_STATIC,143,15,8,8
+    LTEXT           "格钎",IDC_STATIC25,149,16,16,8
+    CONTROL         "Lv",IDC_CHECK15,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,168,15,20,10
+    EDITTEXT        IDC_EDIT12,191,14,28,12,ES_CENTER | ES_AUTOHSCROLL | ES_NUMBER | WS_DISABLED
+    LTEXT           ",",IDC_STATIC,224,15,8,8
+    CONTROL         "岿靛",IDC_CHECK16,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,231,15,31,10
+    COMBOBOX        IDC_COMBO5,267,14,68,98,CBS_DROPDOWNLIST | WS_DISABLED | WS_VSCROLL | WS_TABSTOP
+    LTEXT           ")",IDC_STATIC,339,15,8,8
+    LTEXT           "=>",IDC_STATIC,47,31,12,8
+    COMBOBOX        IDC_COMBO1,62,30,68,102,CBS_DROPDOWNLIST | WS_DISABLED | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_COMBO2,134,30,86,132,CBS_DROPDOWNLIST | WS_DISABLED | WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        IDC_EDIT10,221,30,115,12,ES_CENTER | ES_AUTOHSCROLL | ES_READONLY | WS_DISABLED
+    PUSHBUTTON      "⒏",IDC_BUTTON1,337,30,16,13,WS_DISABLED
+    LTEXT           "=>",IDC_STATIC,47,47,12,8
+    COMBOBOX        IDC_COMBO3,62,46,108,115,CBS_DROPDOWNLIST | WS_DISABLED | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "困摹",IDC_CHECK12,"Button",BS_AUTOCHECKBOX | WS_DISABLED | WS_TABSTOP,178,49,34,8
+    EDITTEXT        IDC_EDIT11,221,46,115,12,ES_CENTER | ES_AUTOHSCROLL | ES_READONLY | WS_DISABLED
+    PUSHBUTTON      "⒏",IDC_BUTTON4,337,46,16,13,WS_DISABLED
+    GROUPBOX        "荤成",IDC_STATIC12,4,63,222,46
+    LTEXT           "鸥百泼 裹困",IDC_STATIC13,18,78,49,8
+    LTEXT           "=>",IDC_STATIC,62,77,12,8
+    GROUPBOX        "",IDC_STATIC,76,69,142,21
+    CONTROL         "20 M",IDC_RADIO4,"Button",BS_AUTORADIOBUTTON | WS_GROUP,82,77,29,8
+    CONTROL         "50 M",IDC_RADIO5,"Button",BS_AUTORADIOBUTTON,116,77,29,8
+    CONTROL         "80 M",IDC_RADIO6,"Button",BS_AUTORADIOBUTTON,150,77,29,8
+    CONTROL         "∧ M",IDC_RADIO12,"Button",BS_AUTORADIOBUTTON,184,77,27,8
+    CONTROL         "",IDC_CHECK1,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,18,95,11,8
+    EDITTEXT        IDC_EDIT1,29,93,28,12,ES_CENTER | ES_AUTOHSCROLL | ES_NUMBER | WS_DISABLED
+    LTEXT           "檬捞惑 各 绝栏搁 鉴埃捞悼",IDC_STATIC14,60,96,102,8
+    CONTROL         "概呈葛靛",IDC_CHECK2,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,164,95,52,8
+    GROUPBOX        "蓖券",IDC_STATIC15,4,111,222,173
+    CONTROL         "眉仿",IDC_CHECK7,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,18,124,32,8
+    EDITTEXT        IDC_EDIT2,51,122,28,12,ES_CENTER | ES_AUTOHSCROLL | ES_NUMBER | WS_DISABLED
+    LTEXT           "%捞窍",IDC_STATIC16,83,124,26,8
+    EDITTEXT        IDC_EDIT3,110,122,28,12,ES_CENTER | ES_AUTOHSCROLL | ES_NUMBER | WS_DISABLED
+    LTEXT           "檬捞惑矫 蓖券",IDC_STATIC17,142,124,58,8
+    CONTROL         "公霸",IDC_CHECK8,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,18,139,32,8
+    EDITTEXT        IDC_EDIT4,51,137,28,12,ES_CENTER | ES_AUTOHSCROLL | ES_NUMBER | WS_DISABLED
+    LTEXT           "%捞惑",IDC_STATIC19,83,139,26,8
+    EDITTEXT        IDC_EDIT5,110,137,28,12,ES_CENTER | ES_AUTOHSCROLL | ES_NUMBER | WS_DISABLED
+    LTEXT           "檬捞惑矫 蓖券",IDC_STATIC18,142,139,59,8
+    GROUPBOX        "酒捞袍 何练矫",IDC_STATIC20,7,154,215,130
+    CONTROL         "",IDC_LIST1,"SysListView32",LVS_REPORT | LVS_SINGLESEL | LVS_SHOWSELALWAYS | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,8,163,214,104
+    PUSHBUTTON      "眠啊",IDC_BUTTON2,148,268,36,14
+    PUSHBUTTON      "昏力",IDC_BUTTON3,185,268,36,14
+    GROUPBOX        "",IDC_STATIC,228,63,128,30
+    CONTROL         "盲笼",IDC_CHECK3,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,234,64,39,10
+    CONTROL         "堡籍",IDC_CHECK4,"Button",BS_AUTOCHECKBOX | WS_DISABLED | WS_TABSTOP,247,77,30,10
+    CONTROL         "唱公",IDC_CHECK5,"Button",BS_AUTOCHECKBOX | WS_DISABLED | WS_TABSTOP,280,77,31,10
+    CONTROL         "酒付钱",IDC_CHECK6,"Button",BS_AUTOCHECKBOX | WS_DISABLED | WS_TABSTOP,313,77,40,10
+    GROUPBOX        "",IDC_STATIC,228,96,128,113
+    CONTROL         "颇萍",IDC_CHECK9,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,234,96,28,10
+    GROUPBOX        "",IDC_STATIC,230,108,126,71
+    GROUPBOX        "",IDC_STATIC,230,182,126,26
+    CONTROL         "颇萍厘",IDC_RADIO10,"Button",BS_AUTORADIOBUTTON | WS_DISABLED | WS_GROUP,235,108,38,10
+    CONTROL         "颇萍盔",IDC_RADIO11,"Button",BS_AUTORADIOBUTTON | WS_DISABLED,235,181,35,10
+    CONTROL         "",IDC_LIST2,"SysListView32",LVS_REPORT | LVS_ALIGNLEFT | WS_DISABLED | WS_BORDER | WS_TABSTOP,230,119,125,44
+    PUSHBUTTON      "眠啊",IDC_BUTTON5,279,164,36,14,WS_DISABLED
+    PUSHBUTTON      "昏力",IDC_BUTTON6,317,164,36,14,WS_DISABLED
+    LTEXT           "=>",IDC_STATIC,270,181,12,8
+    COMBOBOX        IDC_COMBO4,282,179,59,104,CBS_DROPDOWN | CBS_SORT | WS_DISABLED | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "∵",IDC_BUTTON7,341,179,14,13,WS_DISABLED
+    CONTROL         "颇厘俊霸 捞悼",IDC_CHECK14,"Button",BS_AUTOCHECKBOX | WS_DISABLED | WS_TABSTOP,235,195,60,10
+    COMBOBOX        IDC_COMBO6,299,194,56,102,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "",IDC_STATIC,228,207,128,50
+    CONTROL         "",IDC_CHECK10,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,234,216,11,8
+    EDITTEXT        IDC_EDIT6,245,214,20,12,ES_CENTER | ES_AUTOHSCROLL | ES_NUMBER | WS_DISABLED
+    LTEXT           "盒",IDC_STATIC21,268,216,10,8
+    EDITTEXT        IDC_EDIT7,279,214,20,12,ES_CENTER | ES_AUTOHSCROLL | ES_NUMBER | WS_DISABLED
+    LTEXT           "雀荤噶矫 吝瘤",IDC_STATIC22,303,216,50,8
+    CONTROL         "",IDC_CHECK17,"Button",BS_AUTOCHECKBOX | WS_DISABLED | WS_TABSTOP,280,230,11,8
+    EDITTEXT        IDC_EDIT13,292,228,20,12,ES_CENTER | ES_AUTOHSCROLL | ES_NUMBER | WS_DISABLED
+    LTEXT           "盒饶 犁俺",IDC_STATIC26,315,230,36,8
+    CONTROL         "",IDC_CHECK11,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,234,244,11,8
+    EDITTEXT        IDC_EDIT8,245,242,20,12,ES_CENTER | ES_AUTOHSCROLL | ES_NUMBER | WS_DISABLED
+    LTEXT           "盒",IDC_STATIC23,268,244,11,8
+    EDITTEXT        IDC_EDIT9,279,242,20,12,ES_CENTER | ES_AUTOHSCROLL | ES_NUMBER | WS_DISABLED
+    LTEXT           "雀犁立加 辆丰",IDC_STATIC24,303,244,51,8
+    GROUPBOX        "厘厚 裙垫 殿鞭 力茄",IDC_STATIC27,228,257,128,27
+    CONTROL         "",IDC_CHECK18,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,234,269,11,10
+    COMBOBOX        IDC_COMBO7,248,268,102,94,CBS_DROPDOWNLIST | WS_DISABLED | WS_VSCROLL | WS_TABSTOP
+END
+
+IDD_SCHEDULE_OTHER DIALOGEX 0, 0, 361, 286
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_SYSMENU
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    GROUPBOX        "",IDC_STATIC,2,0,356,284
+    CONTROL         "付阑 狼汾",IDC_CHECK1,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,9,11,49,10
+    COMBOBOX        IDC_COMBO1,59,9,83,105,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "付阑 狼汾辑 (某腐磐 蓖加) 荤侩",IDC_CHECK15,"Button",BS_AUTOCHECKBOX | WS_DISABLED | WS_TABSTOP,9,23,129,10
+    CONTROL         "版氰摹 汗备 (公丰)",IDC_CHECK3,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,9,35,79,10
+    CONTROL         "版氰摹 汗备 (榜靛)",IDC_CHECK4,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,9,47,79,10
+    CONTROL         "惯且扼 措傈",IDC_CHECK2,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,92,35,67,10
+    CONTROL         "诀利 焊惑",IDC_CHECK5,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,92,47,52,10
+    CONTROL         "捞亥飘 焊惑",IDC_CHECK7,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,9,59,68,10
+    CONTROL         "磊悼 厘馒",IDC_CHECK6,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,92,59,51,10
+    CONTROL         "辨靛 免籍",IDC_CHECK8,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,9,71,64,10
+    CONTROL         "辨靛 啊涝",IDC_CHECK14,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,92,71,51,10
+    CONTROL         "榜靛",IDC_CHECK9,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,9,84,30,10
+    EDITTEXT        IDC_EDIT1,40,83,37,12,ES_CENTER | ES_AUTOHSCROLL | ES_NUMBER | WS_DISABLED
+    LTEXT           "捞惑矫 辨靛 扁何",IDC_STATIC11,79,85,63,8
+    CONTROL         "某腐 快祈",IDC_CHECK10,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,9,97,64,10
+    CONTROL         "拌沥 快祈",IDC_CHECK11,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,92,97,52,10
+    CONTROL         "胶纳临 肯丰矫 厘厚 芒绊 焊包",IDC_CHECK12,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,9,109,122,10
+    CONTROL         "胶纳临 矫累矫 厘厚 芒绊 茫扁",IDC_CHECK13,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,9,121,125,10
+    CONTROL         "",IDC_CHECK16,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,9,134,9,10
+    EDITTEXT        IDC_EDIT2,21,133,19,12,ES_CENTER | ES_AUTOHSCROLL | ES_NUMBER | WS_DISABLED
+    LTEXT           "盒救俊 捞悼坷幅",IDC_STATIC12,42,135,53,8
+    EDITTEXT        IDC_EDIT3,98,133,19,12,ES_CENTER | ES_AUTOHSCROLL | ES_NUMBER | WS_DISABLED
+    LTEXT           "雀捞惑矫 蓖券",IDC_STATIC13,120,135,52,8
+    CONTROL         "",IDC_CHECK17,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,9,148,9,10
+    EDITTEXT        IDC_EDIT4,21,147,19,12,ES_CENTER | ES_AUTOHSCROLL | ES_NUMBER | WS_DISABLED
+    LTEXT           "盒捞惑 涅 柳青 救登绰 版快 犁立加",IDC_STATIC14,42,149,125,8
+    CONTROL         "岿靛 焊胶",IDC_CHECK44,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,9,161,57,10
+    CONTROL         "焊拱 惑磊",IDC_CHECK45,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,92,161,47,10
+    CONTROL         "辑宏 涅胶飘 柳青",IDC_CHECK49,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,9,173,71,10
+    CONTROL         "炼扒 胶懦",IDC_CHECK50,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,92,173,47,10
+    CONTROL         "力2措氟 措屈拱距 备概",IDC_CHECK59,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,9,185,80,10
+    CONTROL         "固固福狼 基拱",IDC_CHECK51,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,92,185,62,10
+    CONTROL         "公扁 屈惑 焊拱 惑磊",IDC_CHECK65,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,9,197,77,10
+    CONTROL         "橇饭烙",IDC_CHECK70,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,92,197,39,10
+    EDITTEXT        IDC_EDIT17,134,196,29,12,ES_CENTER | ES_AUTOHSCROLL | ES_NUMBER | WS_DISABLED
+    CONTROL         "坷凋狼 绵汗 籍惑",IDC_CHECK60,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,9,209,74,10
+    GROUPBOX        "",IDC_STATIC,172,11,184,83
+    CONTROL         "酒捞袍 荐笼",IDC_CHECK18,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,177,11,55,10
+    CONTROL         "老馆",IDC_CHECK19,"Button",BS_AUTOCHECKBOX | WS_DISABLED | WS_TABSTOP,190,23,31,10
+    CONTROL         "绊鞭",IDC_CHECK20,"Button",BS_AUTOCHECKBOX | WS_DISABLED | WS_TABSTOP,228,23,31,10
+    CONTROL         "锐蓖",IDC_CHECK21,"Button",BS_AUTOCHECKBOX | WS_DISABLED | WS_TABSTOP,266,23,31,10
+    CONTROL         "康旷",IDC_CHECK22,"Button",BS_AUTOCHECKBOX | WS_DISABLED | WS_TABSTOP,304,23,31,10
+    CONTROL         "傍拜",IDC_CHECK23,"Button",BS_AUTOCHECKBOX | WS_DISABLED | WS_TABSTOP,190,35,31,10
+    CONTROL         "规绢",IDC_CHECK24,"Button",BS_AUTOCHECKBOX | WS_DISABLED | WS_TABSTOP,228,35,31,10
+    CONTROL         "扁鸥",IDC_CHECK25,"Button",BS_AUTOCHECKBOX | WS_DISABLED | WS_TABSTOP,266,35,31,10
+    CONTROL         "捞亥飘",IDC_CHECK26,"Button",BS_AUTOCHECKBOX | WS_DISABLED | WS_TABSTOP,304,35,38,10
+    CONTROL         "碍拳 厘厚 荐笼",IDC_CHECK27,"Button",BS_AUTOCHECKBOX | WS_DISABLED | WS_TABSTOP,190,47,64,10
+    EDITTEXT        IDC_EDIT5,265,46,24,12,ES_CENTER | ES_AUTOHSCROLL | ES_NUMBER | WS_DISABLED
+    LTEXT           "~",IDC_STATIC,294,47,8,8
+    EDITTEXT        IDC_EDIT6,304,46,24,12,ES_CENTER | ES_AUTOHSCROLL | ES_NUMBER | WS_DISABLED
+    GROUPBOX        "",IDC_STATIC,180,58,174,35
+    CONTROL         "鞘磐",IDC_CHECK28,"Button",BS_AUTOCHECKBOX | WS_DISABLED | WS_TABSTOP,190,58,42,10
+    CONTROL         "疙吝",IDC_CHECK29,"Button",BS_AUTOCHECKBOX | WS_DISABLED | WS_TABSTOP,194,69,38,10
+    CONTROL         "措固瘤",IDC_CHECK30,"Button",BS_AUTOCHECKBOX | WS_DISABLED | WS_TABSTOP,237,69,38,10
+    CONTROL         "规绢仿",IDC_CHECK31,"Button",BS_AUTOCHECKBOX | WS_DISABLED | WS_TABSTOP,280,69,36,10
+    CONTROL         "雀乔",IDC_CHECK32,"Button",BS_AUTOCHECKBOX | WS_DISABLED | WS_TABSTOP,321,69,27,10
+    CONTROL         "HP 雀汗樊",IDC_CHECK33,"Button",BS_AUTOCHECKBOX | WS_DISABLED | WS_TABSTOP,194,80,52,10
+    CONTROL         "MP 雀汗樊",IDC_CHECK34,"Button",BS_AUTOCHECKBOX | WS_DISABLED | WS_TABSTOP,250,80,52,10
+    GROUPBOX        "",IDC_STATIC,172,95,184,35
+    CONTROL         "酒捞袍 盒秦",IDC_CHECK35,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,177,95,55,10
+    CONTROL         "老馆",IDC_CHECK36,"Button",BS_AUTOCHECKBOX | WS_DISABLED | WS_TABSTOP,190,106,31,10
+    CONTROL         "绊鞭",IDC_CHECK37,"Button",BS_AUTOCHECKBOX | WS_DISABLED | WS_TABSTOP,228,106,31,10
+    CONTROL         "锐蓖",IDC_CHECK38,"Button",BS_AUTOCHECKBOX | WS_DISABLED | WS_TABSTOP,266,106,31,10
+    CONTROL         "康旷",IDC_CHECK39,"Button",BS_AUTOCHECKBOX | WS_DISABLED | WS_TABSTOP,304,106,31,10
+    CONTROL         "碍拳",IDC_CHECK40,"Button",BS_AUTOCHECKBOX | WS_DISABLED | WS_TABSTOP,190,117,31,10
+    CONTROL         "技傍",IDC_CHECK41,"Button",BS_AUTOCHECKBOX | WS_DISABLED | WS_TABSTOP,228,117,31,10
+    CONTROL         "蓖加",IDC_CHECK42,"Button",BS_AUTOCHECKBOX | WS_DISABLED | WS_TABSTOP,266,117,31,10
+    CONTROL         "厚蓖加",IDC_CHECK43,"Button",BS_AUTOCHECKBOX | WS_DISABLED | WS_TABSTOP,304,117,38,10
+    GROUPBOX        "",IDC_STATIC,172,132,184,84
+    CONTROL         "颇萍 带傈",IDC_CHECK46,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,177,132,47,10
+    EDITTEXT        IDC_EDIT7,226,131,24,12,ES_CENTER | ES_AUTOHSCROLL | ES_NUMBER | WS_DISABLED
+    LTEXT           "饭骇捞惑 柳青",IDC_STATIC15,252,133,52,8
+    CONTROL         "涝厘",IDC_CHECK47,"Button",BS_AUTOCHECKBOX | WS_DISABLED | WS_TABSTOP,190,146,31,10
+    COMBOBOX        IDC_COMBO2,238,144,109,112,CBS_DROPDOWNLIST | WS_DISABLED | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "抄捞档",IDC_CHECK48,"Button",BS_AUTOCHECKBOX | WS_DISABLED | WS_TABSTOP,190,159,38,10
+    COMBOBOX        IDC_COMBO3,238,157,109,100,CBS_DROPDOWNLIST | WS_DISABLED | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "芭贰 啊瓷 涝厘鼻 荤侩 ",IDC_CHECK52,"Button",BS_AUTOCHECKBOX | WS_DISABLED | WS_TABSTOP,190,172,84,10
+    CONTROL         "",IDC_CHECK53,"Button",BS_AUTOCHECKBOX | WS_DISABLED | WS_TABSTOP,280,172,9,10
+    EDITTEXT        IDC_EDIT8,291,171,14,12,ES_CENTER | ES_AUTOHSCROLL | ES_NUMBER | WS_DISABLED
+    LTEXT           "疙捞惑 矫累",IDC_STATIC16,307,173,45,8
+    GROUPBOX        "",IDC_STATIC,183,180,171,35
+    CONTROL         "乞闭 饭骇",IDC_CHECK54,"Button",BS_AUTOCHECKBOX | WS_DISABLED | WS_TABSTOP,190,188,43,10
+    EDITTEXT        IDC_EDIT9,238,187,24,12,ES_CENTER | ES_AUTOHSCROLL | ES_NUMBER | WS_DISABLED
+    LTEXT           "捞窍 颇萍呕硼",IDC_STATIC17,264,189,54,8
+    CONTROL         "",IDC_CHECK55,"Button",BS_AUTOCHECKBOX | WS_DISABLED | WS_TABSTOP,191,201,10,10
+    EDITTEXT        IDC_EDIT10,202,200,24,12,ES_CENTER | ES_AUTOHSCROLL | ES_NUMBER | WS_DISABLED
+    LTEXT           "饭骇捞惑 颇萍盔 滚胶 啪铰",IDC_STATIC18,229,202,110,8
+    GROUPBOX        "芭贰啊瓷茄 碍拳籍 荤侩 (厘厚 碍拳)",IDC_STATIC19,172,216,184,23
+    CONTROL         "公扁",IDC_CHECK56,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,191,226,41,10
+    CONTROL         "规绢备",IDC_CHECK57,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,248,226,41,10
+    CONTROL         "厘脚备",IDC_CHECK58,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,305,226,41,10
+    GROUPBOX        "",IDC_STATIC,172,234,184,21
+    CONTROL         "芭贰啊拜",IDC_CHECK66,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,191,242,46,10
+    EDITTEXT        IDC_EDIT16,240,241,24,12,ES_CENTER | ES_AUTOHSCROLL | ES_NUMBER | WS_DISABLED
+    LTEXT           "捞窍牢 厘厚 磊悼 盒秦",IDC_STATIC20,268,243,80,8
+    GROUPBOX        "磊悼 钦己",IDC_STATIC21,172,256,184,25
+    CONTROL         "酒官鸥",IDC_CHECK67,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,191,266,48,10
+    CONTROL         "呕巴",IDC_CHECK68,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,248,266,48,10
+    CONTROL         "公扁 屈惑",IDC_CHECK69,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,305,266,48,10
+END
+
+IDD_SCHEDULE_BUY DIALOGEX 0, 0, 361, 286
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_SYSMENU
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    GROUPBOX        "",IDC_STATIC,2,0,356,284
+    GROUPBOX        "促捞酒 惑痢",IDC_STATIC11,4,6,352,110
+    GROUPBOX        "",IDC_STATIC,12,18,207,96
+    EDITTEXT        IDC_EDIT1,18,16,40,12,ES_CENTER | ES_AUTOHSCROLL | ES_NUMBER
+    LTEXT           "榜靛 捞惑矫",IDC_STATIC12,60,19,51,8
+    CONTROL         "酒官鸥 家券 グ",IDC_CHECK1,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,16,34,61,8
+    CONTROL         "酒官鸥 家券 ケ",IDC_CHECK2,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,83,34,63,8
+    CONTROL         "酒官鸥 家券 ゲ",IDC_CHECK3,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,150,34,63,8
+    CONTROL         "呕巴 家券 グ",IDC_CHECK4,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,16,46,61,8
+    CONTROL         "呕巴 家券 ケ",IDC_CHECK5,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,83,46,63,8
+    CONTROL         "呕巴 家券 ゲ",IDC_CHECK6,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,150,46,63,8
+    CONTROL         "公扁 屈惑 グ",IDC_CHECK17,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,16,58,61,8
+    CONTROL         "公扁 屈惑 ケ",IDC_CHECK18,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,83,58,63,8
+    CONTROL         "公扁 屈惑 ゲ",IDC_CHECK19,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,150,58,63,8
+    CONTROL         "烽 家券 グ",IDC_CHECK7,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,16,70,52,8
+    CONTROL         "烽 家券 ケ",IDC_CHECK8,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,83,70,52,8
+    CONTROL         "固固福狼 基拱 1",IDC_CHECK20,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,16,81,62,10
+    CONTROL         "固固福狼 基拱 2",IDC_CHECK21,"Button",BS_AUTOCHECKBOX | WS_DISABLED | WS_TABSTOP,83,81,62,10
+    CONTROL         "固固福狼 基拱 3",IDC_CHECK22,"Button",BS_AUTOCHECKBOX | WS_DISABLED | WS_TABSTOP,150,81,62,10
+    CONTROL         "固固福狼 基拱 4",IDC_CHECK23,"Button",BS_AUTOCHECKBOX | WS_DISABLED | WS_TABSTOP,16,92,62,10
+    CONTROL         "固固福狼 基拱 5",IDC_CHECK24,"Button",BS_AUTOCHECKBOX | WS_DISABLED | WS_TABSTOP,83,92,62,10
+    CONTROL         "啊龋籍 家券 グ",IDC_CHECK25,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,16,103,62,10
+    CONTROL         "啊龋籍 家券 ケ",IDC_CHECK26,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,83,103,62,10
+    EDITTEXT        IDC_EDIT2,225,16,40,12,ES_CENTER | ES_AUTOHSCROLL | ES_NUMBER
+    LTEXT           "榜靛 捞惑矫",IDC_STATIC13,270,19,51,8
+    CONTROL         "公扁 碍拳籍",IDC_CHECK9,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,228,34,59,8
+    EDITTEXT        IDC_EDIT3,292,32,23,12,ES_CENTER | ES_AUTOHSCROLL | ES_NUMBER | WS_DISABLED
+    LTEXT           "俺 备概",IDC_STATIC14,318,35,31,8
+    CONTROL         "规绢备 碍拳籍",IDC_CHECK10,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,228,48,62,8
+    EDITTEXT        IDC_EDIT4,292,46,23,12,ES_CENTER | ES_AUTOHSCROLL | ES_NUMBER | WS_DISABLED
+    LTEXT           "俺 备概",IDC_STATIC15,318,49,31,8
+    CONTROL         "公扁 惑磊",IDC_CHECK11,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,228,62,58,8
+    EDITTEXT        IDC_EDIT5,292,60,23,12,ES_CENTER | ES_AUTOHSCROLL | ES_NUMBER | WS_DISABLED
+    LTEXT           "俺 备概",IDC_STATIC16,318,62,31,8
+    CONTROL         "规绢备 惑磊",IDC_CHECK12,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,228,76,62,8
+    EDITTEXT        IDC_EDIT6,292,74,23,12,ES_CENTER | ES_AUTOHSCROLL | ES_NUMBER | WS_DISABLED
+    LTEXT           "俺 备概",IDC_STATIC17,318,77,31,8
+    CONTROL         "阿牢 档厘",IDC_CHECK15,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,228,90,60,9
+    EDITTEXT        IDC_EDIT9,292,88,23,12,ES_CENTER | ES_AUTOHSCROLL | ES_NUMBER | WS_DISABLED
+    LTEXT           "俺 备概",IDC_STATIC22,318,91,31,8
+    CONTROL         "蜡拱 悼傈",IDC_CHECK16,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,228,103,59,9
+    EDITTEXT        IDC_EDIT10,292,102,23,12,ES_CENTER | ES_AUTOHSCROLL | ES_NUMBER | WS_DISABLED
+    LTEXT           "俺 备概",IDC_STATIC23,318,104,31,8
+    GROUPBOX        "家葛前 惑牢",IDC_STATIC18,4,120,176,146
+    EDITTEXT        IDC_EDIT8,52,117,40,12,ES_CENTER | ES_AUTOHSCROLL | ES_NUMBER
+    LTEXT           "榜靛 捞惑矫",IDC_STATIC21,93,120,55,8
+    GROUPBOX        "背券 惑牢",IDC_STATIC19,182,120,174,146
+    CONTROL         "",IDC_LIST1,"SysListView32",LVS_REPORT | LVS_SINGLESEL | LVS_SHOWSELALWAYS | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,4,131,175,118
+    PUSHBUTTON      "眠啊",IDC_BUTTON1,105,250,36,14
+    PUSHBUTTON      "昏力",IDC_BUTTON2,142,250,36,14
+    CONTROL         "",IDC_LIST2,"SysListView32",LVS_REPORT | LVS_SINGLESEL | LVS_SHOWSELALWAYS | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,183,131,173,118
+    PUSHBUTTON      "眠啊",IDC_BUTTON3,281,250,36,14
+    PUSHBUTTON      "昏力",IDC_BUTTON4,318,250,36,14
+    CONTROL         "榜靛",IDC_CHECK13,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,13,270,31,10
+    EDITTEXT        IDC_EDIT7,45,268,40,12,ES_CENTER | ES_AUTOHSCROLL | ES_NUMBER | WS_DISABLED
+    LTEXT           "巢扁绊 胶懦 备概",IDC_STATIC20,88,271,68,8
+    CONTROL         "30 LV 捞惑 胶懦 备概",IDC_CHECK14,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,164,270,99,10
+END
+
+IDD_SCHEDULE_ITEM DIALOGEX 0, 0, 361, 286
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_SYSMENU
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    GROUPBOX        "",IDC_STATIC,2,0,356,284
+    GROUPBOX        "老褒 汲沥",IDC_STATIC11,4,6,352,93
+    CONTROL         "",IDC_LIST1,"SysListView32",LVS_REPORT | LVS_SINGLESEL | LVS_SHOWSELALWAYS | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,5,16,350,81
+    GROUPBOX        "技何 汲沥",IDC_STATIC12,4,101,352,183
+    CONTROL         "",IDC_LIST2,"SysListView32",LVS_REPORT | LVS_SINGLESEL | LVS_SHOWSELALWAYS | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,5,110,350,158
+    PUSHBUTTON      "眠啊",IDC_BUTTON1,269,268,42,14
+    PUSHBUTTON      "昏力",IDC_BUTTON2,312,268,42,14
+    PUSHBUTTON      "沥纺",IDC_BUTTON3,226,268,42,14
+END
+
+IDD_SCHEDULE_PK DIALOGEX 0, 0, 361, 286
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_SYSMENU
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    GROUPBOX        "",-1,2,0,356,284
+END
+
+IDD_ITEM_RETURN DIALOGEX 0, 0, 176, 38
+STYLE DS_SETFONT | DS_FIXEDSYS | DS_CENTER | WS_POPUP | WS_BORDER | WS_SYSMENU
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "犬牢",IDOK,76,22,41,14
+    PUSHBUTTON      "秒家",IDCANCEL,120,22,50,14
+    LTEXT           "酒捞袍",IDC_STATIC11,8,8,32,8
+    COMBOBOX        IDC_COMBO1,34,6,137,143,CBS_DROPDOWN | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "俺荐",IDC_STATIC12,15,24,25,8
+    EDITTEXT        IDC_EDIT1,34,22,28,12,ES_CENTER | ES_AUTOHSCROLL | ES_NUMBER
+END
+
+IDD_ITEM_BUY DIALOGEX 0, 0, 182, 55
+STYLE DS_SETFONT | DS_FIXEDSYS | DS_CENTER | WS_POPUP | WS_BORDER | WS_SYSMENU
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "犬牢",IDOK,46,40,42,14
+    PUSHBUTTON      "秒家",IDCANCEL,107,40,42,14
+    LTEXT           "酒捞袍",IDC_STATIC11,8,10,30,8
+    LTEXT           "俺荐",IDC_STATIC12,15,26,23,8
+    COMBOBOX        IDC_COMBO1,34,8,137,143,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        IDC_EDIT1,34,24,28,12,ES_CENTER | ES_AUTOHSCROLL | ES_NUMBER
+    LTEXT           "捞窍矫",IDC_STATIC13,66,26,32,8
+    EDITTEXT        IDC_EDIT2,93,24,28,12,ES_CENTER | ES_AUTOHSCROLL | ES_NUMBER
+    LTEXT           "俺 盲快扁",IDC_STATIC14,124,26,44,8
+    GROUPBOX        "",IDC_STATIC,2,0,177,40
+END
+
+IDD_ITEM_DETAIL DIALOGEX 0, 0, 222, 148
+STYLE DS_SETFONT | DS_FIXEDSYS | DS_CENTER | WS_POPUP | WS_BORDER | WS_SYSMENU
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    GROUPBOX        "",IDC_STATIC,2,0,218,132
+    LTEXT           "酒捞袍",IDC_STATIC11,8,10,37,8
+    COMBOBOX        IDC_COMBO1,40,8,177,143,CBS_DROPDOWN | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "规侥",IDC_STATIC12,15,26,27,8
+    CONTROL         "贸府绝澜",IDC_RADIO1,"Button",BS_AUTORADIOBUTTON | WS_GROUP,40,25,53,10
+    CONTROL         "惑痢魄概",IDC_RADIO2,"Button",BS_AUTORADIOBUTTON,102,25,55,10
+    CONTROL         "厘厚盒秦",IDC_RADIO3,"Button",BS_AUTORADIOBUTTON,164,25,52,10
+    CONTROL         "芒绊焊包",IDC_RADIO4,"Button",BS_AUTORADIOBUTTON,40,40,53,10
+    CONTROL         "拱前昏力",IDC_RADIO5,"Button",BS_AUTORADIOBUTTON,102,40,53,10
+    CONTROL         "磊悼荤侩",IDC_RADIO6,"Button",BS_AUTORADIOBUTTON,164,40,51,10
+    CONTROL         "芭贰殿废",IDC_RADIO7,"Button",BS_AUTORADIOBUTTON,40,55,42,8
+    CONTROL         "芒绊茫扁",IDC_RADIO10,"Button",BS_AUTORADIOBUTTON,164,55,51,10
+    LTEXT           "=>",IDC_STATIC,85,54,12,8
+    LTEXT           "弓澜俺荐",IDC_STATIC13,101,56,32,8
+    EDITTEXT        IDC_EDIT1,134,53,22,12,ES_CENTER | ES_AUTOHSCROLL | ES_NUMBER | WS_DISABLED
+    GROUPBOX        "芭贰家 啊拜",IDC_STATIC14,44,68,174,44
+    CONTROL         "绊沥啊拜",IDC_RADIO8,"Button",BS_AUTORADIOBUTTON | WS_DISABLED | WS_GROUP,56,81,42,10
+    CONTROL         "弥家啊拜",IDC_RADIO9,"Button",BS_AUTORADIOBUTTON | WS_DISABLED,56,96,42,10
+    LTEXT           "=>",IDC_STATIC,100,81,12,8
+    EDITTEXT        IDC_EDIT2,114,79,28,12,ES_CENTER | ES_AUTOHSCROLL | ES_NUMBER | WS_DISABLED
+    LTEXT           "=>",IDC_STATIC,100,96,12,8
+    EDITTEXT        IDC_EDIT3,114,94,28,12,ES_CENTER | ES_AUTOHSCROLL | ES_NUMBER | WS_DISABLED
+    LTEXT           "锅",IDC_STATIC15,145,97,8,8
+    LTEXT           ", 啊拜",IDC_STATIC16,153,97,27,8
+    EDITTEXT        IDC_EDIT4,176,94,28,12,ES_CENTER | ES_AUTOHSCROLL | ES_NUMBER | WS_DISABLED
+    CONTROL         "磊悼 碍拳",IDC_CHECK1,"Button",BS_AUTOCHECKBOX | WS_DISABLED | WS_TABSTOP,40,117,43,10
+    EDITTEXT        IDC_EDIT5,89,116,28,12,ES_CENTER | ES_AUTOHSCROLL | ES_NUMBER | WS_DISABLED
+    DEFPUSHBUTTON   "犬牢",IDOK,55,133,50,14
+    PUSHBUTTON      "秒家",IDCANCEL,126,133,50,14
+    LTEXT           "捞惑",IDC_STATIC17,120,118,27,8
+END
+
+IDD_PLAYER_NAME DIALOGEX 0, 0, 152, 31
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_POPUP | WS_BORDER | WS_SYSMENU
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    COMBOBOX        IDC_COMBO1,2,2,147,153,CBS_DROPDOWN | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    DEFPUSHBUTTON   "OK",IDOK,23,16,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,85,16,50,14
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO
+BEGIN
+    IDD_DETAIL_DIALOG, DIALOG
+    BEGIN
+    END
+
+    IDD_SUB_SCHEDULE, DIALOG
+    BEGIN
+    END
+
+    IDD_SUB_LOGINFO, DIALOG
+    BEGIN
+        BOTTOMMARGIN, 284
+    END
+
+    IDD_SCHEDULE_DETAIL, DIALOG
+    BEGIN
+    END
+
+    IDD_SCHEDULE_HUNT, DIALOG
+    BEGIN
+    END
+
+    IDD_SCHEDULE_OTHER, DIALOG
+    BEGIN
+    END
+
+    IDD_SCHEDULE_BUY, DIALOG
+    BEGIN
+        BOTTOMMARGIN, 284
+    END
+
+    IDD_SCHEDULE_ITEM, DIALOG
+    BEGIN
+    END
+
+    IDD_ITEM_RETURN, DIALOG
+    BEGIN
+    END
+
+    IDD_ITEM_BUY, DIALOG
+    BEGIN
+    END
+
+    IDD_ITEM_DETAIL, DIALOG
+    BEGIN
+    END
+
+    IDD_PLAYER_NAME, DIALOG
+    BEGIN
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// AFX_DIALOG_LAYOUT
+//
+
+IDD_SUB_SCHEDULE AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+IDD_SCHEDULE_OTHER AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+IDD_SCHEDULE_BUY AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+IDD_SCHEDULE_HUNT AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+IDD_ITEM_BUY AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+IDD_ITEM_DETAIL AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+IDD_ITEM_RETURN AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+IDD_SCHEDULE_DETAIL AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+IDD_PLAYER_NAME AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+IDD_SCHEDULE_ITEM AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+IDD_DETAIL_DIALOG AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE
+BEGIN
+    IDS_DETAILTITLE         "%s 拌沥 汲沥"
+    IDS_APPLYSETTING        "汲沥利侩"
+    IDS_HIDESETTING         "见扁扁"
+    IDS_STARTGAME           "霸烙矫累"
+    IDS_SCHEDULE            "胶纳临"
+    IDS_MAINSCHEDULE        "皋牢 胶纳临"
+    IDS_SUBSCHEDULE         "雀乔 胶纳临"
+    IDS_ADD                 "眠啊"
+    IDS_DEL                 "昏力"
+    IDS_LOGINFO             "肺弊"
+    IDS_VERIFY              "犬牢"
+    IDS_CANCEL              "秒家"
+    IDS_HUNT                "荤成"
+    IDS_MOVEHUNT            "柳免"
+    IDS_BUY                 "备概"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_ITEM                "酒捞袍"
+    IDS_OTHER               "扁鸥"
+    IDS_EMPTY               "绝澜"
+    IDS_WORLD               "岿靛"
+    IDS_DUNGEON             "带傈"
+    IDS_TARGETRANGE         "鸥百泼 裹困"
+    IDS_MONTELEPORT         "檬捞惑 各 绝栏搁 鉴埃捞悼"
+    IDS_MANNERMODE          "概呈葛靛"
+    IDS_RETURN              "蓖券"
+    IDS_HP                  "眉仿"
+    IDS_PERCENTABOVE        "%捞惑"
+    IDS_SECONDRETURN        "檬捞惑矫 蓖券"
+    IDS_WEIGHT              "公霸"
+    IDS_PERCENTBELOW        "%捞窍"
+    IDS_LACKITEM            "酒捞袍 何练矫"
+    IDS_GATHER              "盲笼"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_STONE               "堡籍"
+    IDS_WOOD                "唱公"
+    IDS_GRASS               "酒付钱"
+    IDS_PARTY               "颇萍"
+    IDS_PARTYMASTER         "颇萍厘 林函捞悼"
+    IDS_DIASHOP             "促捞酒 惑痢"
+    IDS_GOLDABOVE           "榜靛 捞惑矫"
+    IDS_BUYAVATAR_1         "酒官鸥 家券 グ"
+    IDS_BUYAVATAR_2         "酒官鸥 家券 ケ"
+    IDS_BUYAVATAR_3         "酒官鸥 家券 ゲ"
+    IDS_BUYRIDER_1          "呕巴 家券 グ"
+    IDS_BUYRIDER_2          "呕巴 家券 ケ"
+    IDS_BUYRIDER_3          "呕巴 家券 ゲ"
+    IDS_BUYRUNE_1           "烽 家券 グ"
+    IDS_BUYRUNE_2           "烽 家券 ケ"
+    IDS_WEAPONPAPER         "公扁 碍拳籍"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_ARMORPAPER          "规绢备 碍拳籍"
+    IDS_WEAPONBOX           "公扁 惑磊"
+    IDS_ARMORBOX            "规绢备 惑磊"
+    IDS_BUYCOUNT            "俺 备概"
+    IDS_POTIONNPC           "家葛前 惑牢"
+    IDS_EXCHANGENPC         "背券 惑牢"
+    IDS_GOLD                "榜靛"
+    IDS_KEEPGOLDSKILL       "巢扁绊 胶懦 备概"
+    IDS_DEFAULTSETTING      "老褒 汲沥"
+    IDS_DETAILSETTING       "技何 汲沥"
+    IDS_VILLAGEREQUEST      "付阑 狼汾"
+    IDS_VALHALLA            "惯且扼 措傈"
+    IDS_RECOVERFREE         "版氰摹 汗备 (公丰)"
+    IDS_RECOVERGOLD         "版氰摹 汗备 (榜靛)"
+    IDS_ACHIEVEMENT         "诀利 焊惑"
+    IDS_AUTOEQUIP           "磊悼 厘馒"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_EVENTREWARD         "捞亥飘 焊惑"
+    IDS_GUILDCHECK          "辨靛 免籍"
+    IDS_GUILDDONATE         "捞惑矫 辨靛 扁何"
+    IDS_COUNT               "俺荐"
+    IDS_REALLYDELETE        "沥富 昏力窍矫摆嚼聪鳖?"
+    IDS_NOTICE              "舅覆"
+    IDS_CURCOUNT            "家瘤"
+    IDS_TARCOUNT            "格钎"
+    IDS_IFBELOW             "捞窍矫"
+    IDS_IFABOVE             "捞惑矫"
+    IDS_FILLCOUNT           "俺 盲快扁"
+    IDS_WEAPON              "公扁"
+    IDS_ARMOR               "规绢备"
+    IDS_ACCESSORY           "厘脚备"
+    IDS_MATERIAL            "犁丰"
+    IDS_EXPANDABLES         "家葛前"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_LOOT                "傈府前"
+    IDS_SKILLBOOK           "胶懦合"
+    IDS_COMMON              "老馆"
+    IDS_UNCOMMON            "绊鞭"
+    IDS_RARE                "锐蓖"
+    IDS_HERO                "康旷"
+    IDS_LEGEND              "傈汲"
+    IDS_MYTH                "脚拳"
+    IDS_MODE                "葛靛"
+    IDS_ITEMMODE_1          "贸府绝澜"
+    IDS_ITEMMODE_2          "惑痢魄概"
+    IDS_ITEMMODE_3          "厘厚盒秦"
+    IDS_ITEMMODE_4          "芒绊焊包"
+    IDS_ITEMMODE_5          "拱前昏力"
+    IDS_ITEMMODE_6          "磊悼荤侩"
+    IDS_ITEMMODE_7          "芭贰殿废"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_BLOCKCOUNT          "弓澜俺荐"
+    IDS_MARKETPRICE         "芭贰家 啊拜"
+    IDS_FIXEDPRICE          "绊沥啊拜"
+    IDS_MINIMUMPRICE        "弥家啊拜"
+    IDS_STRING60100         "锅"
+    IDS_STRING60101         ", 啊拜"
+    IDS_SCHEDULETIME        "矫埃汲沥"
+    IDS_MINUTE              "盒"
+    IDS_NAME                "捞抚"
+    IDS_LOADING             "阂矾坷扁"
+    IDS_REALLYCANCEL        "沥富 秒家窍矫摆嚼聪鳖?"
+    IDS_SCHEDULESAVE        "汲沥等 郴侩阑(甫) %s 胶纳临肺 焊包窍摆嚼聪鳖?"
+    IDS_CHARACMAIL          "某腐 快祈"
+    IDS_ACCOUNTMAIL         "拌沥 快祈"
+    IDS_STOREEQUIPS         "胶纳临 肯丰矫 厘厚 芒绊 焊包"
+    IDS_CHARSLOT            "%d锅 某腐"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_SERVER              "辑滚"
+    IDS_CHAR                "某腐"
+    IDS_TIMEDISPLAY         "%d矫 %d盒 ~ %d矫 %d盒"
+    IDS_AUTOSTART           "坷配矫累"
+    IDS_AUTOSTOP            "坷配吝瘤"
+    IDS_DAY                 "老"
+    IDS_HOUR                "矫埃"
+    IDS_EXPIRED             "版苞"
+    IDS_STATUS              "惑怕"
+    IDS_FINISHED            "肯丰凳"
+    IDS_WAITING             "措扁吝"
+    IDS_DOING               "柳青吝"
+    IDS_INITALERT           "胶纳临 惑怕甫 葛滴 檬扁拳窍摆嚼聪鳖?"
+    IDS_INITNOTICE          "胶纳临 惑怕啊 葛滴 檬扁拳登菌嚼聪促"
+    IDS_GETSTOREEQUIPS      "胶纳临 矫累矫 厘厚 芒绊 茫扁"
+    IDS_PARTYMODE1          "俺喊荤成"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_PARTYMODE2          "颇厘林函"
+    IDS_PARTYMODE3          "颇厘鸥百"
+    IDS_DEADSTOP            "雀荤噶矫 吝瘤"
+    IDS_RECONNECTSTOP       "雀犁立加 辆丰"
+    IDS_INITTIME            "檬扁拳 矫埃"
+    IDS_INIT                "檬扁拳"
+    IDS_STRING60134         "抗斑摹 臼篮 坷幅啊 惯积窍看嚼聪促 (Code: %d)"
+    IDS_STRING60135         "角青鉴辑甫 扁促赋聪促"
+    IDS_STRING60136         "霸烙阑 角青钦聪促"
+    IDS_STRING60137         "屁板栏骨肺 霸烙阑 促矫 角青钦聪促"
+    IDS_STRING60138         "霸烙捞 角青登菌嚼聪促"
+    IDS_STRING60139         "坷配甫(阑) 矫累钦聪促"
+    IDS_STRING60140         "坷配甫(阑) 吝瘤钦聪促"
+    IDS_STRING60141         "虐焊靛 [Delete] 龋免"
+    IDS_STRING60142         "虐焊靛 [Insert] 龋免"
+    IDS_STRING60143         "匙飘况农 券版阑(甫) 犬牢钦聪促"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_STRING60144         "橇费肺弊甫(阑) 柳青钦聪促"
+    IDS_STRING60145         "某腐捞 荤噶窍看嚼聪促"
+    IDS_STRING60146         "柳青且 胶纳临 沥焊啊 绝嚼聪促"
+    IDS_STRING60147         "促澜 胶纳临阑 措扁钦聪促"
+    IDS_STRING60148         "立加 措扁吝涝聪促..."
+    IDS_STRING60149         "辑滚 [%s%02d] 俊 立加钦聪促"
+    IDS_STRING60150         "付瘤阜 立加茄 辑滚肺 甸绢癌聪促"
+    IDS_STRING60151         "拳搁阑 努腐钦聪促"
+    IDS_STRING60152         "%d锅 某腐阑 急琶钦聪促"
+    IDS_STRING60153         "%d锅 某腐捞 绝栏骨肺 磊悼积己钦聪促"
+    IDS_STRING60154         "霸烙俊 立加钦聪促"
+    IDS_STRING60155         "某腐疙 [%s] 栏肺 磊悼积己钦聪促"
+    IDS_STRING60156         "悼康惑阑 Skip 钦聪促"
+    IDS_STRING60157         "皋牢 涅胶飘 [%s] 阑(甫) 柳青钦聪促"
+    IDS_STRING60158         "辑宏 涅胶飘 [%s] 阑(甫) 柳青钦聪促"
+    IDS_STRING60159         "涅胶飘啊 肯丰登绢 荤成栏肺 逞绢癌聪促"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_STRING60160         "芒绊俊辑 厘厚甸阑 茫酒 厘馒钦聪促"
+    IDS_STRING60161         "呕巴 钦己 棺 厘馒 阑(甫) 柳青钦聪促"
+    IDS_STRING60162         "胶懦 硅快扁 棺 狞浇吩 殿废阑 柳青钦聪促"
+    IDS_STRING60163         "酒官鸥 钦己 棺 厘馒 阑(甫) 柳青钦聪促"
+    IDS_STRING60164         "诀利 焊惑 阑(甫) 犬牢钦聪促"
+    IDS_STRING60165         "快祈窃 阑(甫) 犬牢钦聪促"
+    IDS_STRING60166         "捞亥飘 焊惑 阑(甫) 犬牢钦聪促"
+    IDS_STRING60167         "某矫讥 酒捞袍 备概甫 柳青钦聪促"
+    IDS_STRING60168         "荤噶 版氰摹 汗备甫 柳青钦聪促"
+    IDS_STRING60169         "厘馒茄 厘厚甸阑 碍拳钦聪促"
+    IDS_STRING60170         "狞浇吩(胶懦) 汲沥阑 犬牢钦聪促"
+    IDS_STRING60171         "付阑 狼汾 涅胶飘甫 犬牢钦聪促"
+    IDS_STRING60172         "某腐 捞悼吝 厚沥惑利牢 框流烙捞 惯斑登看嚼聪促"
+    IDS_STRING60173         "立加 辑滚啊 促福骨肺 函版阑 柳青钦聪促"
+    IDS_STRING60174         "立加 某腐捞 促福骨肺 函版阑 柳青钦聪促"
+    IDS_STRING60175         "涅胶飘 腊己阑(甫) 柳青钦聪促"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_STRING60176         "HP 雀汗 拱距阑 荤侩钦聪促"
+    IDS_STRING60177         "钦己且 犁丰甸阑 殿废钦聪促"
+    IDS_STRING60178         "殿废等 犁丰甸阑 钦己钦聪促"
+    IDS_STRING60179         "酒官鸥 [%s] 阑(甫) 厘馒钦聪促"
+    IDS_STRING60180         "酒官鸥 钦己 棺 厘馒 阑(甫) 柳青窍看嚼聪促"
+    IDS_STRING60181         "呕巴(傍吝) [%s] 阑(甫) 厘馒钦聪促"
+    IDS_STRING60182         "呕巴(瘤惑) [%s] 阑(甫) 厘馒钦聪促"
+    IDS_STRING60183         "呕巴 钦己 棺 厘馒 阑(甫) 柳青窍看嚼聪促"
+    IDS_STRING60184         "带傈俊辑 硼厘窍看嚼聪促"
+    IDS_STRING60185         "付阑肺 蓖券钦聪促"
+    IDS_STRING60186         "%d盒荤捞 犁立加捞 %d雀 捞惑捞骨肺 霸烙 辆丰钦聪促"
+    IDS_STRING60187         "匙飘况农 立加捞 谗绢脸栏骨肺 犁立加钦聪促"
+    IDS_STRING60188         "墨墨坷 牢刘捞 角菩窍咯 霸烙阑 辆丰钦聪促"
+    IDS_STRING60189         "辑滚 痢八吝捞骨肺 霸烙阑 辆丰钦聪促"
+    IDS_STRING60190         "霸烙 诀单捞飘甫 柳青钦聪促"
+    IDS_STRING60191         "匙飘况农 趣篮 吝汗 诀单捞飘肺 牢窍咯 促款肺靛 角菩窍看嚼聪促"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_STRING60192         "版氰摹 汗备啊 场车嚼聪促"
+    IDS_STRING60193         "公丰 汗备 冉荐 盎脚 (%d 锅 巢澜)"
+    IDS_STRING60194         "背券 惑牢俊霸 捞悼钦聪促"
+    IDS_STRING60195         "家葛前 惑牢俊霸 捞悼钦聪促"
+    IDS_STRING60196         "酒捞袍 %s 阑(甫) 急琶钦聪促"
+    IDS_STRING60197         "急琶等 酒捞袍甸阑 魄概钦聪促"
+    IDS_STRING60198         "酒捞袍 %s阑(甫) %d俺 备概钦聪促"
+    IDS_STRING60199         "惑痢 贸府啊 场车嚼聪促"
+    IDS_STRING60200         "酒捞袍 %s阑(甫) 狞浇吩 (%d, %d)锅俊 殿废钦聪促"
+    IDS_STRING60201         "磊悼 厘馒阑 柳青钦聪促"
+    IDS_STRING60202         "酒捞袍 %s 阑(甫) 盒秦钦聪促"
+    IDS_STRING60203         "酒捞袍 %s 阑(甫) 昏力钦聪促"
+    IDS_STRING60204         "酒捞袍 %s 阑(甫) 荤侩钦聪促"
+    IDS_STRING60205         "狞浇吩[胶懦] 磊悼 殿废阑 柳青钦聪促"
+    IDS_STRING60206         "酒捞袍 %s 阑(甫) 备概钦聪促"
+    IDS_STRING60207         "胶懦 硅快扁 棺 狞浇吩 殿废阑 柳青窍看嚼聪促"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_STRING60208         "胶懦合 惑牢俊霸 捞悼钦聪促"
+    IDS_STRING60209         "汲沥 沥焊啊 盎脚登菌嚼聪促"
+    IDS_STRING60210         "胶纳临 [%s] 捞(啊) 肯丰登菌嚼聪促"
+    IDS_STRING60211         "胶纳临 [%s] 阑(甫) 柳青钦聪促"
+    IDS_STRING60212         "芒绊俊 拱前阑 焊包钦聪促"
+    IDS_STRING60213         "厘厚 [%s] 阑(甫) 秦力钦聪促"
+    IDS_STRING60214         "芒绊肺 捞悼钦聪促"
+    IDS_STRING60215         "急琶等 酒捞袍甸阑 芒绊俊 焊包钦聪促"
+    IDS_STRING60216         "急琶等 酒捞袍甸阑 芒绊俊辑 啊廉可聪促"
+    IDS_STRING60217         "芒绊俊辑 厘厚甸阑 茫酒 厘馒窍看嚼聪促"
+    IDS_STRING60218         "芒绊俊 该变 厘厚啊 绝栏骨肺 窜拌甫 扒呈遁聪促"
+    IDS_STRING60219         "芒绊肺 捞悼钦聪促"
+    IDS_STRING60220         "%d檬捞惑 眉仿捞 %d%%捞窍捞骨肺 蓖券钦聪促"
+    IDS_STRING60221         "%d檬捞惑 公霸啊 %d%%捞惑捞骨肺 蓖券钦聪促"
+    IDS_STRING60222         "酒捞袍 %s 捞(啊) 何练窍咯 蓖券钦聪促"
+    IDS_STRING60223         "魄概且 酒捞袍捞 乐绢 家葛前 惑牢阑 茫酒癌聪促"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_STRING60224         "酒捞袍 %s 捞(啊) 何练窍咯 家葛前 惑牢阑 茫酒癌聪促"
+    IDS_STRING60225         "眉仿 雀汗阑 措扁钦聪促 (荐摹: %d%%)"
+    IDS_STRING60226         "付阑俊辑 何劝钦聪促"
+    IDS_STRING60227         "牢胶畔胶 带傈俊辑 唱癌聪促"
+    IDS_STRING60228         "包傈阑 柳青钦聪促"
+    IDS_STRING60229         "%d盒荤捞 %d锅捞惑 荤噶窍看嚼聪促"
+    IDS_STRING60230         "荤噶 版氰摹 汗备甫 柳青钦聪促"
+    IDS_STRING60231         "饭骇捞 撤酒 带傈 [%s]俊 涝厘且荐 绝嚼聪促"
+    IDS_STRING60232         "带傈 [%s] 涝厘 涅胶飘甫 柳青窍瘤 给窍看嚼聪促"
+    IDS_STRING60233         "带傈 [%s] 涝厘 厚侩捞 何练钦聪促"
+    IDS_STRING60234         "带傈 [%s] 涝厘鼻捞 绝嚼聪促"
+    IDS_STRING60235         "带傈 [%s] 巢篮 矫埃捞 绝嚼聪促"
+    IDS_STRING60236         "%s 涅胶飘啊 酒流 肯丰登瘤 给沁嚼聪促"
+    IDS_STRING60237         "荤成磐俊 档馒窍看嚼聪促"
+    IDS_STRING60238         "%d檬捞惑 各捞 绝栏骨肺 鉴埃捞悼 钦聪促"
+    IDS_STRING60239         "荤成阑 矫累钦聪促"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_STRING60240         "鸥百泼 裹困甫 %dm肺 汲沥钦聪促"
+    IDS_STRING60241         "鸥百泼 裹困甫 力茄绝澜栏肺 汲沥钦聪促"
+    IDS_STRING60242         "概呈 葛靛甫 汲沥钦聪促"
+    IDS_STRING60243         "概呈 葛靛甫 秦力钦聪促"
+    IDS_STRING60244         "例傈 葛靛甫 坷橇肺 汲沥钦聪促"
+    IDS_STRING60245         "诀利 焊惑 阑(甫) 犬牢窍看嚼聪促"
+    IDS_STRING60246         "快祈 犬牢 阑(甫) 柳青窍看嚼聪促"
+    IDS_STRING60247         "捞亥飘 焊惑 阑(甫) 犬牢窍看嚼聪促"
+    IDS_STRING60248         "惑前 %s 阑(甫) %d俺 备概钦聪促"
+    IDS_STRING60249         "某矫讥 酒捞袍 备概啊 肯丰登菌嚼聪促"
+    IDS_STRING60250         "厘厚 %s 阑(甫) 碍拳钦聪促"
+    IDS_STRING60251         "厘馒茄 厘厚甸阑 碍拳窍看嚼聪促"
+    IDS_STRING60252         "狼汾 涅胶飘 %s 阑(甫) 荐遏窍看嚼聪促"
+    IDS_STRING60253         "狼汾 涅胶飘 格废阑 盎脚钦聪促"
+    IDS_STRING60254         "涅胶飘 [%s] 阑(甫) 肯丰钦聪促"
+    IDS_STRING60255         "狼汾 涅胶飘 %s 阑(甫) 柳青钦聪促"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_STRING60256         "付阑 狼汾 涅胶飘甫 犬牢窍看嚼聪促"
+    IDS_STRING60257         "狞浇吩(胶懦) 汲沥阑 犬牢窍看嚼聪促"
+    IDS_STRING60258         "颇萍带傈 [%s] 俊 涝厘钦聪促"
+    IDS_STRING60259         "带傈 [%s] 俊 涝厘钦聪促"
+    IDS_CHARCLASS           "傈流"
+    IDS_STRING60261         "颇萍 带傈 坷幅啊 惯积窍咯 某腐 急琶芒栏肺 唱癌聪促"
+    IDS_STRING60262         "芭贰家 拱前 犬牢阑 柳青钦聪促"
+    IDS_STRING60263         "酒捞袍 拿泛记 殿废阑 柳青钦聪促"
+    IDS_STRING60264         "魄概等 拱前甸阑 沥魂钦聪促"
+    IDS_STRING60265         "酒捞袍 [%s] 阑(甫) 雀荐钦聪促"
+    IDS_STRING60266         "酒捞袍 [%s] 阑(甫) [%d]促捞酒俊 [%d]俺 殿废钦聪促"
+    IDS_STRING60267         "拱前 [%s] 狼 矫技沥焊啊 绝嚼聪促"
+    IDS_STRING60268         "拱前 [%s] 矫技甫 八祸钦聪促"
+    IDS_STRING60269         "芭贰家 拱前 犬牢阑 柳青窍看嚼聪促"
+    IDS_STRING60270         "酒捞袍 拿泛记 殿废阑 柳青窍看嚼聪促"
+    IDS_STRING60271         "吝缴痢"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_STRING60272         "吝缴痢栏肺 捞悼钦聪促"
+    IDS_STRING60273         "辨靛 啊涝"
+    IDS_STRING60274         "辨靛 榜靛 扁何甫 柳青钦聪促"
+    IDS_STRING60275         "辨靛 免籍阑 犬牢钦聪促"
+    IDS_STRING60276         "辨靛 磊悼 啊涝阑 柳青钦聪促"
+    IDS_STRING60277         "30 Lv 捞惑 胶懦 备概"
+    IDS_STRING60278         "皋牢 涅胶飘 柳青"
+    IDS_STRING60279         "付阑 狼汾辑 (某腐磐 蓖加) 荤侩"
+    IDS_STRING60280         "某腐磐 积己捞 力茄等 辑滚涝聪促"
+    IDS_STRING60281         "角青俊 鞘夸茄 颇老捞 绝嚼聪促 (俊矾 %d)"
+    IDS_STRING60282         "Google Chrome 阑 茫阑荐 绝嚼聪促"
+    IDS_STRING60283         "墨墨坷 拌沥 肺弊牢阑 柳青钦聪促"
+    IDS_STRING60284         "3锅捞惑 肺弊牢俊 角菩窍咯 吝瘤钦聪促"
+    IDS_STRING60285         "立加捞 救登咯 促矫 矫档钦聪促 (%d)"
+    IDS_STRING60286         "霸烙 角青阑 措扁钦聪促"
+    IDS_STRING60287         "霸烙 券版阑 眉农钦聪促 (窜拌 %d)"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_STRING60288         "立加等 某腐狼 厘厚甫 芒绊俊 焊包钦聪促"
+    IDS_STRING60289         "惯且扼 措傈阑 柳青钦聪促"
+    IDS_STRING60290         "惯且扼 措傈阑 脚没钦聪促"
+    IDS_STRING60291         "颇厘俊霸 捞悼"
+    IDS_STRING60292         "皋牢 涅胶飘 沥焊啊 绝绢 犁立加钦聪促"
+    IDS_STRING60293         "颇萍 带傈 [%s] 阑 柳青钦聪促"
+    IDS_STRING60294         "带傈 [%s] 颇萍 积己钦聪促"
+    IDS_STRING60295         "带傈 [%s] 颇萍 曼啊 脚没钦聪促"
+    IDS_STRING60296         "颇萍厘"
+    IDS_STRING60297         "颇萍盔"
+    IDS_STRING60298         "俺寸 矫技啊 10促捞酒固父捞骨肺 弓绢辑 魄概钦聪促"
+    IDS_STRING60299         "颇萍 檬措 荐遏窍看嚼聪促"
+    IDS_STRING60300         "颇萍厘栏肺 捞悼钦聪促"
+    IDS_STRING60301         "颇萍 荤成 规侥 函版 (颇厘 鸥百)"
+    IDS_STRING60302         "颇萍 荤成 规侥 函版 (颇厘 林函)"
+    IDS_STRING60303         "颇萍 荤成 规侥 函版 (Auto)"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_STRING60304         "带傈 [%s] 涝厘 傈捧仿捞 何练钦聪促"
+    IDS_STRING60305         "秦寸 能刨明绰 款康磊俊 狼秦 烙矫肺 泪陛登菌嚼聪促 (%d)"
+    IDS_STRING60306         "%d盒捞惑 瘤车栏骨肺 胶纳临 [%s]阑 肯丰钦聪促"
+    IDS_STRING60307         "肺爹 惑怕啊 %d盒捞惑 瘤加登绢 霸烙阑 辆丰钦聪促"
+    IDS_STRING60308         "盒救俊 捞悼坷幅"
+    IDS_STRING60309         "雀捞惑矫 蓖券"
+    IDS_STRING60310         "盒捞惑 涅 柳青 救登绰 版快 犁立加"
+    IDS_STRING60311         "某腐磐 犁立加"
+    IDS_STRING60312         "%d盒捞惑 涅胶飘 柳青捞 救登咯 急琶芒栏肺 唱癌聪促"
+    IDS_STRING60313         "捞悼 坷幅啊 %d盒救俊 %d雀捞惑捞骨肺 蓖券钦聪促"
+    IDS_STRING60314         "瘤屈荤捞 畅辫 惑怕肺 魄沥登绢 呕免钦聪促"
+    IDS_STRING60315         "2盒捞惑 捞悼窍瘤 给窍咯 蓖券钦聪促"
+    IDS_STRING60316         "芒绊茫扁"
+    IDS_STRING60317         "荤成磐啊 酒聪骨肺 促矫 柳免钦聪促"
+    IDS_STRING60318         "颇萍 带傈 涝厘 脚没阑 柳青钦聪促"
+    IDS_STRING60319         "竿刀狼 轨"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_STRING60320         "酒捞袍 荐笼"
+    IDS_STRING60321         "傍拜"
+    IDS_STRING60322         "规绢"
+    IDS_STRING60323         "捞亥飘"
+    IDS_STRING60324         "碍拳 厘厚 荐笼"
+    IDS_STRING60325         "鞘磐"
+    IDS_STRING60326         "疙吝"
+    IDS_STRING60327         "措固瘤"
+    IDS_STRING60328         "雀乔"
+    IDS_STRING60329         "HP 雀汗樊"
+    IDS_STRING60330         "MP 雀汗樊"
+    IDS_STRING60331         "碍拳"
+    IDS_STRING60332         "技傍"
+    IDS_STRING60333         "蓖加"
+    IDS_STRING60334         "厚蓖加"
+    IDS_STRING60335         "岿靛 焊胶甫 柳青钦聪促"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_STRING60336         "岿靛 焊胶甫 柳青窍看嚼聪促"
+    IDS_STRING60337         "啊抚 焊胶"
+    IDS_STRING60338         "带傈 [%s] 阑(甫) 茫阑荐 绝嚼聪促"
+    IDS_STRING60339         "30檬捞惑 荤成 给窍骨肺 荐悼栏肺 柳青钦聪促"
+    IDS_STRING60340         "带傈 [%s] 涝厘 犁丰啊 何练钦聪促"
+    IDS_STRING60341         "格钎"
+    IDS_STRING60342         "[%d] 饭骇捞惑捞骨肺 涅胶飘甫 吝瘤钦聪促"
+    IDS_STRING60343         "岿靛 [%s] 捞(啊) 俺规登绢 涅胶飘甫 吝瘤钦聪促"
+    IDS_STRING60344         "NPC啊 焊捞瘤 臼栏骨肺 急琶芒栏肺 唱癌聪促"
+    IDS_STRING60345         "焊拱 惑磊 盲笼阑 柳青钦聪促"
+    IDS_STRING60346         "焊拱 惑磊 盲笼阑 柳青窍看嚼聪促"
+    IDS_STRING60347         "%d锅 焊拱 惑磊 犬牢吝"
+    IDS_STRING60348         "焊拱 惑磊"
+    IDS_STRING60349         "颇萍 带傈"
+    IDS_STRING60350         "涝厘"
+    IDS_STRING60351         "抄捞档"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_STRING60352         "颇萍 带傈俊 涝厘钦聪促"
+    IDS_STRING60353         "老馆"
+    IDS_STRING60354         "绢妨框"
+    IDS_STRING60355         "概快 绢妨框"
+    IDS_STRING60356         "必厩"
+    IDS_STRING60357         "辑宏 涅胶飘 柳青"
+    IDS_STRING60358         "炼扒 胶懦"
+    IDS_STRING60359         "3盒捞惑 傍拜捞 柳青登瘤 臼酒 岿靛捞悼钦聪促"
+    IDS_STRING60360         "辑滚客 立加捞 盔劝窍瘤 臼酒 犁立加 柳青钦聪促"
+    IDS_STRING60361         "阿牢 档厘"
+    IDS_STRING60362         "蜡拱 悼傈"
+    IDS_STRING60363         "敲饭捞绢 ""%s"" 阑(甫) 颇萍俊 檬措钦聪促"
+    IDS_STRING60364         "固固福狼 基拱"
+    IDS_STRING60365         "芭贰 啊瓷 涝厘鼻 荤侩 "
+    IDS_STRING60366         "5盒捞惑 墨坷 皑瘤登绢 霸烙阑 辆丰钦聪促"
+    IDS_STRING60367         "泅犁 立加等 拌沥甸狼 胶纳临 沥焊甫 函版窍摆嚼聪鳖?"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_STRING60368         "函版等 悸泼阑 Schedule弃歹俊 老褒利侩 窍摆嚼聪鳖?"
+    IDS_STRING60369         "饭骇捞惑 柳青"
+    IDS_STRING60370         "疙捞惑 矫累"
+    IDS_STRING60371         "乞闭 饭骇"
+    IDS_STRING60372         "捞窍 颇萍呕硼"
+    IDS_STRING60373         "饭骇捞惑 颇萍盔 滚胶 啪铰"
+    IDS_STRING60374         "颇萍狼 乞闭 饭骇捞 %d捞窍捞骨肺 呕硼钦聪促 (1盒 措扁)"
+    IDS_STRING60375         "磊悼碍拳"
+    IDS_STRING60376         "捞惑"
+    IDS_STRING60377         "芭贰 啊瓷茄 碍拳籍 荤侩 (厘厚 碍拳)"
+    IDS_STRING60378         "公扁"
+    IDS_STRING60379         "规绢备"
+    IDS_STRING60380         "厘脚备"
+    IDS_STRING60381         "厘厚 碍拳甫 柳青钦聪促"
+    IDS_STRING60382         "厘厚 碍拳啊 场车嚼聪促"
+    IDS_WEAPONTYPE1         "公扁 屈惑 グ"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_WEAPONTYPE2         "公扁 屈惑 ケ"
+    IDS_WEAPONTYPE3         "公扁 屈惑 ゲ"
+    IDS_STRING60386         "5盒捞惑 肺爹俊 角菩窍咯 霸烙阑 辆丰钦聪促"
+    IDS_STRING60387         "霸烙捞 屁板栏骨肺 促矫 角青钦聪促"
+    IDS_STRING60388         "公扁 屈惑 钦己 棺 厘馒阑 柳青钦聪促"
+    IDS_STRING60389         "公扁 屈惑 钦己 棺 厘馒阑 柳青窍看嚼聪促"
+    IDS_STRING60390         "公扁 屈惑 ""%s"" 阑(甫) 厘馒钦聪促"
+    IDS_STRING60391         "2措氟 措屈距 备概"
+    IDS_STRING60392         "辑宏 涅胶飘甫 柳青钦聪促"
+    IDS_STRING60393         "辑宏 涅胶飘甫 柳青窍看嚼聪促"
+    IDS_STRING60394         "捞悼 加档"
+    IDS_STRING60395         "傍拜 加档"
+    IDS_STRING60396         "矫傈 加档"
+    IDS_STRING60397         "酿鸥烙 皑家"
+    IDS_STRING60398         "疙吝"
+    IDS_STRING60399         "公扁 屈惑 焊拱 惑磊"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_STRING60400         "公扁 屈惑 焊拱 惑磊 盲笼阑 柳青钦聪促"
+    IDS_STRING60401         "盒饶 犁俺"
+    IDS_STRING60402         "%d盒饶 磊悼 矫累"
+    IDS_MIMIRPOTION1        "固固福 基拱 1"
+    IDS_MIMIRPOTION2        "固固福 基拱 2"
+    IDS_MIMIRPOTION3        "固固福 基拱 3"
+    IDS_MIMIRPOTION4        "固固福 基拱 4"
+    IDS_MIMIRPOTION5        "固固福 基拱 5"
+    IDS_STRING60408         "芭贰啊拜"
+    IDS_STRING60409         "捞窍牢 厘厚 磊悼 盒秦"
+    IDS_STRING60410         "啊拜捞 %d 捞窍捞骨肺 厘厚盒秦肺 汲沥钦聪促"
+    IDS_STRING60411         "1盒荤捞俊 5锅捞惑 蓖券俊 角菩窍咯 某腐磐 急琶芒栏肺 唱癌聪促"
+    IDS_STRING60412         "磊悼 钦己"
+    IDS_STRING60413         "酒官鸥"
+    IDS_STRING60414         "呕巴"
+    IDS_STRING60415         "公扁 屈惑"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_STRING60416         "罚待柳青"
+    IDS_STRING60417         "橇饭烙"
+    IDS_STRING60418         "厘馒茄 厘厚甫 秦力钦聪促"
+    IDS_STRING60419         "厘厚 裙垫 殿鞭 力茄"
+    IDS_STRING60420         "力茄绝澜"
+    IDS_STRING60421         "绊鞭捞惑"
+    IDS_STRING60422         "锐蓖捞惑"
+    IDS_STRING60423         "康旷捞惑"
+    IDS_STRING60424         "霸烙捞 屁板嚼聪促. (%d盒饶俊 犁立加钦聪促)"
+    IDS_STRING60425         "啊龋籍 家券 グ"
+    IDS_STRING60426         "啊龋籍 家券 ケ"
+    IDS_STRING60427         "沥纺"
+    IDS_STRING60428         "坷凋狼 绵汗 籍惑"
+    IDS_STRING60429         "%d line"
+END
+
+#endif    // Korean (Korea) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+LANGUAGE 9, 1
+#pragma code_page(1252)
+#include "res\Detail.rc2"  // non-Microsoft Visual C++ edited resources
+#include "afxres.rc"     // Standard components
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

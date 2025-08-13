@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="SDK Files">
+      <UniqueIdentifier>{1258c540-0e66-4129-b4f0-c3aed65705e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Reflective">
+      <UniqueIdentifier>{cbe5b7fd-3a7a-47c5-ad40-13ec4eaa265e}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="dllmain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Global.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\SDK\SDK\Basic.cpp">
+      <Filter>SDK Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\SDK\SDK\CommonSource_functions.cpp">
+      <Filter>SDK Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\SDK\SDK\CoreUObject_functions.cpp">
+      <Filter>SDK Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\SDK\SDK\Engine_functions.cpp">
+      <Filter>SDK Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\SDK\SDK\ProjectLH_functions.cpp">
+      <Filter>SDK Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\SDK\SDK\UMG_functions.cpp">
+      <Filter>SDK Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Aria.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Client.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\include\ReflectiveLoader.c">
+      <Filter>Reflective</Filter>
+    </ClCompile>
+    <ClCompile Include="..\SDK\SDK\MagicLeapAR_functions.cpp">
+      <Filter>SDK Files</Filter>
+    </ClCompile>
+    <ClCompile Include="dbgSerial.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Global.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\SDK\SDK\Basic.h">
+      <Filter>SDK Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\SDK\SDK\CommonSource_classes.h">
+      <Filter>SDK Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\SDK\SDK\CommonSource_parameters.h">
+      <Filter>SDK Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\SDK\SDK\CommonSource_structs.h">
+      <Filter>SDK Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\SDK\SDK\CoreUObject_classes.h">
+      <Filter>SDK Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\SDK\SDK\CoreUObject_parameters.h">
+      <Filter>SDK Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\SDK\SDK\CoreUObject_structs.h">
+      <Filter>SDK Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\SDK\SDK\Engine_classes.h">
+      <Filter>SDK Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\SDK\SDK\Engine_parameters.h">
+      <Filter>SDK Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\SDK\SDK\Engine_structs.h">
+      <Filter>SDK Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\SDK\SDK\ProjectLH_classes.h">
+      <Filter>SDK Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\SDK\SDK\ProjectLH_parameters.h">
+      <Filter>SDK Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\SDK\SDK\ProjectLH_structs.h">
+      <Filter>SDK Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\SDK\SDK.h">
+      <Filter>SDK Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\SDK\SDK\UMG_classes.h">
+      <Filter>SDK Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\SDK\SDK\UMG_parameters.h">
+      <Filter>SDK Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\SDK\SDK\UMG_structs.h">
+      <Filter>SDK Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Update.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\VMProtectSDK.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Aria.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Client.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\ReflectiveDLLInjection.h">
+      <Filter>Reflective</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\ReflectiveLoader.h">
+      <Filter>Reflective</Filter>
+    </ClInclude>
+    <ClInclude Include="dbgSerial.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="gconst.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="log.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="shellpatch.asm">
+      <Filter>Source Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Object Include="shellpatch.obj" />
+  </ItemGroup>
+</Project>

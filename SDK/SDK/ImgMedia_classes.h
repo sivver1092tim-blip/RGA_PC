@@ -1,0 +1,43 @@
+#pragma once
+
+// Name: , Version: 1.0.0
+
+#ifdef _MSC_VER
+	#pragma pack(push, 0x1)
+#endif
+
+namespace SDK
+{
+//---------------------------------------------------------------------------
+// Classes
+//---------------------------------------------------------------------------
+
+// Class ImgMedia.ImgMediaSource
+// 0x0028 (0x00B0 - 0x0088)
+class UImgMedia_ImgMediaSource : public UMediaAssets_BaseMediaSource
+{
+public:
+	struct FFrameRate                                  FrameRateOverride;                                        // 0x0088(0x0008) (Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData)
+	struct FString                                     ProxyOverride;                                            // 0x0090(0x0010) (Edit, BlueprintVisible, ZeroConstructor)
+	struct FEngine_DirectoryPath                       SequencePath;                                             // 0x00A0(0x0010) (Edit, BlueprintVisible, BlueprintReadOnly)
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class ImgMedia.ImgMediaSource");
+		if (!ptr)
+			ptr = UObject::FindClass("Class ImgMedia.ImgMediaSource");
+		return ptr;
+	}
+
+
+	void SetSequencePath(const struct FString& Path);
+	struct FString GetSequencePath();
+	void GetProxies(TArray<struct FString>* OutProxies);
+};
+
+
+}
+
+#ifdef _MSC_VER
+	#pragma pack(pop)
+#endif

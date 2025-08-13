@@ -1,0 +1,521 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#ifndef APSTUDIO_INVOKED
+#include "targetver.h"
+#endif
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Chinese (Simplified, China) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
+#pragma code_page(936)
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE
+BEGIN
+    IDS_ADDACCOUNT          "添加账户"
+    IDS_DELACCOUNT          "删除账户"
+    IDS_CHARGEACCOUNT       "账户充值"
+    IDS_AUTOSTART           "外挂开始"
+    IDS_AUTOSTOP            "外挂停止"
+    IDS_STARTALL            "全部开始"
+    IDS_STOPALL             "全部结束"
+    IDS_STARTUSER           "实行"
+    IDS_STOPUSER            "终止"
+    IDS_CLOSE               "结束"
+    IDS_VERIFY              "确认"
+    IDS_CANCEL              "取消"
+    IDS_BROWSE              "装入"
+    IDS_REFERENCE           "查询"
+    IDS_RESET               "初始化"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_CHARGE              "充电"
+    IDS_EXTEND              "延长"
+    IDS_EXIT                "出去"
+    IDS_ID                  "用户名"
+    IDS_PW                  "密码"
+    IDS_VERSIONCHECK        "未确认版本信息"
+    IDS_ALERT               "通知"
+    IDS_ALREADYRUN          "已执行中, 请稍后再执行"
+    IDS_CLIENTMAPPINGERROR  "客户端内存分配失败"
+    IDS_RESOURCECRCERROR    "资源无缺陷检查失败"
+    IDS_RESOURCECREATEFAIL  "无法创建资源文件"
+    IDS_CLIENTRUNFAIL       "无法执行客户端"
+    IDS_CONNECTFAIL         "无法连接服务器"
+    IDS_ALREADYCONNECT      "此卡正在从另一个电脑连接 (%d)"
+    IDS_WRONGIDPW           "ID或者密码不对"
+    IDS_BLOCKID             "停止使用的ID"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_SERVERCHECK         "服务器维护中"
+    IDS_WRONGHWID           "正在另一台电脑登录的ID"
+    IDS_NOACCOUNT           "账户信息不正确"
+    IDS_AUTHSUCCESS         "账户验证成功"
+    IDS_UPDATEERROR         "无法确认更新列表"
+    IDS_SERVERERROR         "与服务器连接断开"
+    IDS_TIMEEXPIRED         "使用期已满"
+    IDS_UPDATEALRAM         "奥丁PC (Ver.%04X) (可更新)"
+    IDS_CARD                "代码"
+    IDS_STATUS              "状态"
+    IDS_FILEREADERROR       "读取文件失败 。 请再确认一下"
+    IDS_CONNECTERROR        "连接失败"
+    IDS_WRONGCARD           "错误代码"
+    IDS_CARD_2HOUR          "两小时"
+    IDS_CARD_1DAY           "1天"
+    IDS_CARD_3DAY           "3天"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_CARD_7DAY           "7天"
+    IDS_CARD_15DAY          "15天"
+    IDS_CARD_30DAY          "30天"
+    IDS_NEWCARD             "相应代码为未充值的%s代码"
+    IDS_CARDINFO            "%S 账号是%d年 %d月 %d日 %d时 %d 已充值的代码"
+    IDS_INITALERT           "初始化画面 时间会减少一天。 那也要进行吗？"
+    IDS_SERVERFAIL          "服务器连接失败"
+    IDS_SERVERCONNECTED     "服务器连接中"
+    IDS_SERVERIDERROR       "用户名密码错误"
+    IDS_SERVERWRONGCARD     "错误代码"
+    IDS_SERVERREMAIN1DAY    "剩余时间 1 天"
+    IDS_SERVERINITERROR     "初始化错误失败"
+    IDS_SERVERINITSUCCESS   "账户初始化成功"
+    IDS_SERVERTIMEEXIST     "剩余30天以上时间"
+    IDS_SERVEREXTENDFAIL    "延长 续期失败"
+    IDS_SERVEREXTENDSUCCESS "续期成功"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_SERVERTESTCARDEXPIRE "Teco 超过次数"
+    IDS_SERVERCHARGESUCCESS "%s 充值成功"
+    IDS_EXPIREDAY           "截止日期"
+    IDS_DEVICE              "装置"
+    IDS_DELUSER             "确定要删除选中的账户吗 ？"
+    IDS_CURRUNNING          "目前运行中， 无法删除"
+    IDS_REALLYEXIT          "真的要结束吗？"
+    IDS_PATCHSERVERFAIL     "补丁服务器连接失败"
+    IDS_PATCHSERVERRETRY    "补丁服务器链接不稳定，请稍后再试"
+    IDS_PATCHUPDATEERROR    "下载更新时出错"
+    IDS_PATCHUPDATESUCCESS  "更新已完成。 请重新启动程序"
+    IDS_GAMEID              "游戏账户"
+    IDS_GAMEPW              "游戏密码"
+    IDS_GAMESERVER          "游戏服务器"
+    IDS_GAMECHAR            "脸色"
+    IDS_GAMECAPTION         "奥丁PC (Ver.%04X)"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_AUTHERROR           "发生了意想不到的问题 (%d)"
+    IDS_MULTIGAME           "Kakao登录的记忆"
+    IDS_KOREAN              "韩国语"
+    IDS_LEVEL               "级别"
+    IDS_CHAR                "角色"
+    IDS_REGION              "地域"
+    IDS_GOLD                "金币"
+    IDS_DIAMOND             "钻石"
+    IDS_LOADSETTING         "初始化设置失败 (%d)"
+    IDS_TOTALDIA            "总 %s"
+    IDS_GAMENOTFOUND        "找不到游戏"
+    IDS_NEEDDATAUPGRADE     "请将 Data 文件夹升级到最新版本"
+    IDS_WAITANDRUN          "分钟等待后 重新运行"
+END
+
+#endif    // Chinese (Simplified, China) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// Korean (Korea) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_KOR)
+LANGUAGE LANG_KOREAN, SUBLANG_DEFAULT
+#pragma code_page(949)
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#ifndef APSTUDIO_INVOKED\r\n"
+    "#include ""targetver.h""\r\n"
+    "#endif\r\n"
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)\r\n"
+    "LANGUAGE 9, 1\r\n"
+    "#pragma code_page(1252)\r\n"
+    "#include ""res\\Odin.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""afxres.rc""     // Standard components\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON                    "res\\Odin.ico"
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ODIN_DIALOG DIALOGEX 0, 0, 852, 159
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | DS_CENTER | WS_MINIMIZEBOX | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_APPWINDOW
+CAPTION "Odin (Version 1000)"
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    GROUPBOX        "",IDC_STATIC,3,0,663,142
+    CONTROL         "",IDC_LIST1,"SysListView32",LVS_REPORT | LVS_SHOWSELALWAYS | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,3,5,848,137
+    CONTROL         "",IDC_CHECK1,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,6,146,10,8
+    COMBOBOX        IDC_COMBO1,19,144,33,90,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "墨墨坷 肺弊牢 蜡瘤",IDC_CHECK2,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,60,145,78,10
+    PUSHBUTTON      "拌沥眠啊",IDC_BUTTON1,141,143,42,14
+    PUSHBUTTON      "拌沥昏力",IDC_BUTTON2,185,143,42,14
+    PUSHBUTTON      "阂矾坷扁",IDC_BUTTON3,229,143,42,14
+    CONTROL         "",IDC_CHECK4,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,279,145,9,10
+    EDITTEXT        IDC_EDIT1,290,144,16,12,ES_CENTER | ES_AUTOHSCROLL | ES_NUMBER | WS_DISABLED
+    LTEXT           "~",IDC_STATIC,309,146,8,8
+    EDITTEXT        IDC_EDIT2,316,144,16,12,ES_CENTER | ES_AUTOHSCROLL | ES_NUMBER | WS_DISABLED
+    LTEXT           "盒 措扁饶 犁立加",IDC_STATIC1,334,146,76,8
+    PUSHBUTTON      "坷配矫累",IDC_BUTTON4,458,143,42,14
+    PUSHBUTTON      "坷配吝瘤",IDC_BUTTON5,502,143,42,14
+    PUSHBUTTON      "傈眉角青",IDC_BUTTON6,578,143,42,14
+    PUSHBUTTON      "傈眉辆丰",IDC_BUTTON7,623,143,42,14
+    PUSHBUTTON      "Test",IDC_BUTTON9,671,143,21,14,NOT WS_VISIBLE
+    DEFPUSHBUTTON   "角青",IDOK,696,143,42,14
+    PUSHBUTTON      "辆丰",IDCANCEL,741,143,42,14
+    PUSHBUTTON      "场郴扁",IDC_BUTTON8,807,143,42,14
+    CONTROL         "茄惫绢",IDC_CHECK3,"Button",BS_AUTOCHECKBOX | NOT WS_VISIBLE | WS_TABSTOP,516,100,35,10
+END
+
+IDD_UPDATE_DIALOG DIALOGEX 0, 0, 406, 17
+STYLE DS_SETFONT | DS_FIXEDSYS | DS_CENTER | WS_POPUP | WS_SYSMENU
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CONTROL         "",IDC_PROGRESS1,"msctls_progress32",WS_BORDER,0,0,406,14
+END
+
+IDD_USER_DIALOG DIALOGEX 0, 0, 188, 84
+STYLE DS_SETFONT | DS_FIXEDSYS | DS_CENTER | WS_POPUP | WS_BORDER | WS_SYSMENU
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    GROUPBOX        "",IDC_STATIC1,2,0,184,68
+    LTEXT           "酒捞叼",IDC_STATIC11,8,10,28,8
+    EDITTEXT        IDC_EDIT1,44,8,137,12,ES_AUTOHSCROLL
+    LTEXT           "拌烙拌沥",IDC_STATIC12,8,25,34,8
+    EDITTEXT        IDC_EDIT2,44,23,137,12,ES_AUTOHSCROLL
+    LTEXT           "霸烙厚锅",IDC_STATIC13,8,40,33,8
+    EDITTEXT        IDC_EDIT3,44,38,137,12,ES_AUTOHSCROLL
+    LTEXT           "霸烙辑滚",IDC_STATIC14,8,55,34,8
+    COMBOBOX        IDC_COMBO1,44,52,90,141,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    DEFPUSHBUTTON   "犬牢",IDOK,49,68,47,14
+    PUSHBUTTON      "秒家",IDCANCEL,109,68,47,14
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO
+BEGIN
+    IDD_ODIN_DIALOG, DIALOG
+    BEGIN
+        BOTTOMMARGIN, 158
+    END
+
+    IDD_UPDATE_DIALOG, DIALOG
+    BEGIN
+        BOTTOMMARGIN, 14
+    END
+
+    IDD_USER_DIALOG, DIALOG
+    BEGIN
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// RCDATA
+//
+
+IDR_CLIENT              RCDATA                  "..\\Result\\Detail.exe"
+
+IDR_ENGINE              RCDATA                  "..\\Result\\Engine.dll"
+
+IDR_NWKDU               RCDATA                  "..\\Result\\NWKDU.dll"
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// AFX_DIALOG_LAYOUT
+//
+
+IDD_ODIN_DIALOG AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog Info
+//
+
+IDD_ODIN_DIALOG DLGINIT
+BEGIN
+    IDC_COMBO1, 0x403, 6, 0
+0x2032, 0x2078, 0x0032, 
+    IDC_COMBO1, 0x403, 6, 0
+0x2033, 0x2078, 0x0033, 
+    IDC_COMBO1, 0x403, 6, 0
+0x2034, 0x2078, 0x0034, 
+    0
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE
+BEGIN
+    IDS_ADDACCOUNT          "拌沥眠啊"
+    IDS_DELACCOUNT          "拌沥昏力"
+    IDS_CHARGEACCOUNT       "拌沥面傈"
+    IDS_AUTOSTART           "坷配矫累"
+    IDS_AUTOSTOP            "坷配吝瘤"
+    IDS_STARTALL            "傈眉角青"
+    IDS_STOPALL             "傈眉辆丰"
+    IDS_STARTUSER           "角青"
+    IDS_STOPUSER            "辆丰"
+    IDS_CLOSE               "场郴扁"
+    IDS_VERIFY              "犬牢"
+    IDS_CANCEL              "秒家"
+    IDS_BROWSE              "阂矾坷扁"
+    IDS_REFERENCE           "炼雀"
+    IDS_RESET               "檬扁拳"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_CHARGE              "面傈"
+    IDS_EXTEND              "楷厘"
+    IDS_EXIT                "唱啊扁"
+    IDS_ID                  "酒捞叼"
+    IDS_PW                  "厚锅"
+    IDS_VERSIONCHECK        "滚怜 沥焊甫 犬牢窍瘤 给窍看嚼聪促"
+    IDS_ALERT               "舅覆"
+    IDS_ALREADYRUN          "捞固 角青吝捞骨肺 泪矫饶 促矫 秦林绞矫坷"
+    IDS_CLIENTMAPPINGERROR  "努扼捞攫飘 皋葛府 且寸俊 角菩窍看嚼聪促"
+    IDS_RESOURCECRCERROR    "府家胶 公搬己 八荤啊 角菩窍看嚼聪促"
+    IDS_RESOURCECREATEFAIL  "府家胶 颇老阑 积己且荐 绝嚼聪促"
+    IDS_CLIENTRUNFAIL       "努扼捞攫飘甫 角青且荐 绝嚼聪促"
+    IDS_CONNECTFAIL         "辑滚俊 立加且荐 绝嚼聪促"
+    IDS_ALREADYCONNECT      "秦寸 墨靛绰 促弗 哪俊辑 立加吝涝聪促 (%d)"
+    IDS_WRONGIDPW           "酒捞叼 趣篮 厚锅捞 嘎瘤 臼嚼聪促"
+    IDS_BLOCKID             "荤侩捞 沥瘤等 酒捞叼涝聪促"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_SERVERCHECK         "泅犁 辑滚 痢八吝涝聪促"
+    IDS_WRONGHWID           "促弗 哪俊 殿废等 酒捞叼涝聪促"
+    IDS_NOACCOUNT           "拌沥 沥焊啊 壳官福瘤 臼嚼聪促"
+    IDS_AUTHSUCCESS         "拌沥 牢刘俊 己傍窍看嚼聪促"
+    IDS_UPDATEERROR         "诀单捞飘 格废阑 犬牢且荐 绝嚼聪促"
+    IDS_SERVERERROR         "辑滚客 立加捞 谗绢脸嚼聪促"
+    IDS_TIMEEXPIRED         "荤侩扁埃捞 父丰登菌嚼聪促"
+    IDS_UPDATEALRAM         "坷凋PC (Ver.%04X) (诀单捞飘 啊瓷)"
+    IDS_CARD                "内靛"
+    IDS_STATUS              "惑怕"
+    IDS_FILEREADERROR       "颇老 佬扁俊 角菩窍看嚼聪促. 促矫 犬牢秦林绞矫坷."
+    IDS_CONNECTERROR        "立加捞 角菩窍菌嚼聪促"
+    IDS_WRONGCARD           "弊俯等 内靛涝聪促"
+    IDS_CARD_2HOUR          "2矫埃"
+    IDS_CARD_1DAY           "1老"
+    IDS_CARD_3DAY           "3老"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_CARD_7DAY           "7老"
+    IDS_CARD_15DAY          "15老"
+    IDS_CARD_30DAY          "30老"
+    IDS_NEWCARD             "秦寸 内靛绰 面傈登瘤 臼篮 %s内靛涝聪促"
+    IDS_CARDINFO            "%S拌沥捞 20%d斥 %d岿 %d老 %d矫 %d盒俊 面傈茄 内靛涝聪促"
+    IDS_INITALERT           "檬扁拳 窍搁 扁埃捞 窍风 昏癌邓聪促. 弊贰档 柳青窍矫摆嚼聪鳖?"
+    IDS_SERVERFAIL          "辑滚 立加角菩"
+    IDS_SERVERCONNECTED     "辑滚 立加吝"
+    IDS_SERVERIDERROR       "酒捞叼 厚锅 坷幅"
+    IDS_SERVERWRONGCARD     "弊俯等 内靛"
+    IDS_SERVERREMAIN1DAY    "巢篮 扁埃 1老"
+    IDS_SERVERINITERROR     "檬扁拳 坷幅 角菩"
+    IDS_SERVERINITSUCCESS   "拌沥 檬扁拳 己傍"
+    IDS_SERVERTIMEEXIST     "30老捞惑 扁埃巢澜"
+    IDS_SERVEREXTENDFAIL    "扁老 楷厘 角菩"
+    IDS_SERVEREXTENDSUCCESS "扁埃 楷厘 己傍"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_SERVERTESTCARDEXPIRE "抛内 冉荐 檬苞"
+    IDS_SERVERCHARGESUCCESS "%s 面傈 己傍"
+    IDS_EXPIREDAY           "付皑朝磊"
+    IDS_DEVICE              "厘摹"
+    IDS_DELUSER             "急琶等 拌沥甸阑 昏力窍矫摆嚼聪鳖?"
+    IDS_CURRUNNING          "泅犁 角青吝捞骨肺 昏力且荐 绝嚼聪促"
+    IDS_REALLYEXIT          "沥富 辆丰窍矫摆嚼聪鳖?"
+    IDS_PATCHSERVERFAIL     "菩摹辑滚 立加捞 角菩窍看嚼聪促"
+    IDS_PATCHSERVERRETRY    "菩摹辑滚啊 盔且窍瘤 给窍聪 泪矫饶 促矫 矫档秦林技夸"
+    IDS_PATCHUPDATEERROR    "诀单捞飘 罐绰 档吝 坷幅啊 惯积窍看嚼聪促"
+    IDS_PATCHUPDATESUCCESS  "诀单捞飘啊 场车嚼聪促.\n橇肺弊伐阑 促矫 扁悼秦林绞矫坷"
+    IDS_GAMEID              "霸烙拌沥"
+    IDS_GAMEPW              "霸烙厚锅"
+    IDS_GAMESERVER          "霸烙辑滚"
+    IDS_GAMECHAR            "某腐"
+    IDS_GAMECAPTION         "坷凋PC (Ver.%04X)"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_AUTHERROR           "抗斑摹 臼篮 坷幅啊 惯积窍看嚼聪促 (%d)"
+    IDS_MULTIGAME           "墨墨坷 肺弊牢 蜡瘤"
+    IDS_KOREAN              "茄惫绢"
+    IDS_LEVEL               "饭骇"
+    IDS_CHAR                "某腐"
+    IDS_REGION              "瘤开"
+    IDS_GOLD                "榜靛"
+    IDS_DIAMOND             "促捞酒"
+    IDS_LOADSETTING         "汲沥 檬扁拳 角菩 (%d)"
+    IDS_TOTALDIA            "醚 %s"
+    IDS_GAMENOTFOUND        "霸烙捞 汲摹登绢乐瘤 臼嚼聪促"
+    IDS_NEEDDATAUPGRADE     "Data 弃歹甫 弥脚 滚傈栏肺 诀弊饭捞靛 秦林技夸"
+    IDS_WAITANDRUN          "盒 措扁饶 犁角青"
+END
+
+#endif    // Korean (Korea) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// English (United States) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,2
+ PRODUCTVERSION 1,0,0,2
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904e4"
+        BEGIN
+            VALUE "FileVersion", "1.0.0.2"
+            VALUE "InternalName", "HongLong.exe"
+            VALUE "OriginalFilename", "HongLong.exe"
+            VALUE "ProductVersion", "1.0.0.2"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1252
+    END
+END
+
+#endif    // English (United States) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+LANGUAGE 9, 1
+#pragma code_page(1252)
+#include "res\Odin.rc2"  // non-Microsoft Visual C++ edited resources
+#include "afxres.rc"     // Standard components
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

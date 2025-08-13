@@ -1,0 +1,17 @@
+/Backup
+/old
+/Result
+/ResultServer
+/SDK(backup)
+/Detail/x64
+/Engine/x64
+/Engine/dllmain(backup)
+/MakeAddrCab/Release
+/NWDrv/x64
+/NWKDU/x64
+/Odin/x64
+/Supervisor/Debug
+/Supervisor/Release
+/VenjorServer/Debug
+/VenjorServer/Release
+/.vs
