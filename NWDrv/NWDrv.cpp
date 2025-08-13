@@ -289,7 +289,7 @@ BOOL FindGame()
 {
 	NTSTATUS					ntStatus;
 
-	WCHAR						szDWMName[] = L"ProjectLH.exe";
+	WCHAR						szDWMName[] = L"ROMGoldenAge.exe";
 	UNICODE_STRING				usDWMName;
 
 	ULONG						ulProcessInfoSize;

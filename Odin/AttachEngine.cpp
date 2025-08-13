@@ -322,7 +322,7 @@ DWORD TraceThread(int nIndex)		// 실행 쓰레드
 	DWORD cbData = MAX_PATH;
 	RegGetValue(HKEY_CURRENT_USER, L"Software\\DaumGames\\Odin_Client", L"InstallPath", RRF_RT_REG_SZ,
 		NULL, szGamePath, &cbData);
-	wcscpy_s(szGamePath, L"C:\\kakaogames\\ROM\\client\\ROM.exe");
+	wcscpy_s(szGamePath, L"D:\\redlabgames\\ROMGoldenAge\\client\\ROMGoldenAge.exe");
 	cbData = (wcslen(szGamePath) + 1) * sizeof(wchar_t);
 	if (!wcscmp(szGamePath, L""))															// 게임이 설치가 안되어있으면
 	{
