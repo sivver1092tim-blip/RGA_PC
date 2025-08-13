@@ -1938,10 +1938,10 @@ Game_Start:
 					if (!wcsicmp(pe32.szExeFile, szDaumName))
 						dwDaumPID = pe32.th32ProcessID;
 					
-					if (!wcsicmp(pe32.szExeFile, L"ROM_Launcher.exe"))
+					if (!wcsicmp(pe32.szExeFile, L"KakaoGames.Launcher.exe"))
 						dwLauncherPID = pe32.th32ProcessID;
 
-					if (!wcsicmp(pe32.szExeFile, L"ROM.exe"))
+					if (!wcsicmp(pe32.szExeFile, L"ROMGoldenAge.exe"))
 					{
 						AJLog(L"dwDaumPID = %p", dwDaumPID);
 						BOOL bExist = FALSE;
@@ -2064,7 +2064,7 @@ Game_Start:
 
 				WCHAR szCmd[2000] = { 0, };
 				//swprintf(szCmd, L"%s %d %s %s \"%s\"", szDaumPath, g_nIndex, szGameID, szGamePW, szChrome);
-				swprintf(szCmd, L"C:\\kakaogames\\ROM\\ROM_Launcher.exe");
+				swprintf(szCmd, L"D:\\redlabgames\\ROMGoldenAge\\ROMGoldenAge_Launcher.exe");
 
 				STARTUPINFO si;
 				PROCESS_INFORMATION pi;
