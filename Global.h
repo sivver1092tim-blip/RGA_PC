@@ -532,7 +532,7 @@ typedef struct _GAME_MAPPING_
 	/*Read*/
 	DWORD	dwReadType;
 	DWORD64	qwReadAddress;
-	DWORD	dwReadLength;
+	DWORD64	qwReadLength;
 	BYTE	bReadIsRVA;
 	/*Write*/
 	DWORD	dwWriteType;
