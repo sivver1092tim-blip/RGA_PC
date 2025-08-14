@@ -63,6 +63,9 @@
     <ClCompile Include="..\SDK\SDK\MagicLeapAR_functions.cpp">
       <Filter>SDK Files</Filter>
     </ClCompile>
+    <ClCompile Include="BpManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="dbgSerial.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -156,6 +159,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="log.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BpManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

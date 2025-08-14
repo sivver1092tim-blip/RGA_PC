@@ -61,4 +61,7 @@ public:
 	afx_msg void OnChangeEdtNum14();
 	afx_msg void OnChangeEdtNum16();
 	afx_msg void OnChangeEdtNum17();
+	afx_msg void OnBnClickedRdoWriteTypeByte();
+	afx_msg void OnBnClickedRdoWriteTypeDword64();
+	afx_msg void OnBnClickedRdoWriteTypeDword();
 };

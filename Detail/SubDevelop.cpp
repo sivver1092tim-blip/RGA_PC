@@ -112,6 +112,9 @@ BEGIN_MESSAGE_MAP(CSubDevelop, CDialogEx)
 	ON_EN_CHANGE(IDC_EDT_NUM14, &CSubDevelop::OnChangeEdtNum14)
 	ON_EN_CHANGE(IDC_EDT_NUM16, &CSubDevelop::OnChangeEdtNum16)
 	ON_EN_CHANGE(IDC_EDT_NUM17, &CSubDevelop::OnChangeEdtNum17)
+	ON_BN_CLICKED(IDC_RDO_WRITE_TYPE_BYTE, &CSubDevelop::OnBnClickedRdoWriteTypeByte)
+	ON_BN_CLICKED(IDC_RDO_WRITE_TYPE_DWORD64, &CSubDevelop::OnBnClickedRdoWriteTypeDword64)
+	ON_BN_CLICKED(IDC_RDO_WRITE_TYPE_DWORD, &CSubDevelop::OnBnClickedRdoWriteTypeDword)
 END_MESSAGE_MAP()
 
 
@@ -200,8 +203,8 @@ void CSubDevelop::OnBnClickedBtnReadMemory()
 		g_pGameMapping->bReadMemoryFlag = 1;
 		g_pGameMapping->qwReadAddress = _tcstoui64(strReadAddr.GetBuffer(), NULL, 16);
 		g_pGameMapping->bReadIsRVA = GET_CHECK(IDC_CHK_RVA_READ);
-		g_pGameMapping->dwReadLength = _tcstoui64(strLength.GetBuffer(), NULL, 16);
-		g_pGameMapping->dwReadType = dwReadType;
+		g_pGameMapping->qwReadLength = _tcstoui64(strLength.GetBuffer(), NULL, 16);
+		g_pGameMapping->dwReadType = m_nReadMemoryType;
 	}
 }
 
@@ -602,4 +605,25 @@ void CSubDevelop::OnChangeEdtNum17()
 
 	// TODO:  Add your control notification handler code here
 	OnChangeEdtNum16();
+}
+
+void CSubDevelop::OnBnClickedRdoWriteTypeByte()
+{
+	// TODO: Add your control notification handler code here
+	SetRdoWriteType(e_IO_Memory_BYTE);
+	m_nWriteMemoryType = e_IO_Memory_BYTE;
+}
+
+void CSubDevelop::OnBnClickedRdoWriteTypeDword64()
+{
+	// TODO: Add your control notification handler code here
+	SetRdoWriteType(e_IO_Memory_DWORD64);
+	m_nWriteMemoryType = e_IO_Memory_DWORD64;
+}
+
+void CSubDevelop::OnBnClickedRdoWriteTypeDword()
+{
+	// TODO: Add your control notification handler code here
+	SetRdoWriteType(e_IO_Memory_DWORD);
+	m_nWriteMemoryType = e_IO_Memory_DWORD;
 }

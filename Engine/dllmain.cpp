@@ -8,6 +8,8 @@
 #include "Aria.h"
 #include "Global.h"
 #include "Engine.h"
+#include "dbgSerial.h"
+#include "BpManager.h"
 //#include "Client.h"
 
 
@@ -26,7 +28,7 @@
 
 //											//[2025-8-13]	//[2025-07-30]	//[2025-07-16]		//[2025-06-25]		//[2025-06-11]		//[2025-05-07]		//[2025-04-30]		//[2025-04-10]	////[2025-04-09]	////[2025-03-26]	////[2025-03-12]	////[2025-03-05]	//[2025-02-26]	//[2025-01-24-1]	////[2025-01-24]	//[2025-01-22]	//[2024-12-18-01]	////[2024-12-18]	////[2024-11-29]	[2024-11-27]	[2024-11-13]	[2024-10-30]		[2024-10-16]		[2024-10-11]		[2024-10-04]		[2024-10-02]		[2024-08-28]		[2024-08-14]		[2024-07-31]		[2024-07-17]		[2024-06-26]		[2024-06-12]		[2024-06-05]		[2024-05-29]		[2024-05-01]		[2024-04-24]		[2024-04-11]		[2024-03-27]		[2024-03-20]		[2024-03-13]		[2024-02-28]		[2024-02-14]		[2024-02-07]		[2024-01-31]		[2024-01-17]		[2023-12-27]		[2023-12-20]		[2023-11-29]		[2023-11-15]		[2023-10-25]		[2023-10-11]		[2023-09-26]		[2023-09-14]		[2023-09-13]		[2023-08-31]		[2023-08-30]		[2023-08-16]		[2023-07-26]		[2023-07-12]		[2023-06-28]		[2023-06-21]		[2023-06-14]		[2023-06-02]		[2023-05-31]		[2023-05-26]		[2023-05-17]		[2023-04-26]		[2023-04-19]		[2023-04-12]		[2023-03-29]		[2023-03-15]		[2023-03-08]		[2023-02-22]		[2023-02-08]		[2023-01-26]		[2023-01-11]		[2023-01-05]		[2022-12-28]		[2022-12-21]		[2022-11-30]		[2022-11-23]		[2022-11-16]		[2022-11-02]		[2022-10-26]		[2022-10-12]		[2022-10-05]		[2022-09-28]		[2022-09-14]		[2022-08-31]		[2022-08-10]		[2022-07-27]		[2022-07-13]		[2022-06-29]		[2022-06-15]		[2022-05-26]	[2022-05-25]	[2022-05-11]	[2022-04-27]	[2022-04-13]	[2022-03-31]	[2022-03-30]	[2022-03-29]	[2022-01-26]	[2022-01-12]	[2021-12-23]	[2021-12-08]	[2021-11-24]	[2021-11-10]	[2021-10-27]	[2021-10-13]	[2021-09-29]		[2021-09-15]		[2021-09-08]		[2021-08-25]		[2021-08-11] [2021-07-28] [2021-07-12]
 
-#define ADDR_BASEADDR						0x7FF72F040000	//0x7FF6AB380000	//0x7FF78F9C0000	//0x7FF7005F0000	//0x7FF723540000	//0x7FF6F3220000	//0x7FF6E5DB0000	//0x7FF757160000	//0x7FF67FAE0000	//0x7FF6D4B70000	//0x7FF669070000	//0x7FF75F9E0000	//0x7FF7970E0000	//0x7FF689B60000	//0x7FF7F59F0000	//0x7FF792960000	//0x7FF6A6B60000	//0x7FF61C110000	//0x7FF639BC0000//	0x7FF69B5E0000//	0x7FF6DE410000//	0x7FF676430000//	0x7FF7E1290000//	0x7FF75B650000//	0x7FF7DFB20000//	0x7FF6C0CD0000//	0x7FF65B970000//	0x7FF6E3C00000//	0x7FF675490000//	0x7FF728720000//	0x7FF625290000//	0x7FF670700000//	0x7FF78B490000//	0x7FF7EAA40000//	0x7FF7A1980000//	0x7FF6BE220000//	0x7FF6262D0000//	0x7FF6A9160000//	0x7FF758D80000//	0x7FF630E00000//	0x7FF780BA0000//	0x7FF673050000//	0x7FF62A1E0000//	0x7FF6ED660000//	0x7FF6B3170000//	0x7FF6EFA30000//	0x7FF619790000//	0x7FF758210000//	0x7FF76D6C0000//	0x7FF7E26F0000//	0x7FF61D2D0000//	0x7FF65EFA0000//	0x7FF64A4C0000//	0x7FF739A70000//	0x7FF6BBF40000//	0x7FF66FAE0000//	0x7FF6B3F80000//	0x7FF782D80000//	0x7FF6EB6E0000//	0x7FF6F3530000//	0x7FF7B5480000//	0x7FF699CA0000//	0x7FF75BC50000//	0x7FF73A870000//	0x7FF74F3C0000//	0x7FF73B3B0000//	0x7FF6FDAE0000//	0x7FF75F450000//	0x7FF6D58A0000//	0x7FF689120000//	0x7FF7CC960000//	0x7FF7F5E40000//	0x7FF726730000//	0x7FF6048C0000//	0x7FF748F20000//	0x7FF6EF280000//	0x7FF7A5660000//	0x7FF7ED1B0000//	0x7FF6BD990000//	0x7FF6F2C10000//	0x7FF717580000//	0x7FF7A8DF0000//	0x7FF7890B0000//	0x7FF7374C0000//	0x7FF6AD810000//	0x7FF6547F0000//	0x7FF786180000//	0x7FF677D80000//	0x7FF749830000//	0x7FF61C7A0000//	0x7FF7E6DC0000//	0x7FF6250F0000//	0x7FF651BA0000//	0x7FF6FEB90000//	0x7FF7B3C40000//	0x7FF6F4F70000//0x7FF69A0F0000//0x7FF6E81E0000//0x7FF7B6640000	0x7FF70D330000	0x7FF6D6DF0000	0x7FF7F2990000	0x7FF6AEF50000	0x7FF6C8580000	0x7FF70A110000	0x7FF7141E0000	0x7FF7EE4F0000	0x7FF71A680000	0x7FF75D5D0000	0x7FF69CE30000	0x7FF671C50000	0x7FF68F980000	//0x7FF6FBA50000	//0x7FF69DA80000	//0x7FF74D730000	//0x7FF757280000	//0x140000000//0x140000000//0x140000000//
+//#define ADDR_BASEADDR						0x7FF72F040000	//0x7FF6AB380000	//0x7FF78F9C0000	//0x7FF7005F0000	//0x7FF723540000	//0x7FF6F3220000	//0x7FF6E5DB0000	//0x7FF757160000	//0x7FF67FAE0000	//0x7FF6D4B70000	//0x7FF669070000	//0x7FF75F9E0000	//0x7FF7970E0000	//0x7FF689B60000	//0x7FF7F59F0000	//0x7FF792960000	//0x7FF6A6B60000	//0x7FF61C110000	//0x7FF639BC0000//	0x7FF69B5E0000//	0x7FF6DE410000//	0x7FF676430000//	0x7FF7E1290000//	0x7FF75B650000//	0x7FF7DFB20000//	0x7FF6C0CD0000//	0x7FF65B970000//	0x7FF6E3C00000//	0x7FF675490000//	0x7FF728720000//	0x7FF625290000//	0x7FF670700000//	0x7FF78B490000//	0x7FF7EAA40000//	0x7FF7A1980000//	0x7FF6BE220000//	0x7FF6262D0000//	0x7FF6A9160000//	0x7FF758D80000//	0x7FF630E00000//	0x7FF780BA0000//	0x7FF673050000//	0x7FF62A1E0000//	0x7FF6ED660000//	0x7FF6B3170000//	0x7FF6EFA30000//	0x7FF619790000//	0x7FF758210000//	0x7FF76D6C0000//	0x7FF7E26F0000//	0x7FF61D2D0000//	0x7FF65EFA0000//	0x7FF64A4C0000//	0x7FF739A70000//	0x7FF6BBF40000//	0x7FF66FAE0000//	0x7FF6B3F80000//	0x7FF782D80000//	0x7FF6EB6E0000//	0x7FF6F3530000//	0x7FF7B5480000//	0x7FF699CA0000//	0x7FF75BC50000//	0x7FF73A870000//	0x7FF74F3C0000//	0x7FF73B3B0000//	0x7FF6FDAE0000//	0x7FF75F450000//	0x7FF6D58A0000//	0x7FF689120000//	0x7FF7CC960000//	0x7FF7F5E40000//	0x7FF726730000//	0x7FF6048C0000//	0x7FF748F20000//	0x7FF6EF280000//	0x7FF7A5660000//	0x7FF7ED1B0000//	0x7FF6BD990000//	0x7FF6F2C10000//	0x7FF717580000//	0x7FF7A8DF0000//	0x7FF7890B0000//	0x7FF7374C0000//	0x7FF6AD810000//	0x7FF6547F0000//	0x7FF786180000//	0x7FF677D80000//	0x7FF749830000//	0x7FF61C7A0000//	0x7FF7E6DC0000//	0x7FF6250F0000//	0x7FF651BA0000//	0x7FF6FEB90000//	0x7FF7B3C40000//	0x7FF6F4F70000//0x7FF69A0F0000//0x7FF6E81E0000//0x7FF7B6640000	0x7FF70D330000	0x7FF6D6DF0000	0x7FF7F2990000	0x7FF6AEF50000	0x7FF6C8580000	0x7FF70A110000	0x7FF7141E0000	0x7FF7EE4F0000	0x7FF71A680000	0x7FF75D5D0000	0x7FF69CE30000	0x7FF671C50000	0x7FF68F980000	//0x7FF6FBA50000	//0x7FF69DA80000	//0x7FF74D730000	//0x7FF757280000	//0x140000000//0x140000000//0x140000000//
 #define ADDR_MULTICHECK						0x7FF72F3B180A	//0x7FF6AB6F165A	//0x7FF78FD307DA	//0x7FF70095FF9A	//0x7FF7238AF3CA	//0x7FF6F358E3CA	//0x7FF6E611E3CA	//0x7FF7574CD78A	//0x7FF67FE4D78A	//0x7FF6D4EDCEDA	//0x7FF6693DD12A	//0x7FF75FD4B9EA	//0x7FF79744B9EA	//0x7FF689ECA17A	//0x7FF7F5D5A17A	//0x7FF792CCA17A	//0x7FF6A6EC96CA	//0x7FF61C4796CA	//0x7FF639F28E9E//	0x7FF69B948E9E//	0x7FF6DE77797E//	0x7FF67679692E//	0x7FF7E15F48CE//	0x7FF75B9B291E//	0x7FF7DFE8291E//	0x7FF6C103291E//	0x7FF65BCD16EE//	0x7FF6E3F60C2E//	0x7FF6757F0B3E//	0x7FF728A808BE//	0x7FF6255F086E//	0x7FF670A5FE8E//	0x7FF78B7EF7DE//	0x7FF7EAD9F7DE//	0x7FF7A1CDE94E//	0x7FF6BE57E94E//	0x7FF62662E9CE//	0x7FF6A94BD89E//	0x7FF7590DD2BE//	0x7FF63115D2BE//	0x7FF780EFC04E//	0x7FF6733ABA2E//	0x7FF62A53A0DE//	0x7FF6ED9BA0DE//	0x7FF6B34C87FE//	0x7FF6EFD8822E//	0x7FF619AE822E//	0x7FF75856670E//	0x7FF76DA15C8E//	0x7FF7E2A4460E//	0x7FF61D62409E//	0x7FF65F2F39EE//	0x7FF64A81247E//	0x7FF739DC247E//	0x7FF6BC28F89E//	0x7FF66FE2F89E//	0x7FF6B42CF08E//	0x7FF7830CC69E//	0x7FF6EBA2BAAE//	0x7FF6F387B54E//	0x7FF7B57CA00E//	0x7FF699FEA00E//	0x7FF75BF98C9E//	0x7FF73ABB8C9E//	0x7FF74F7073CE//	0x7FF73B6F73CE//	0x7FF6FDE265CE//	0x7FF75F7947AE//	0x7FF6D5BE47AE//	0x7FF68946272E//	0x7FF7CCCA132E//	0x7FF7F618003E//	0x7FF726A6FF1E//	0x7FF604BFFA1E//	0x7FF74925F42E//	0x7FF6EF5BEBAE//	0x7FF7A599CE4E//	0x7FF7ED4ECE4E//	0x7FF6BDCCCE4E//	0x7FF6F2F4C62E//	0x7FF7178C8B2E//	0x7FF7A9138B2E//	0x7FF7893F7B5E//	0x7FF737807B5E//	0x7FF6ADB56E3E//	0x7FF654B36A9E//	0x7FF7864C6A6E//	0x7FF6780C44FE//	0x7FF749B70C8E//	0x7FF61CADE28E//	0x7FF7E70FBA5E//	0x7FF62542852E//	0x7FF651ED6B5E//	0x7FF6FEEC402E//	0x7FF7B3F7048E//	0x7FF6F52A048E//0x7FF69A41F3DE//0x7FF6E850E2FE//0x7FF7B696D5DE	0x7FF70D65C94E	0x7FF6D711C94E	0x7FF7F2CBC94E	0x7FF6AF27BB8E	0x7FF6C88A7B0E	0x7FF70A43613E	0x7FF7145022DE	0x7FF7EE810EAE	0x7FF71A99F8BE	0x7FF75D8ED63E	0x7FF69D149F2E	0x7FF671F69F2E	0x7FF68FC989CE	//0x7FF6FBD6717E	//0x7FF69DD964A7	//0x7FF750854468	//0x7FF757595604	//0x1403120D4//0x1403119C4//0x140310474//
 #define ADDR_INITXIGNCODE					0x7FF72F3B18A8	//0x7FF6AB6F16F8	//0x7FF78FD30878	//0x7FF700960038	//0x7FF7238AF468	//0x7FF6F358E468	//0x7FF6E611E468	//0x7FF7574CD828	//0x7FF67FE4D828	//0x7FF6D4EDCF78	//0x7FF6693DD1C8	//0x7FF75FD4BA88	//0x7FF79744BA88	//0x7FF689ECA218	//0x7FF7F5D5A218	//0x7FF792CCA218	//0x7FF6A6EC9768	//0x7FF61C479768	//0x7FF639F28F32//	0x7FF69B948F32//	0x7FF6DE777A12//	0x7FF6767969C2//	0x7FF7E15F4962//	0x7FF75B9B29B2//	0x7FF7DFE829B2//	0x7FF6C10329B2//	0x7FF65BCD1782//	0x7FF6E3F60CC2//	0x7FF6757F0BD2//	0x7FF728A80952//	0x7FF6255F0902//	0x7FF670A5FF22//	0x7FF78B7EF872//	0x7FF7EAD9F872//	0x7FF7A1CDE9E2//	0x7FF6BE57E9E2//	0x7FF62662EA62//	0x7FF6A94BD932//	0x7FF7590DD352//	0x7FF63115D352//	0x7FF780EFC0E2//	0x7FF6733ABAC2//	0x7FF62A53A172//	0x7FF6ED9BA172//	0x7FF6B34C8892//	0x7FF6EFD882C2//	0x7FF619AE82C2//	0x7FF7585667A2//	0x7FF76DA15D22//	0x7FF7E2A446A2//	0x7FF61D624132//	0x7FF65F2F3A82//	0x7FF64A812512//	0x7FF739DC2512//	0x7FF6BC28F932//	0x7FF66FE2F932//	0x7FF6B42CF122//	0x7FF7830CC732//	0x7FF6EBA2BB42//	0x7FF6F387B5E2//	0x7FF7B57CA0A2//	0x7FF699FEA0A2//	0x7FF75BF98D32//	0x7FF73ABB8D32//	0x7FF74F707462//	0x7FF73B6F7462//	0x7FF6FDE26662//	0x7FF75F794842//	0x7FF6D5BE4842//	0x7FF6894627C2//	0x7FF7CCCA13C2//	0x7FF7F61800D2//	0x7FF726A6FFB2//	0x7FF604BFFAB2//	0x7FF74925F4C2//	0x7FF6EF5BEC42//	0x7FF7A599CEE2//	0x7FF7ED4ECEE2//	0x7FF6BDCCCEE2//	0x7FF6F2F4C6C2//	0x7FF7178C8BC2//	0x7FF7A9138BC2//	0x7FF7893F7BF2//	0x7FF737807BF2//	0x7FF6ADB56ED2//	0x7FF654B36B32//	0x7FF7864C6B02//	0x7FF6780C4592//	0x7FF749B70D22//	0x7FF61CADE322//	0x7FF7E70FBAF2//	0x7FF6254285C2//	0x7FF651ED6BF2//	0x7FF6FEEC40C2//	0x7FF7B3F70522//	0x7FF6F52A0522//0x7FF69A41F472//0x7FF6E850E392//0x7FF7B696D672	0x7FF70D65C9E2	0x7FF6D711C9E2	0x7FF7F2CBC9E2	0x7FF6AF27BC22	0x7FF6C88A7BA2	0x7FF70A4361D2	0x7FF714502372	0x7FF7EE810F42	0x7FF71A99F952	0x7FF75D8ED6D2	0x7FF69D149FC2	0x7FF671F69FC2	0x7FF68FC98A62	//0x7FF6FBD67212	//0x7FF69DD96531	//0x7FF74DA46531	//0x7FF757595621	//0x1403120F1//0x1403119E1//0x140310491//
 #define ADDR_CHECKGUARD						0x7FF72F3B1B8B	//0x7FF6AB6F19DB	//0x7FF78FD30B5B	//0x7FF70096031B	//0x7FF7238AF74B	//0x7FF6F358E74B	//0x7FF6E611E74B	//0x7FF7574CDB0B	//0x7FF67FE4DB0B	//0x7FF6D4EDD25B	//0x7FF6693DD4AB	//0x7FF75FD4BD6B	//0x7FF79744BD6B	//0x7FF689ECA4FB	//0x7FF7F5D5A4FB	//0x7FF792CCA4FB	//0x7FF6A6EC9A4B	//0x7FF61C479A4B	//0x7FF639F2921B//	0x7FF69B94921B//	0x7FF6DE777CFB//	0x7FF676796CAB//	0x7FF7E15F4C4B//	0x7FF75B9B2C9B//	0x7FF7DFE82C9B//	0x7FF6C1032C9B//	0x7FF65BCD1A6B//	0x7FF6E3F60FAB//	0x7FF6757F0EBB//	0x7FF728A80C3B//	0x7FF6255F0BEB//	0x7FF670A6020B//	0x7FF78B7EFB5B//	0x7FF7EAD9FB5B//	0x7FF7A1CDECCB//	0x7FF6BE57ECCB//	0x7FF62662ED4B//	0x7FF6A94BDC1B//	0x7FF7590DD63B//	0x7FF63115D63B//	0x7FF780EFC3CB//	0x7FF6733ABDAB//	0x7FF62A53A45B//	0x7FF6ED9BA45B//	0x7FF6B34C8B7B//	0x7FF6EFD885AB//	0x7FF619AE85AB//	0x7FF758566A8B//	0x7FF76DA1600B//	0x7FF7E2A4498B//	0x7FF61D62441B//	0x7FF65F2F3D6B//	0x7FF64A8127FB//	0x7FF739DC27FB//	0x7FF6BC28FC1B//	0x7FF66FE2FC1B//	0x7FF6B42CF40B//	0x7FF7830CCA1B//	0x7FF6EBA2BE2B//	0x7FF6F387B8CB//	0x7FF7B57CA38B//	0x7FF699FEA38B//	0x7FF75BF9901B//	0x7FF73ABB901B//	0x7FF74F70774B//	0x7FF73B6F774B//	0x7FF6FDE2694B//	0x7FF75F794B2B//	0x7FF6D5BE4B2B//	0x7FF689462AAB//	0x7FF7CCCA16AB//	0x7FF7F61803BB//	0x7FF726A7029B//	0x7FF604BFFD9B//	0x7FF74925F7AB//	0x7FF6EF5BEF2B//	0x7FF7A599D1CB//	0x7FF7ED4ED1CB//	0x7FF6BDCCD1CB//	0x7FF6F2F4C9AB//	0x7FF7178C8EAB//	0x7FF7A9138EAB//	0x7FF7893F7EDB//	0x7FF737807EDB//	0x7FF6ADB571BB//	0x7FF654B36E1B//	0x7FF7864C6DEB//	0x7FF6780C487B//	0x7FF749B7100B//	0x7FF61CADE60B//	0x7FF7E70FBDDB//	0x7FF6254288AB//	0x7FF651ED6EDB//	0x7FF6FEEC43AB//	0x7FF7B3F7080B//	0x7FF6F52A080B//0x7FF69A41F75B//0x7FF6E850E67B//0x7FF7B696D95B	0x7FF70D65CCCB	0x7FF6D711CCCB	0x7FF7F2CBCCCB	0x7FF6AF27BF0B	0x7FF6C88A7E8B	0x7FF70A4364BB	0x7FF71450265B	0x7FF7EE81122B	0x7FF71A99FC3B	0x7FF75D8ED9BB	0x7FF69D14A2AB	0x7FF671F6A2AB	0x7FF68FC98D4B	//0x7FF6FBD674FB	//0x7FF69DD967BA	//0x7FF74DA467BA	//0x7FF7575958AA	//0x140312348//0x140311C38//0x1403106E8//
@@ -1295,7 +1297,6 @@ BOSSSKILLINFO g_stBossSkillInfo[MAXBOSSSKILLINFOCNT] = {
 
 
 DWORD64			g_hModuleMain = 0;
-DWORD64			g_hAssemblyModuleMain = 0;
 DWORD64			g_hModuleDLL = 0;
 int				g_nIndex = -1;
 HWND			g_hGameWnd = 0;
@@ -3345,10 +3346,262 @@ void TcpTable(HWND hWnd, UINT uMsg, UINT_PTR idEvent, DWORD dwTime)
 // 	m_cClient.DisConnect();
 // }
 
+void OnDevelopMessage()
+{
+	if (g_pGameMapping->bReadMemoryFlag)
+	{
+		g_pGameMapping->bReadMemoryFlag = 0;
+
+		XMsg(L"[LEGEND<E>] (DEBUG) Received read memory command, Address[0x%016llX] ReadType [%d] Length[%X]", g_pGameMapping->qwReadAddress, g_pGameMapping->dwReadType, g_pGameMapping->qwReadLength);
+		INT64 dwRealAddress;
+		if (g_pGameMapping->bReadIsRVA)
+			dwRealAddress = Address_RVA2VA(g_pGameMapping->qwReadAddress);
+		else
+			dwRealAddress = g_pGameMapping->qwReadAddress;
+		XMsg(L"[LEGEND<E>] Real Read memory Address %llX", dwRealAddress);
+
+		if (!IsBadReadPtr((void*)dwRealAddress, g_pGameMapping->qwReadLength))
+		{
+			switch (g_pGameMapping->dwReadType)
+			{
+			case e_IO_Memory_DWORD64:
+			{
+				XMsg(L"[LEGEND<E>] Read QWORD Value at 0x%llX => %llX", dwRealAddress, *(DWORD64*)(dwRealAddress));
+				break;
+			}
+			case e_IO_Memory_DWORD:
+			{
+				XMsg(L"[LEGEND<E>] Read DWORD Value at 0x%llX => %X", dwRealAddress, *(DWORD*)(dwRealAddress));
+				break;
+			}
+			case e_IO_Memory_WORD:
+			{
+				XMsg(L"[LEGEND<E>] Read WORD Value at 0x%llX => %X", dwRealAddress, *(WORD*)(dwRealAddress));
+				break;
+			}
+			case e_IO_Memory_WCHAR:
+			{
+				XMsg(L"[LEGEND<E>] Read WCHAR String Value at 0x%llX => %s", dwRealAddress, (WCHAR*)dwRealAddress);
+				break;
+			}
+			case e_IO_Memory_CHAR:
+			{
+				XMsg(L"[LEGEND<E>] Read CHAR String Value at 0x%llX => %s", dwRealAddress, (char*)dwRealAddress);
+				break;
+			}
+			default:
+			{
+				ViewHexData((LPCSTR)dwRealAddress, (int)g_pGameMapping->qwReadLength);
+				break;
+			}
+			}
+		}
+	}
+
+	if (g_pGameMapping->bWriteMemoryFlag)
+	{
+		g_pGameMapping->bWriteMemoryFlag = 0;
+
+		DWORD dwOldProtect;
+
+		XMsg(L"[LEGEND<E>] (DEBUG) Received write memory command, Address[%016llX] WriteType[%d] Length[%X] QWORD Value[%016X]", g_pGameMapping->qwWriteAddress, g_pGameMapping->dwWriteType, g_pGameMapping->qwWriteLength, g_pGameMapping->qwWriteValue);
+		ViewHexData((LPCSTR)g_pGameMapping->aryWriteBytes, (int)g_pGameMapping->qwWriteLength);
+		DWORD64 dwRealWriteAddress;
+		if (g_pGameMapping->bWriteIsRVA)
+			dwRealWriteAddress = Address_RVA2VA(g_pGameMapping->qwWriteAddress);
+		else
+			dwRealWriteAddress = g_pGameMapping->qwWriteAddress;
+		XMsg(L"[LEGEND<E>] Real Write memory Address %llX", dwRealWriteAddress);
+
+		if (VirtualProtect((LPVOID)dwRealWriteAddress, g_pGameMapping->qwWriteLength, PAGE_EXECUTE_READWRITE, &dwOldProtect) == NULL)
+			return;
+
+		if (!IsBadWritePtr((void*)dwRealWriteAddress, g_pGameMapping->qwWriteLength))
+		{
+			if (g_pGameMapping->dwWriteType == e_IO_Memory_BYTE)
+			{
+				for (int i = 0; i < g_pGameMapping->qwWriteLength; i++)
+				{
+					*(BYTE*)(dwRealWriteAddress + i) = g_pGameMapping->aryWriteBytes[i];
+				}
+			}
+			else
+			{
+				*(DWORD64*)(dwRealWriteAddress) = g_pGameMapping->qwWriteValue;
+			}
+		}
+
+		VirtualProtect((LPVOID)dwRealWriteAddress, g_pGameMapping->qwWriteLength, dwOldProtect, NULL);
+	}
+
+	if (g_pGameMapping->bHookMemoryFlag)
+	{
+		g_pGameMapping->bHookMemoryFlag = 0;
+
+		XMsg(L"[LEGEND<E>] (DEBUG) Received hook function command, Function Address[0x%016llX] Parameter Count[%d] Parameter Is RVA Address[%d]", g_pGameMapping->qwHookAddress, (int)g_pGameMapping->nNextHookDelta, (int)g_pGameMapping->bHookIsRVA);
+
+		DWORD64 dwRVAAddress;
+		if (g_pGameMapping->bHookIsRVA)
+			dwRVAAddress = Address_RVA2VA(g_pGameMapping->qwHookAddress);
+		else
+			dwRVAAddress = g_pGameMapping->qwHookAddress;
+		XMsg(L"[LEGEND<E>] (DEBUG) Hook function command, Function Virtual Address [0x%016llX] => [0x%016llX]", g_pGameMapping->qwHookAddress, dwRVAAddress);
+		XMsg(L"[LEGEND<E>] (DEBUG) ReadValue(%d), Register(%d), Sign(%d), Offset(0x%X) | WriteValue(%d), Unit(%d), Value(0x%llX) | Unprint Index(%d)",
+			g_pGameMapping->stExtraRegisterInfo.bReadValueWhenHooked,
+			g_pGameMapping->stExtraRegisterInfo.dwReadRegIdxWhenHooked,
+			g_pGameMapping->stExtraRegisterInfo.dwSignWhenHooked,
+			g_pGameMapping->stExtraRegisterInfo.dwOffsetValueToReadWhenHooked,
+
+			g_pGameMapping->stExtraRegisterInfo.bWriteValueWhenHooked,
+			g_pGameMapping->stExtraRegisterInfo.dwWriteUnitWhenHooked,
+			g_pGameMapping->stExtraRegisterInfo.qwHexValueToWriteWhenHooked,
+			g_pGameMapping->stExtraRegisterInfo.dwUnprintSameRegIdxWhenHooked
+		);
+
+		GetBpManager()->AddBreakPoint(dwRVAAddress, (int)g_pGameMapping->nNextHookDelta, &g_pGameMapping->stExtraRegisterInfo, CBpManager::OnHookedFuncCalled, CBpManager::OnHookedTempCalled);
+		GetBpManager()->StartBPHooking();
+		GetBpManager()->PrintCurrentBpList();
+	}
+
+	if (g_pGameMapping->bUnHookMemoryFlag)
+	{
+		g_pGameMapping->bUnHookMemoryFlag = 0;
+
+		DWORD64 qwVAAddress;
+		if (g_pGameMapping->bUnHookIsRVA)
+			qwVAAddress = Address_RVA2VA(g_pGameMapping->qwUnHookAddress);
+		else
+			qwVAAddress = g_pGameMapping->qwUnHookAddress;
+		XMsg(L"[LEGEND<E>] Received UnHook function command (%llX) -> (%llX)", g_pGameMapping->qwUnHookAddress, qwVAAddress);
+
+		GetBpManager()->RemoveBreakPoint(qwVAAddress);
+		GetBpManager()->PrintCurrentBpList();
+	}
+
+	if (g_pGameMapping->bUnHookAllMemoryFlag)
+	{
+		g_pGameMapping->bUnHookAllMemoryFlag = 0;
+
+		XMsg(L"[LEGEND<E>] (DEBUG) Received UnHook all function command");
+		GetBpManager()->RemoveAllBreakPoint();
+		GetBpManager()->PrintCurrentBpList();
+	}
+
+	if (g_pGameMapping->bHookInitUSCListFlag)
+	{
+		g_pGameMapping->bHookInitUSCListFlag = 0;
+
+		XMsg(L"[LEGEND<E>] Caller List Formatting...");
+		g_nCallerCount = 0;
+		memset(g_aryCallerList, 0, sizeof(g_aryCallerList));
+	}
+
+	if (g_pGameMapping->bHookInitUSPListFlag)
+	{
+		g_pGameMapping->bHookInitUSPListFlag = 0;
+
+		XMsg(L"[LEGEND<E>] REG List Formatting...");
+		g_nParamValueCount = 0;
+		memset(g_aryParamValueList, 0, sizeof(g_aryParamValueList));
+	}
+
+	if (g_pGameMapping->bRunCommandFlag)
+	{
+		g_pGameMapping->bRunCommandFlag = 0;
+
+		DWORD64 qwRunCodeParam1 = g_pGameMapping->qwParam1;
+		DWORD64 qwRunCodeParam2 = g_pGameMapping->qwParam2;
+		DWORD64 qwRunCodeParam3 = g_pGameMapping->qwParam3;
+		DWORD64 qwRunCodeParam4 = g_pGameMapping->qwParam4;
+		DWORD64 qwRunCodeParam5 = g_pGameMapping->qwParam5;
+		DWORD64 qwRunCodeParam6 = g_pGameMapping->qwParam6;
+		DWORD64 qwRunCodeParam7 = g_pGameMapping->qwParam7;
+		DWORD64 qwRunCodeParam8 = g_pGameMapping->qwParam8;
+		DWORD64 qwRunCodeParam9 = g_pGameMapping->qwParam9;
+		DWORD64 qwRunCodeParam10 = g_pGameMapping->qwParam10;
+
+		switch (g_pGameMapping->qwCommandNo)
+		{
+		case 1:
+		{
+			if (qwRunCodeParam10 == 0)
+			{
+				_callFunc0 func0 = (_callFunc0)(Address_RVA2VA(qwRunCodeParam1));
+				DWORD64 qwRet = func0();
+				XMsg(L"Result: %llx", qwRet);
+			}
+			if (qwRunCodeParam10 == 1)
+			{
+				_callFunc1 func1 = (_callFunc1)(Address_RVA2VA(qwRunCodeParam1));
+				DWORD64 qwRet = func1(qwRunCodeParam2);
+				XMsg(L"Result: %llx", qwRet);
+			}
+			else if (qwRunCodeParam10 == 2)
+			{
+				_callFunc2 func2 = (_callFunc2)(Address_RVA2VA(qwRunCodeParam1));
+				DWORD64 qwRet = func2(qwRunCodeParam2, qwRunCodeParam3);
+				XMsg(L"Result: %llx", qwRet);
+			}
+			else if (qwRunCodeParam10 == 3)
+			{
+				_callFunc3 func3 = (_callFunc3)(Address_RVA2VA(qwRunCodeParam1));
+				DWORD64 qwRet = func3(qwRunCodeParam2, qwRunCodeParam3, qwRunCodeParam4);
+				XMsg(L"Result: %llx", qwRet);
+			}
+			else if (qwRunCodeParam10 == 4)
+			{
+				_callFunc4 func4 = (_callFunc4)(Address_RVA2VA(qwRunCodeParam1));
+				DWORD64 qwRet = func4(qwRunCodeParam2, qwRunCodeParam3, qwRunCodeParam4, qwRunCodeParam5);
+				XMsg(L"Result: %llx", qwRet);
+			}
+			else if (qwRunCodeParam10 == 5)
+			{
+				_callFunc5 func5 = (_callFunc5)(Address_RVA2VA(qwRunCodeParam1));
+				DWORD64 qwRet = func5(qwRunCodeParam2, qwRunCodeParam3, qwRunCodeParam4, qwRunCodeParam5, qwRunCodeParam6);
+				XMsg(L"Result: %llx", qwRet);
+			}
+			else if (qwRunCodeParam10 == 6)
+			{
+				_callFunc6 func6 = (_callFunc6)(Address_RVA2VA(qwRunCodeParam1));
+				DWORD64 qwRet = func6(qwRunCodeParam2, qwRunCodeParam3, qwRunCodeParam4, qwRunCodeParam5, qwRunCodeParam6, qwRunCodeParam7);
+				XMsg(L"Result: %llx", qwRet);
+			}
+			else if (qwRunCodeParam10 == 7)
+			{
+				_callFunc7 func7 = (_callFunc7)(Address_RVA2VA(qwRunCodeParam1));
+				DWORD64 qwRet = func7(qwRunCodeParam2, qwRunCodeParam3, qwRunCodeParam4, qwRunCodeParam5, qwRunCodeParam6, qwRunCodeParam7, qwRunCodeParam8);
+				XMsg(L"Result: %llx", qwRet);
+			}
+			else if (qwRunCodeParam10 == 8)
+			{
+				_callFunc8 func8 = (_callFunc8)(Address_RVA2VA(qwRunCodeParam1));
+				DWORD64 qwRet = func8(qwRunCodeParam2, qwRunCodeParam3, qwRunCodeParam4, qwRunCodeParam5, qwRunCodeParam6, qwRunCodeParam7, qwRunCodeParam8, qwRunCodeParam9);
+				XMsg(L"Result: %llx", qwRet);
+			}
+			else if (qwRunCodeParam10 == 9)
+			{
+			}
+		}
+		break;
+		case 2:
+		{
+
+		}
+		break;
+		default:
+			break;
+		}
+
+
+
+	}
+}
 
 BOOL	bSetRandom = FALSE;
 void OnTimer(HWND hWnd, UINT uMsg, UINT_PTR idEvent, DWORD dwTime)
 {
+	OnDevelopMessage();
+
 	//AJLog(L"[OnTimer] Function entry - hWnd: %p, idEvent: %d, dwTime: %d", hWnd, idEvent, dwTime);
 	
 	g_dwTickCount = GetTickCount64();
