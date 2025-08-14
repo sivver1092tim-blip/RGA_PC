@@ -16,4 +16,15 @@
 /VenjorServer/Release
 /.vs
 
+*.obj
+*.pch
+*.pdb
+*.idb
 *.aps
+*.ncb
+*.suo
+*.sdf
+*.ipch
+*.db
+*.opendb
+*.tlog
