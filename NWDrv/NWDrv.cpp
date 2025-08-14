@@ -336,20 +336,38 @@ BOOL FindGame()
 	if (pSystemProcessInfo) ExFreePool(pSystemProcessInfo);
 
 
-	g_hGamePid = NULL;
-	for (i = 0; i < g_nCurCnt; i++)
+	if (g_nCurCnt == 0)
 	{
-		for (j = 0; j < g_nPrvCnt; j++)
-		{
-			if (g_hCurPID[i] == g_hPrvPID[j])
-				break;
-		}
+		DPRINT("[NW] No ROM.exe processes found");
+		return FALSE;
+	}
 
-		if (j == g_nPrvCnt)
+	if (g_nCurCnt == 1)
+	{
+		g_hGamePid = g_hCurPID[0];
+	}
+	else
+	{
+		g_hGamePid = NULL;
+		DPRINT("[NW] Previous count: %d", g_nPrvCnt);
+		for (i = 0; i < g_nCurCnt; i++)
 		{
-			//DPRINT("ENG FIND2");
-			g_hGamePid = g_hCurPID[i];
-			break;
+			DPRINT("[NW] Current PID[%d]: %d", i, g_hCurPID[i]);
+			for (j = 0; j < g_nPrvCnt; j++)
+			{
+				if (g_hCurPID[i] == g_hPrvPID[j])
+				{
+					DPRINT("[NW] PID %d already exists in previous list", g_hCurPID[i]);
+					break;
+				}
+			}
+
+			if (j == g_nPrvCnt)
+			{
+				DPRINT("[NW] Found new ROM.exe process with PID: %d", g_hCurPID[i]);
+				g_hGamePid = g_hCurPID[i];
+				break;
+			}
 		}
 	}
 
@@ -851,8 +869,10 @@ VOID MonitorThread(LPVOID lpParam)
 // 		return success;
 // 	}
 // 	return success;
-// }
-// 
+// }
+
+// 
+
 // /*
 // # Name  : ObCallbackReg
 // # Param : x
@@ -876,7 +896,8 @@ VOID MonitorThread(LPVOID lpParam)
 // 	obRegistration.OperationRegistration = &opRegistration;	// OperationRegistration µî·Ï
 // 
 // 	return ObRegisterCallbacks(&obRegistration, &hRegistration);
-// }
+// }
+
 
 
 NTSTATUS DriverEntry(IN PDRIVER_OBJECT DriverObject, IN PUNICODE_STRING RegistryPath)
@@ -899,7 +920,8 @@ NTSTATUS DriverEntry(IN PDRIVER_OBJECT DriverObject, IN PUNICODE_STRING Registry
 // 		if (ObCallbackReg() == STATUS_SUCCESS)
 // 		{
 // 			PsSetLoadImageNotifyRoutine(&LoadImageNotifyRoutine);
-// 		}// 	}
+// 		}
+// 	}
 
 	//PsSetLoadImageNotifyRoutine(ImageRoutine);
 

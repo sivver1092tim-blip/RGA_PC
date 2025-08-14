@@ -19,7 +19,7 @@ INT KDUProcessCommandLine(
 	INT     retVal = -1;
 	ULONG   providerId = KDU_PROVIDER_DEFAULT;
 
-	//OutputDebugStringW(L"[ENG] KDUProcessCommandLine");
+	OutputDebugStringW(L"[ENG] KDUProcessCommandLine");
 
 	g_ProvContext = KDUProviderCreate(providerId, HvciEnabled, NtBuildNumber, g_hInstance, ActionTypeMapDriver);
 	if (g_ProvContext)
@@ -73,7 +73,7 @@ BOOL APIENTRY DllMain(HMODULE hModule,
 	UNREFERENCED_PARAMETER(ul_reason_for_call);
 	UNREFERENCED_PARAMETER(lpReserved);
 
-	//OutputDebugStringW(L"[ENG] KDU Attached");
+	OutputDebugStringW(L"[ENG] KDU Attached");
 	g_hInstance = hModule;
 
 	HeapSetInformation(NULL, HeapEnableTerminationOnCorruption, NULL, 0);

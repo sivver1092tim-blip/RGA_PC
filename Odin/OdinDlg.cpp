@@ -1219,7 +1219,7 @@ DWORD SnapThread(COdinDlg* pDlg)
 						wcsstr(szStr, L"PROCEXP") || wcsstr(szStr, L"MODULES") || wcsstr(szStr, L"DEBUG") || wcsstr(szStr, L"MONITOR") ||
 						wcsstr(szStr, L"DEPEND") || wcsstr(szStr, L"HEXVIEW") || wcsstr(szStr, L"OBFUSCATOR") || wcsstr(szStr, L"CODEANALYSIS") ||
 						wcsstr(szStr, L"PEVIEW") || wcsstr(szStr, L"DUMP") || wcsstr(szStr, L"HACKER") || wcsstr(szStr, L"WINDBG") ||
-						wcsstr(szStr, L"INJECT") || wcsstr(szStr, L"DORIS") || wcsstr(szStr, L"DBGVIEW") || wcsstr(szStr, L"WIN64AST") ||
+						wcsstr(szStr, L"INJECT") || wcsstr(szStr, L"DORIS") || /*wcsstr(szStr, L"DBGVIEW") || */wcsstr(szStr, L"WIN64AST") ||
 						wcsstr(szStr, L"WIRESHARK"))
 					{
 						if (pe32.th32ProcessID != GetCurrentProcessId() &&
