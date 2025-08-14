@@ -73,6 +73,11 @@ BOOL CDetailDlg::OnInitDialog()
 	strLabel.LoadString(NULL, IDS_LOGINFO, g_wLanguageID);
 	m_tabCtrl.AddTab(&m_SubLogInfo, strLabel.GetBuffer());
 
+#ifdef _DEBUG_MODE_
+	m_SubDevelop.Create(IDD_SUB_DEVELOP, &m_tabCtrl);
+	m_tabCtrl.AddTab(&m_SubDevelop, L"DEV");
+#endif
+
 	WCHAR szStr[MAX_PATH];	
 	swprintf(szStr, VMProtectDecryptStringW(L"Detail (No. %d)"), g_nIndex);
 	SetWindowText(szStr);

@@ -96,6 +96,9 @@
     <ClCompile Include="dbgSerial.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="SubDevelop.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AttachEngine.h">
@@ -195,6 +198,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="log.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SubDevelop.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

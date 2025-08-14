@@ -15,3 +15,5 @@
 /VenjorServer/Debug
 /VenjorServer/Release
 /.vs
+
+*.aps
