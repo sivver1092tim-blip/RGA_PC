@@ -23,8 +23,8 @@ CSubSchedule::CSubSchedule(CWnd* pParent /*=NULL*/)
 	: CDialog(CSubSchedule::IDD, pParent)
 	, m_szPrevName(_T(""))
 	, m_nCharActor(0)
-	, m_nCharClass(0)
-	, m_bSnakeDungeon(FALSE)
+	//, m_nCharClass(0)
+	//, m_bSnakeDungeon(FALSE)
 	, m_bRandomSchedule(FALSE)
 {
 }
@@ -42,11 +42,11 @@ void CSubSchedule::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_DATETIMEPICKER2, m_dtStopTime);
 
 	DDX_Control(pDX, IDC_COMBO1, m_cbCharActor);
-	DDX_Control(pDX, IDC_COMBO2, m_cbCharClass);
+	//DDX_Control(pDX, IDC_COMBO2, m_cbCharClass);
 	DDX_CBIndex(pDX, IDC_COMBO1, m_nCharActor);
-	DDX_CBIndex(pDX, IDC_COMBO2, m_nCharClass);
+	//DDX_CBIndex(pDX, IDC_COMBO2, m_nCharClass);
 
-	DDX_Check(pDX, IDC_CHECK1, m_bSnakeDungeon);
+	//DDX_Check(pDX, IDC_CHECK1, m_bSnakeDungeon);
 	DDX_Check(pDX, IDC_CHECK2, m_bRandomSchedule);
 
 	CDialog::DoDataExchange(pDX);
@@ -124,11 +124,11 @@ BOOL CSubSchedule::OnInitDialog()
 	for(int i = 0; i < 5; i++)
 		m_cbCharActor.AddString(g_szCharActor[i]);
 	
-	for (int i = 0; i < 3; i++)
-	{
-		if (wcscmp(g_szCharClass[0][i], L""))
-			m_cbCharClass.AddString(g_szCharClass[0][i]);
-	}	
+	//for (int i = 0; i < 3; i++)
+	//{
+	//	if (wcscmp(g_szCharClass[0][i], L""))
+	//		m_cbCharClass.AddString(g_szCharClass[0][i]);
+	//}	
 	
 	UpdateData(FALSE);
 	return TRUE;
@@ -165,7 +165,7 @@ void CSubSchedule::SetControlText()
 	GetDlgItem(IDC_BUTTON6)->SetWindowText(strLabel);
 
 	strLabel.LoadString(NULL, IDS_INITTIME, g_wLanguageID);
-	GetDlgItem(IDC_STATIC13)->SetWindowText(strLabel);
+	GetDlgItem(IDC_CHECK_USEINIT)->SetWindowText(strLabel);
 
 	strLabel.LoadString(NULL, IDS_INIT, g_wLanguageID);
 	GetDlgItem(IDC_BUTTON7)->SetWindowText(strLabel);
@@ -277,10 +277,10 @@ void CSubSchedule::LoadSetting()
 	m_nCharActor = GetPrivateProfileInt(L"Create", L"Actor", 0, szPath);
 	m_nCharActor %= 5;
 
-	m_nCharClass = GetPrivateProfileInt(L"Create", L"Class", 0, szPath);
-	m_nCharClass %= 3;
+	//m_nCharClass = GetPrivateProfileInt(L"Create", L"Class", 0, szPath);
+	//m_nCharClass %= 3;
 
-	m_bSnakeDungeon = GetPrivateProfileInt(L"Dungeon", L"Snake", 0, szPath);
+	//m_bSnakeDungeon = GetPrivateProfileInt(L"Dungeon", L"Snake", 0, szPath);
 	m_bRandomSchedule = GetPrivateProfileInt(L"Schedule", L"Random", 0, szPath);
 
 	SYSTEMTIME time;
@@ -479,13 +479,13 @@ void CSubSchedule::LoadSetting()
 		}
 	}
 
-	m_cbCharClass.ResetContent();
+	//m_cbCharClass.ResetContent();
 	
-	for (int i = 0; i < 3; i++)
+/*	for (int i = 0; i < 3; i++)
 	{
 		if (wcscmp(g_szCharClass[m_nCharActor % 5][i], L""))
 			m_cbCharClass.AddString(g_szCharClass[m_nCharActor % 5][i]);
-	}	
+	}*/	
 
 	UpdateData(FALSE);
 }
@@ -581,11 +581,11 @@ void CSubSchedule::SaveSetting()
 	swprintf(szVal, L"%d", m_nCharActor);
 	WritePrivateProfileString(L"Create", L"Actor", szVal, szPath);
 
-	swprintf(szVal, L"%d", m_nCharClass);
-	WritePrivateProfileString(L"Create", L"Class", szVal, szPath);
+	//swprintf(szVal, L"%d", m_nCharClass);
+	//WritePrivateProfileString(L"Create", L"Class", szVal, szPath);
 
-	swprintf(szVal, L"%d", m_bSnakeDungeon);
-	WritePrivateProfileString(L"Dungeon", L"Snake", szVal, szPath);;
+	//swprintf(szVal, L"%d", m_bSnakeDungeon);
+	//WritePrivateProfileString(L"Dungeon", L"Snake", szVal, szPath);;
 
 	swprintf(szVal, L"%d", m_bRandomSchedule);
 	WritePrivateProfileString(L"Schedule", L"Random", szVal, szPath);
@@ -1326,13 +1326,13 @@ void CSubSchedule::OnChangeActor()
 {
 	UpdateData();
 
-	m_cbCharClass.ResetContent();
-	
-	for (int i = 0; i < 3; i++)
-	{
-		if (wcscmp(g_szCharClass[m_nCharActor % 5][i], L""))
-			m_cbCharClass.AddString(g_szCharClass[m_nCharActor % 5][i]);
-	}	
+	//m_cbCharClass.ResetContent();
+	//
+	//for (int i = 0; i < 3; i++)
+	//{
+	//	if (wcscmp(g_szCharClass[m_nCharActor % 5][i], L""))
+	//		m_cbCharClass.AddString(g_szCharClass[m_nCharActor % 5][i]);
+	//}	
 
-	m_cbCharClass.SetCurSel(0);
+	//m_cbCharClass.SetCurSel(0);
 }

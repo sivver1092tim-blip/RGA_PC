@@ -99,6 +99,9 @@
     <ClCompile Include="SubDevelop.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="SkillInterval.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AttachEngine.h">
@@ -201,6 +204,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="SubDevelop.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SkillInterval.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

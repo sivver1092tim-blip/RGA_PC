@@ -7,6 +7,7 @@
 #define IDR_MENU1                       151
 #define IDR_MENU2                       152
 #define IDD_SUB_DEVELOP                 155
+#define IDD_SKILL_INTERVAL              157
 #define IDD_DETAIL_DIALOG               201
 #define IDD_SUB_SCHEDULE                202
 #define IDD_SUB_LOGINFO                 203
@@ -134,6 +135,22 @@
 #define IDC_EDT_RUN_CMD_STRING          1204
 #define IDC_COMBO5                      1205
 #define IDC_EDT_NUM14                   1205
+#define IDC_COMBO_TRYSERVERLIST         1206
+#define IDC_LIST_TRYSERVERLIST          1207
+#define IDC_BTN_ADDTRYSERVER            1208
+#define IDC_BTN_DELTRYSERVER            1209
+#define IDC_BTN_UPTRYSERVER             1210
+#define IDC_BTN_DOWNTRYSERVER           1211
+#define IDC_CHECK_TRYSERVERSTOP         1212
+#define IDC_CHECK_TRYSERVER             1213
+#define IDC_CHECK_SKIPDEVICEREG         1215
+#define IDC_CHECK_COUNTRY               1217
+#define IDC_COMBO_COUNTRY               1218
+#define IDC_CHECK_56002                 1219
+#define IDC_CHECK_OPTIMIZATION          1220
+#define IDC_CHECK_USEINIT               1221
+#define IDC_STATIC_INTERVAL             1222
+#define IDC_EDIT_INTERVAL               1223
 #define IDC_CHECK1                      1301
 #define IDC_CHECK2                      1302
 #define IDC_CHECK3                      1303
@@ -662,14 +679,15 @@
 #define IDS_STRING60427                 60427
 #define IDS_STRING60428                 60428
 #define IDS_STRING60429                 60429
+#define IDS_INTERVAL                    60430
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        157
+#define _APS_NEXT_RESOURCE_VALUE        160
 #define _APS_NEXT_COMMAND_VALUE         32772
-#define _APS_NEXT_CONTROL_VALUE         1206
+#define _APS_NEXT_CONTROL_VALUE         1224
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif
