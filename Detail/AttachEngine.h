@@ -14,6 +14,7 @@
 #include "tlhelp32.h"
 #pragma pack(pop)
 
+#define _DEBUG_MODE_
 #define _PRINT_LOG_
 #define _TEST_VERSION_
 

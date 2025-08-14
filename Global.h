@@ -36,7 +36,10 @@
 #define PIPE_NAME_1															L"\\\\.\\pipe\\E095C07%d"
 #define EVENT_PIPE_1														L"{%s-c09fe0743fde}"
 
+#define MAX_WRITE_LEN			256
+#define MAX_STRING_LEN			256
 #define MAX_NAME				50
+#define MAX_NAME_LEN			256
 
 #define MAX_SERVER				10 //11
 #define MAX_WORLD				7
@@ -380,6 +383,95 @@ typedef struct _OTHER_SETTING_
 	BYTE	bEmpty[100];
 }OTHER_SETTING;
 
+typedef struct _stExtraRegInfo
+{
+	DWORD bUnprintSameCaller;
+	DWORD bUnprintSameRegister;
+	DWORD dwUnprintSameRegIdxWhenHooked;
+
+	DWORD bReadValueWhenHooked;
+	DWORD dwReadRegIdxWhenHooked;
+	DWORD dwSignWhenHooked;
+	DWORD dwOffsetValueToReadWhenHooked;
+	DWORD dwLengthToReadWhenHooked;
+
+	DWORD bWriteValueWhenHooked;
+	DWORD dwWriteUnitWhenHooked;
+	DWORD64 qwHexValueToWriteWhenHooked;
+	DWORD bWriteToOffset;
+
+	_stExtraRegInfo()
+	{
+		bUnprintSameCaller = 0;
+		bUnprintSameRegister = 0;
+		dwUnprintSameRegIdxWhenHooked = 0;
+		bReadValueWhenHooked = 0;
+		dwReadRegIdxWhenHooked = 0;
+		dwSignWhenHooked = 0;
+		dwOffsetValueToReadWhenHooked = 0;
+		bWriteValueWhenHooked = 0;
+		dwWriteUnitWhenHooked = 0;
+		qwHexValueToWriteWhenHooked = 0;
+		bWriteToOffset = 0;
+	}
+
+}STExtraRegInfo, * PSTExtraRegInfo;
+
+
+enum E_REGISTER_TYPE
+{
+	e_Reg_RAX = 0,
+	e_Reg_RBX,
+	e_Reg_RCX,
+	e_Reg_RDX,
+	e_Reg_RSI,
+	e_Reg_RDI,
+	e_Reg_RIP,
+	e_Reg_RSP,
+	e_Reg_RBP,
+	e_Reg_RFL,
+	e_Reg_R8,
+	e_Reg_R9,
+	e_Reg_R10,
+	e_Reg_R11,
+	e_Reg_R12,
+	e_Reg_R13,
+	e_Reg_R14,
+	e_Reg_R15,
+	e_Reg_Arg5,
+	e_Reg_Arg6,
+	e_Reg_Count,
+};
+
+enum E_DATA_VALUE_TYPE
+{
+	e_DVT_BIT = 0,
+	e_DVT_BYTE,
+	e_DVT_WORD,
+	e_DVT_DWORD,
+	e_DVT_DWORD64,
+	e_DVT_Count,
+};
+
+enum E_SIGN_TYPE
+{
+	e_Sign_Plus = 0,
+	e_Sign_Minus,
+	e_Sign_Count,
+};
+
+
+enum E_IO_MEMORY_TYPE
+{
+	e_IO_Memory_BYTE,
+	e_IO_Memory_DWORD64,
+	e_IO_Memory_DWORD,
+	e_IO_Memory_WORD,
+	e_IO_Memory_WCHAR,
+	e_IO_Memory_CHAR,
+	e_IO_Memory_Type_Num,
+};
+
 // -------------- GameMapping --------------//
 
 typedef struct _GAME_MAPPING_
@@ -422,6 +514,56 @@ typedef struct _GAME_MAPPING_
 
 	BYTE	bAutoRun;				// 오토 상태
 	BYTE	bSettingChanged;		// 설정 변경 기발
+
+
+
+
+	/// <summary>
+	/// Develop Mode
+	/// </summary>
+	BYTE	bReadMemoryFlag;
+	BYTE	bWriteMemoryFlag;
+	BYTE	bHookMemoryFlag;
+	BYTE	bUnHookMemoryFlag;
+	BYTE	bUnHookAllMemoryFlag;
+	BYTE	bHookInitUSCListFlag; // UnprintSameCaller List
+	BYTE	bHookInitUSPListFlag; // UnprintSameParam List
+	BYTE	bRunCommandFlag;
+	/*Read*/
+	DWORD	dwReadType;
+	DWORD64	qwReadAddress;
+	DWORD	dwReadLength;
+	BYTE	bReadIsRVA;
+	/*Write*/
+	DWORD	dwWriteType;
+	DWORD64	qwWriteAddress;
+	DWORD64	qwWriteValue;
+	DWORD64	qwWriteLength;
+	BYTE	aryWriteBytes[MAX_WRITE_LEN];
+	BYTE	bWriteIsRVA;
+	/*Hook*/
+	DWORD64	qwHookAddress;
+	BYTE	bHookIsRVA;
+	DWORD	nNextHookDelta;
+	STExtraRegInfo	stExtraRegisterInfo;
+	/*UnHook*/
+	DWORD64	qwUnHookAddress;
+	BYTE	bUnHookIsRVA;
+	/*Run*/
+	DWORD64	qwCommandNo;
+	DWORD64	qwParam1;
+	DWORD64	qwParam2;
+	DWORD64	qwParam3;
+	DWORD64	qwParam4;
+	DWORD64	qwParam5;
+	DWORD64	qwParam6;
+	DWORD64	qwParam7;
+	DWORD64	qwParam8;
+	DWORD64	qwParam9;
+	DWORD64	qwParam10;
+	WCHAR	wszStringParam[MAX_STRING_LEN];
+
+
 }GAME_MAPPING;
 
 typedef struct _GAME_INFO_
@@ -498,7 +640,24 @@ extern MAINQUEST	g_pMainQuest[MAX_MAINQUEST];
 extern WCHAR		g_szExpendItemList[MAX_EXPAND][MAX_NAME];
 extern WCHAR		g_szExchangeItemList[MAX_EXCHANGE][MAX_NAME];
 
+extern WCHAR		g_aryRegisterList[e_Reg_Count][MAX_NAME_LEN];
+extern WCHAR		g_aryDataValueTypeList[e_DVT_Count][MAX_NAME_LEN];
+extern WCHAR		g_arySignList[e_Sign_Count][MAX_NAME_LEN];
+
 BOOL	IsFileExist(WCHAR *szPath);
 PVOID	MyGetProcAddress(DWORD64 qwBase, unsigned short wFunc);
 PVOID	MyGetFileAddress(BYTE* pbImage, unsigned short wFunc);
 void	MakeRandData(BYTE* pbBuffer, int nLen);
+
+#define SET_CHECK(nID, nCheck)								((CButton*)GetDlgItem(nID))->SetCheck(nCheck? 1:0)
+#define GET_CHECK(nID)										(BOOL)((CButton*)GetDlgItem(nID))->GetCheck()
+#define SET_WND_INT(nID, nValue)							SetDlgItemInt(nID, nValue)
+#define GET_WND_INT(nID)									GetDlgItemInt(nID)
+#define GET_COMBO_SEL(nID)									((CComboBox*)GetDlgItem(nID))->GetCurSel()
+#define ENABLE_WINDOW(nID, nEnable)							GetDlgItem(nID)->EnableWindow(nEnable)
+#define GET_ENABLE_WINDOW(nID)								GetDlgItem(nID)->IsWindowEnabled()
+#define SET_WND_STRING(nID, lpStr)							SetDlgItemText(nID, lpStr)
+#define GET_WND_STRING(nID, lpStr)							GetDlgItemText(nID, lpStr, sizeof(lpStr) / sizeof(TCHAR))
+#define GET_CUR_SEL(nID)									((CComboBox*)GetDlgItem(nID))->GetCurSel()
+#define SET_CUR_SEL(nID, nValue)							((CComboBox*)GetDlgItem(nID))->SetCurSel(nValue)
+#define SHOW_WND(nID, bShow)								GetDlgItem(nID)->ShowWindow(bShow == TRUE? SW_SHOW : SW_HIDE)
