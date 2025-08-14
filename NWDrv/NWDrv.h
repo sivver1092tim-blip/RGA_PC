@@ -1,7 +1,7 @@
 #pragma once
 
-//#define DPRINT(format, ...)		DbgPrintEx(DPFLTR_IHVDRIVER_ID, DPFLTR_ERROR_LEVEL, format, __VA_ARGS__)
-#define DPRINT
+#define DPRINT(format, ...)		DbgPrintEx(DPFLTR_IHVDRIVER_ID, DPFLTR_ERROR_LEVEL, format, __VA_ARGS__)
+//#define DPRINT
 
 #define DEREF( name )*(UINT_PTR *)(name)
 #define DEREF_64( name )*(DWORD64 *)(name)

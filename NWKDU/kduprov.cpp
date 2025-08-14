@@ -331,16 +331,21 @@ HANDLE KDUProvStartVulnerableDriver(
 
         if (resourceSize != writeBytes) {
             // printf_s("[!] Unable to extract vulnerable driver, NTSTATUS (0x%lX)\r\n", ntStatus);
+			OutputDebugStringA("13");
+
             return NULL;
         }
 
         ntStatus = supLoadDriver(lpDriverName, lpFullFileName, FALSE);
         if (NT_SUCCESS(ntStatus)) {
             // printf_s("[+] Vulnerable driver \"%ws\" loaded\r\n", lpDriverName);
+			OutputDebugStringA("12");
+
             bLoaded = TRUE;
         }
         else {
             // printf_s("[!] Unable to load vulnerable driver, NTSTATUS (0x%lX)\r\n", ntStatus);
+            OutputDebugStringA("11");
             DeleteFile(lpFullFileName);
         }
     }
@@ -350,6 +355,8 @@ HANDLE KDUProvStartVulnerableDriver(
 		if (!NT_SUCCESS(ntStatus)) {
 
 			// printf_s("[!] Unable to open vulnerable driver, NTSTATUS (0x%lX)\r\n", ntStatus);
+			OutputDebugStringA("15");
+
 		}
         else {
 
@@ -651,7 +658,7 @@ PKDU_CONTEXT WINAPI KDUProviderCreate(
     if (!NT_SUCCESS(ntStatus)) {
 		char szLog[1024] = { 0, };
 		sprintf_s(szLog, "[!] Abort: SeDebugPrivilege is not assigned! NTSTATUS (0x%lX)\r\n", ntStatus);
-		//OutputDebugStringA(szLog);
+		OutputDebugStringA(szLog);
         return NULL;
     }
 

@@ -8,6 +8,7 @@
 #include "XTabCtrl.h"
 #include "SubSchedule.h"
 #include "SubLogInfo.h"
+#include "SubDevelop.h"
 
 // CDetailDlg dialog
 class CDetailDlg : public CDialog
@@ -47,6 +48,7 @@ public:
 
 	CSubSchedule	m_SubSchedule;
 	CSubLogInfo		m_SubLogInfo;
+	CSubDevelop		m_SubDevelop;
 
 	void HideSetting();
 	void LoadSetting();

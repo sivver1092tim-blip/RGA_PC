@@ -79,7 +79,7 @@ BOOL				g_bRandomSchedule = FALSE;
 typedef LONG (NTAPI *NtSuspendProcess)(IN HANDLE ProcessHandle);
 typedef LONG (NTAPI *NtResumeProcess)(IN HANDLE ProcessHandle);
 
-#define	WND_GAMENAME			L"ROM : Remember Of Majesty"
+#define	WND_GAMENAME			L"ROM: Golden Age"
 #define	WNDCLASS_GAMENAME		L"UnityWndClass"
 
 void AJLog(WCHAR* szFormat, ...)
@@ -1938,10 +1938,10 @@ Game_Start:
 					if (!wcsicmp(pe32.szExeFile, szDaumName))
 						dwDaumPID = pe32.th32ProcessID;
 					
-					if (!wcsicmp(pe32.szExeFile, L"ROM_Launcher.exe"))
+					if (!wcsicmp(pe32.szExeFile, L"ROMGoldenAge_Launcher.exe"))
 						dwLauncherPID = pe32.th32ProcessID;
 
-					if (!wcsicmp(pe32.szExeFile, L"ROM.exe"))
+					if (!wcsicmp(pe32.szExeFile, L"ROMGoldenAge.exe"))
 					{
 						AJLog(L"dwDaumPID = %p", dwDaumPID);
 						BOOL bExist = FALSE;
@@ -2064,7 +2064,7 @@ Game_Start:
 
 				WCHAR szCmd[2000] = { 0, };
 				//swprintf(szCmd, L"%s %d %s %s \"%s\"", szDaumPath, g_nIndex, szGameID, szGamePW, szChrome);
-				swprintf(szCmd, L"C:\\kakaogames\\ROM\\ROM_Launcher.exe");
+				swprintf(szCmd, L"D:\\redlabgames\\ROMGoldenAge\\ROMGoldenAge_Launcher.exe");
 
 				STARTUPINFO si;
 				PROCESS_INFORMATION pi;
@@ -2476,6 +2476,7 @@ Game_Attach:
 		}
 
 		HWND hGameWnd = FindMyTopMostWindow((WCHAR*)WND_GAMENAME, (WCHAR*)WNDCLASS_GAMENAME, dwGamePID);
+		AJLog(L"hGameWnd: %d", hGameWnd);
 		if (hGameWnd != NULL)
 		{
 			g_pGameMapping->hGameWnd = hGameWnd;

@@ -3802,6 +3802,42 @@ MAINQUEST g_pMainQuest[MAX_MAINQUEST] =
 	{ 72, 15, 0x00006DD5, L"다시, 로키의 행방을 쫓아" },
 };
 
+WCHAR g_aryRegisterList[e_Reg_Count][MAX_NAME_LEN] = {
+	L"RAX",
+	L"RBX",
+	L"RCX",
+	L"RDX",
+	L"RSI",
+	L"RDI",
+	L"RIP",
+	L"RSP",
+	L"RBP",
+	L"RFL",
+	L"R8",
+	L"R9",
+	L"R10",
+	L"R11",
+	L"R12",
+	L"R13",
+	L"R14",
+	L"R15",
+	L"Arg5",
+	L"Arg6",
+};
+
+WCHAR g_aryDataValueTypeList[e_DVT_Count][MAX_NAME_LEN] = {
+	L"BIT",
+	L"BYTE",
+	L"WORD",
+	L"DWORD",
+	L"DWORD64",
+};
+
+WCHAR g_arySignList[e_Sign_Count][MAX_NAME_LEN] = {
+	L"+",
+	L"-",
+};
+
 BOOL IsFileExist(WCHAR *szPath)
 {
 	struct _stat32 buffer;
