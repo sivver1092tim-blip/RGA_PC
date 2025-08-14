@@ -486,7 +486,7 @@
 #define STATUS_QUESTPOTION		49
 #define STATUS_WAITDELAY		50
 
-#define	WND_GAMENAME			L"ROM : Remember Of Majesty"
+#define	WND_GAMENAME			L"ROM: Golden Age"
 #define	WNDCLASS_GAMENAME		L"UnityWndClass"
 
 #define AUTO_NONE				0
@@ -2104,6 +2104,9 @@ void AJLog(WCHAR* szFormat, ...)
 	fprintf(fp, aszLog);
 	fclose(fp);
 
+	WCHAR szTmp[MAX_PATH] = { 0, };
+	swprintf_s(szTmp, L"[ENGINE %d] %s", g_nIndex, szLog);
+	OutputDebugString(szTmp);
 #ifdef _TEST_VERSION_
 
 	WCHAR szTmp[MAX_PATH] = { 0, };
