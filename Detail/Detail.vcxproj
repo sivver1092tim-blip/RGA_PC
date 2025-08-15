@@ -251,6 +251,7 @@
     <ClCompile Include="ScheduleItem.cpp" />
     <ClCompile Include="ScheduleOther.cpp" />
     <ClCompile Include="SchedulePK.cpp" />
+    <ClCompile Include="ScheduleSkill.cpp" />
     <ClCompile Include="SkillInterval.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -292,6 +293,7 @@
     <ClInclude Include="ScheduleItem.h" />
     <ClInclude Include="ScheduleOther.h" />
     <ClInclude Include="SchedulePK.h" />
+    <ClInclude Include="ScheduleSkill.h" />
     <ClInclude Include="SkillInterval.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="SubDevelop.h" />

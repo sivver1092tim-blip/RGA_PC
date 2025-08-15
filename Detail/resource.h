@@ -8,6 +8,7 @@
 #define IDR_MENU2                       152
 #define IDD_SUB_DEVELOP                 155
 #define IDD_SKILL_INTERVAL              157
+#define IDD_SCHEDULE_SKILL              160
 #define IDD_DETAIL_DIALOG               201
 #define IDD_SUB_SCHEDULE                202
 #define IDD_SUB_LOGINFO                 203
@@ -151,6 +152,12 @@
 #define IDC_CHECK_USEINIT               1221
 #define IDC_STATIC_INTERVAL             1222
 #define IDC_EDIT_INTERVAL               1223
+#define IDC_COMBO_CLASS                 1224
+#define IDC_LIST_SKILLRES               1225
+#define IDC_LIST_SKILLSET               1226
+#define IDC_BTN_ADD                     1227
+#define IDC_BTN_DEL                     1228
+#define IDC_BTN_AUTO                    1229
 #define IDC_CHECK1                      1301
 #define IDC_CHECK2                      1302
 #define IDC_CHECK3                      1303
@@ -685,9 +692,9 @@
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        160
+#define _APS_NEXT_RESOURCE_VALUE        162
 #define _APS_NEXT_COMMAND_VALUE         32772
-#define _APS_NEXT_CONTROL_VALUE         1224
+#define _APS_NEXT_CONTROL_VALUE         1230
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif
