@@ -428,6 +428,20 @@ typedef struct _stExtraRegInfo
 
 }STExtraRegInfo, * PSTExtraRegInfo;
 
+typedef struct tagMultiName
+{
+	WCHAR	szKRName[MAX_NAME];
+	WCHAR	szTWName[MAX_NAME];
+} MultiName;
+
+typedef struct tagSkillRes
+{
+	WCHAR	szKRName[MAX_NAME];
+	WCHAR	szTWName[MAX_NAME];
+	DWORD	dwID;
+	BOOL	bCanAuto;
+	int		nClassType;
+} SkillRes;
 
 enum E_REGISTER_TYPE
 {
@@ -640,6 +654,8 @@ extern WCHAR		g_szItemMode[MAX_MODE][MAX_NAME];
 extern WCHAR		g_szItemGrade[MAX_GRADE][MAX_NAME];
 extern WCHAR		g_szItemType[MAX_TYPE][MAX_NAME];
 extern WCHAR		g_szPartyDungeonName[MAX_PARTYDUNGEON][MAX_NAME];
+extern MultiName	g_pCharActor[MAX_CLASS];
+extern SkillRes		g_pSkillRes[MAX_SKILLRES];
 
 extern WCHAR		g_szAppPath[MAX_PATH];
 

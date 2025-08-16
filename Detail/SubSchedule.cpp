@@ -73,7 +73,6 @@ END_MESSAGE_MAP()
 BOOL CSubSchedule::OnInitDialog()
 {
 	CDialog::OnInitDialog();
-
 	CString strLabel;
 	SetControlText();
 
@@ -121,7 +120,7 @@ BOOL CSubSchedule::OnInitDialog()
 	m_lstSubSchedule.InsertColumn(7, L"TimeStop", LVCFMT_LEFT, 0);
 	m_lstSubSchedule.InsertColumn(8, L"HuntTime", LVCFMT_LEFT, 0);
 
-	for(int i = 0; i < 5; i++)
+	for (int i = 0; i < 5; i++)
 		m_cbCharActor.AddString(g_szCharActor[i]);
 	
 	//for (int i = 0; i < 3; i++)
@@ -170,15 +169,15 @@ void CSubSchedule::SetControlText()
 	strLabel.LoadString(NULL, IDS_INIT, g_wLanguageID);
 	GetDlgItem(IDC_BUTTON7)->SetWindowText(strLabel);
 
-	strLabel.LoadString(NULL, IDS_CHAR, g_wLanguageID);
-	GetDlgItem(IDC_STATIC14)->SetWindowText(strLabel);
+	//strLabel.LoadString(NULL, IDS_CHAR, g_wLanguageID);
+	//GetDlgItem(IDC_STATIC14)->SetWindowText(strLabel);
 
-	strLabel.LoadString(NULL, IDS_CHARCLASS, g_wLanguageID);
-	GetDlgItem(IDC_STATIC15)->SetWindowText(strLabel);
+	//strLabel.LoadString(NULL, IDS_CHARCLASS, g_wLanguageID);
+	//GetDlgItem(IDC_STATIC15)->SetWindowText(strLabel);
 
 	//strLabel.LoadString(NULL, IDS_STRING60319, g_wLanguageID);
-	strLabel.LoadString(NULL, IDS_STRING60349, g_wLanguageID);
-	GetDlgItem(IDC_CHECK1)->SetWindowText(strLabel);
+	//strLabel.LoadString(NULL, IDS_STRING60349, g_wLanguageID);
+	//GetDlgItem(IDC_CHECK1)->SetWindowText(strLabel);
 
 	strLabel.LoadString(NULL, IDS_STRING60416, g_wLanguageID);
 	GetDlgItem(IDC_CHECK2)->SetWindowText(strLabel);
@@ -214,9 +213,9 @@ void CSubSchedule::LoadSetting()
 
 				swprintf(szTmp, L"%d", i + 1);
 				m_lstMainSchedule.SetItemText(i, 1, szTmp);
-
+				
 				m_lstMainSchedule.SetItemText(i, 2, pScheduleSetting[i].szName);
-
+				
 				m_lstMainSchedule.SetCheck(i, pScheduleSetting[i].bEnable);
 				
 				m_lstMainSchedule.SetItemData(i, 0);
@@ -481,12 +480,13 @@ void CSubSchedule::LoadSetting()
 
 	//m_cbCharClass.ResetContent();
 	
-/*	for (int i = 0; i < 3; i++)
+/*	
+	for (int i = 0; i < 3; i++)
 	{
 		if (wcscmp(g_szCharClass[m_nCharActor % 5][i], L""))
 			m_cbCharClass.AddString(g_szCharClass[m_nCharActor % 5][i]);
-	}*/	
-
+	}
+*/
 	UpdateData(FALSE);
 }
 

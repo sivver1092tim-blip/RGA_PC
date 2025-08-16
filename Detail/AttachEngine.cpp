@@ -63,6 +63,7 @@ int					g_nScheduleCountTemp = 0;
 Schedule_Time*		g_pScheduleTimeTemp = NULL;
 
 WORD				g_wLanguageID = 0x804;
+BOOL				g_bTaiwanLang = FALSE;
 DWORD				g_dwInitRealKeyword = 0;
 
 BOOL				g_bScheduleTimeCheck = FALSE;
@@ -585,24 +586,24 @@ BOOL OnLoginAuto(BYTE &nAddrCount, BYTE* pbAddrInfo)
 		SetStatus(STATUS_SERVERMAINTANCE);
 		return FALSE;
 	}
-	/*else if (*(BYTE*)(pbRecvData + 24) == 0x9E || *(BYTE*)(pbRecvData + 24) == 0x34)
-	{
-		delete[] pbRecvData;
-		pbRecvData = NULL;
-		g_cClient.DisConnect();
-		SetStatus(STATUS_NOUSERINFO);
-		return FALSE;
-	}
-	else if (*(BYTE*)(pbRecvData + 24) != 0)
-	{
-		delete[] pbRecvData;
-		pbRecvData = NULL;
-		g_cClient.DisConnect();
-		SetStatus(STATUS_RECVFAIL);
-		return FALSE;
-	}*/
+	//else if (*(BYTE*)(pbRecvData + 24) == 0x9E || *(BYTE*)(pbRecvData + 24) == 0x34)
+	//{
+	//	delete[] pbRecvData;
+	//	pbRecvData = NULL;
+	//	g_cClient.DisConnect();
+	//	SetStatus(STATUS_NOUSERINFO);
+	//	return FALSE;
+	//}
+	//else if (*(BYTE*)(pbRecvData + 24) != 0)
+	//{
+	//	delete[] pbRecvData;
+	//	pbRecvData = NULL;
+	//	g_cClient.DisConnect();
+	//	SetStatus(STATUS_RECVFAIL);
+	//	return FALSE;
+	//}
 
-	XMsg(L"[NW] TESTTTTTTTTTTTTTTTTTTTTTTTTTTT");
+	XMsg(L"[Detail] STATUS_LOGINSUCCESS");
 
 	SetStatus(STATUS_LOGINSUCCESS, *(DWORD*)(pbRecvData + 0x00));
 

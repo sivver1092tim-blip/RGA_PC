@@ -149,7 +149,7 @@ BOOL CDetailDlg::OnInitDialog()
 
 	VMProtectBeginUltra("OnInitDialog");
 
-	CreateThread(0, 0, (LPTHREAD_START_ROUTINE)ClientThread, (LPVOID)this, 0, &g_dwClientTID);
+	//CreateThread(0, 0, (LPTHREAD_START_ROUTINE)ClientThread, (LPVOID)this, 0, &g_dwClientTID);
 	CreateThread(0, 0, (LPTHREAD_START_ROUTINE)ControlThread, 0, 0, 0);
 
 	swprintf(szStr, VMProtectDecryptStringW(EVENT_NAME_2), g_szAutoID);

@@ -105,6 +105,7 @@ extern int					g_nScheduleCountTemp;
 extern Schedule_Time*		g_pScheduleTimeTemp;
 
 extern WORD					g_wLanguageID;
+extern BOOL					g_bTaiwanLang;
 
 extern BOOL					g_bScheduleTimeCheck;
 extern int					g_nScheduleTimeValue;

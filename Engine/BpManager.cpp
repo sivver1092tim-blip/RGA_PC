@@ -20,7 +20,7 @@ DWORD64 g_aryParamValueList[MAX_PARAM_VALUE_COUNT] = { 0, };
 int		g_nParamValueCount = 0;
 
 
-LONG WINAPI MyVectoredHandler(struct _EXCEPTION_POINTERS *except);
+
 CBpManager g_BPManager;
 CBpManager::CBpManager(void)
 {
