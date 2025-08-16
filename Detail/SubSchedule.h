@@ -33,12 +33,12 @@ public:
 	CListCtrl m_lstSubSchedule;
 
 	CComboBox m_cbCharActor;
-	CComboBox m_cbCharClass;
+	//CComboBox m_cbCharClass;
 
 	int m_nCharActor;
-	int m_nCharClass;
+	//int m_nCharClass;
 
-	BOOL m_bSnakeDungeon;
+	//BOOL m_bSnakeDungeon;
 
 	void SetControlText();
 	void LoadSetting();

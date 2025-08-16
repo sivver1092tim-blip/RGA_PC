@@ -25,7 +25,9 @@
 #define _PRINT_LOG_
 //#define _TEST_VERSION_
 //#define DISABLE_GAMEGUARD
-
+#define ADDR_BASEADDR1												0x7FF835510000//0x7FF8174B0000
+#define ADDR_CHECKGUARD1												0x7FF83836D3EF//0x7FF817BA227F
+#define OFFSET_CHECKGUARD1											0x0000000001C0//0x0000000001C0
 //											//[2025-8-13]	//[2025-07-30]	//[2025-07-16]		//[2025-06-25]		//[2025-06-11]		//[2025-05-07]		//[2025-04-30]		//[2025-04-10]	////[2025-04-09]	////[2025-03-26]	////[2025-03-12]	////[2025-03-05]	//[2025-02-26]	//[2025-01-24-1]	////[2025-01-24]	//[2025-01-22]	//[2024-12-18-01]	////[2024-12-18]	////[2024-11-29]	[2024-11-27]	[2024-11-13]	[2024-10-30]		[2024-10-16]		[2024-10-11]		[2024-10-04]		[2024-10-02]		[2024-08-28]		[2024-08-14]		[2024-07-31]		[2024-07-17]		[2024-06-26]		[2024-06-12]		[2024-06-05]		[2024-05-29]		[2024-05-01]		[2024-04-24]		[2024-04-11]		[2024-03-27]		[2024-03-20]		[2024-03-13]		[2024-02-28]		[2024-02-14]		[2024-02-07]		[2024-01-31]		[2024-01-17]		[2023-12-27]		[2023-12-20]		[2023-11-29]		[2023-11-15]		[2023-10-25]		[2023-10-11]		[2023-09-26]		[2023-09-14]		[2023-09-13]		[2023-08-31]		[2023-08-30]		[2023-08-16]		[2023-07-26]		[2023-07-12]		[2023-06-28]		[2023-06-21]		[2023-06-14]		[2023-06-02]		[2023-05-31]		[2023-05-26]		[2023-05-17]		[2023-04-26]		[2023-04-19]		[2023-04-12]		[2023-03-29]		[2023-03-15]		[2023-03-08]		[2023-02-22]		[2023-02-08]		[2023-01-26]		[2023-01-11]		[2023-01-05]		[2022-12-28]		[2022-12-21]		[2022-11-30]		[2022-11-23]		[2022-11-16]		[2022-11-02]		[2022-10-26]		[2022-10-12]		[2022-10-05]		[2022-09-28]		[2022-09-14]		[2022-08-31]		[2022-08-10]		[2022-07-27]		[2022-07-13]		[2022-06-29]		[2022-06-15]		[2022-05-26]	[2022-05-25]	[2022-05-11]	[2022-04-27]	[2022-04-13]	[2022-03-31]	[2022-03-30]	[2022-03-29]	[2022-01-26]	[2022-01-12]	[2021-12-23]	[2021-12-08]	[2021-11-24]	[2021-11-10]	[2021-10-27]	[2021-10-13]	[2021-09-29]		[2021-09-15]		[2021-09-08]		[2021-08-25]		[2021-08-11] [2021-07-28] [2021-07-12]
 
 //#define ADDR_BASEADDR						0x7FF72F040000	//0x7FF6AB380000	//0x7FF78F9C0000	//0x7FF7005F0000	//0x7FF723540000	//0x7FF6F3220000	//0x7FF6E5DB0000	//0x7FF757160000	//0x7FF67FAE0000	//0x7FF6D4B70000	//0x7FF669070000	//0x7FF75F9E0000	//0x7FF7970E0000	//0x7FF689B60000	//0x7FF7F59F0000	//0x7FF792960000	//0x7FF6A6B60000	//0x7FF61C110000	//0x7FF639BC0000//	0x7FF69B5E0000//	0x7FF6DE410000//	0x7FF676430000//	0x7FF7E1290000//	0x7FF75B650000//	0x7FF7DFB20000//	0x7FF6C0CD0000//	0x7FF65B970000//	0x7FF6E3C00000//	0x7FF675490000//	0x7FF728720000//	0x7FF625290000//	0x7FF670700000//	0x7FF78B490000//	0x7FF7EAA40000//	0x7FF7A1980000//	0x7FF6BE220000//	0x7FF6262D0000//	0x7FF6A9160000//	0x7FF758D80000//	0x7FF630E00000//	0x7FF780BA0000//	0x7FF673050000//	0x7FF62A1E0000//	0x7FF6ED660000//	0x7FF6B3170000//	0x7FF6EFA30000//	0x7FF619790000//	0x7FF758210000//	0x7FF76D6C0000//	0x7FF7E26F0000//	0x7FF61D2D0000//	0x7FF65EFA0000//	0x7FF64A4C0000//	0x7FF739A70000//	0x7FF6BBF40000//	0x7FF66FAE0000//	0x7FF6B3F80000//	0x7FF782D80000//	0x7FF6EB6E0000//	0x7FF6F3530000//	0x7FF7B5480000//	0x7FF699CA0000//	0x7FF75BC50000//	0x7FF73A870000//	0x7FF74F3C0000//	0x7FF73B3B0000//	0x7FF6FDAE0000//	0x7FF75F450000//	0x7FF6D58A0000//	0x7FF689120000//	0x7FF7CC960000//	0x7FF7F5E40000//	0x7FF726730000//	0x7FF6048C0000//	0x7FF748F20000//	0x7FF6EF280000//	0x7FF7A5660000//	0x7FF7ED1B0000//	0x7FF6BD990000//	0x7FF6F2C10000//	0x7FF717580000//	0x7FF7A8DF0000//	0x7FF7890B0000//	0x7FF7374C0000//	0x7FF6AD810000//	0x7FF6547F0000//	0x7FF786180000//	0x7FF677D80000//	0x7FF749830000//	0x7FF61C7A0000//	0x7FF7E6DC0000//	0x7FF6250F0000//	0x7FF651BA0000//	0x7FF6FEB90000//	0x7FF7B3C40000//	0x7FF6F4F70000//0x7FF69A0F0000//0x7FF6E81E0000//0x7FF7B6640000	0x7FF70D330000	0x7FF6D6DF0000	0x7FF7F2990000	0x7FF6AEF50000	0x7FF6C8580000	0x7FF70A110000	0x7FF7141E0000	0x7FF7EE4F0000	0x7FF71A680000	0x7FF75D5D0000	0x7FF69CE30000	0x7FF671C50000	0x7FF68F980000	//0x7FF6FBA50000	//0x7FF69DA80000	//0x7FF74D730000	//0x7FF757280000	//0x140000000//0x140000000//0x140000000//
@@ -1739,6 +1741,7 @@ int				g_nMessageProcChaoCount = 0;
 UProjectLH_LHWidget_Collection_NeedItem_Container* g_pCollectionInfo[MAX_COLLECTION];
 
 //#define GAMEADDR(x)			(DWORD64)(x - ADDR_BASEADDR + ((DWORD64)g_hModuleMain))
+#define GAMEADDR1(x)			(DWORD64)(x - ADDR_BASEADDR1 + ((DWORD64)g_hAssemblyModuleMain))
 #define GAMEADDR(x)			(DWORD64)(x - ADDR_BASEADDR + ((DWORD64)g_hAssemblyModuleMain))
 #define PATCHADDR(x, y)		(DWORD64)((x ^ y ^ 0x20121223) - (DWORD)ADDR_BASEADDR + ((DWORD64)g_hModuleMain))
 #define DUMPADDR(x)			(DWORD64)(x - g_hModuleMain + ADDR_BASEADDR)
@@ -2484,6 +2487,7 @@ BYTE			g_nCheckCount = 0;
 DWORD64			g_qwCheckAddr[20];
 typedef LONG(NTAPI* NtSuspendProcess)(IN HANDLE ProcessHandle);
 BOOL g_bPrintModule = FALSE;
+#if 1
 LONG _stdcall VectoredHandler(struct _EXCEPTION_POINTERS* ExceptionInfo)
 {
 	PCONTEXT pContext = ExceptionInfo->ContextRecord;
@@ -2593,6 +2597,7 @@ LONG _stdcall VectoredHandler(struct _EXCEPTION_POINTERS* ExceptionInfo)
 
 	return EXCEPTION_CONTINUE_SEARCH;
 }
+#endif
 
 //Dll이 메모리에 로드될 때와 언로드될 때, 또는 특정 스레드가 Dll을 호출할때 필요한 초기화 및 정리 작업을 수행한다.
 
@@ -2606,17 +2611,37 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD  ul_reason_for_call, LPVOID lpReser
 	// 	g_dwClientPID = (int)lpReserved / 100;
 	g_hModuleMain = (DWORD64)GetModuleHandle(0);
 	AJLog(L"[ENGINE] ROM.exe address: 0x%016llX", ((DWORD64)g_hModuleMain));
+
+	while (!(DWORD64)GetModuleHandle(L"GameAssembly.dll"))
+		Sleep(100);
+
 	g_hAssemblyModuleMain = (DWORD64)GetModuleHandle(L"GameAssembly.dll");
 	AJLog(L"[ENGINE] GameAssembly address: 0x%016llX", ((DWORD64)g_hAssemblyModuleMain));
 
 	g_hModuleDLL = (DWORD64)hModule;
 
-#ifdef _TEST_VERSION_
+	// -------------- Disable Guard ---------------//
 
-	AddVectoredExceptionHandler(1, (PVECTORED_EXCEPTION_HANDLER)VectoredHandler);
-	SetUnhandledExceptionFilter(VectoredHandler);
+	DWORD64	qwCheck = GAMEADDR1(ADDR_CHECKGUARD1);
+	while (IsBadReadPtr((LPVOID)qwCheck) || *(WORD*)qwCheck != 0x8B48)
+		Sleep(1);
+	DWORD dwOldProtect;
+	VirtualProtect((LPVOID)qwCheck, 0x05, PAGE_EXECUTE_READWRITE, &dwOldProtect);
+	*(BYTE*)qwCheck = 0xE9;
+	*(DWORD*)(qwCheck + 1) = OFFSET_CHECKGUARD1;
+	VirtualProtect((LPVOID)qwCheck, 0x05, dwOldProtect, &dwOldProtect);
 
-#endif // _TEST_VERSION_
+	//GetBpManager()->StopBPHooking();
+	//GetBpManager()->AddBreakPoint(PATCHADDR(Addr_ProcessInput), -1, NULL, CBpManager::_zxa_al);
+	//GetBpManager()->StartBPHooking();
+
+
+//#ifdef _TEST_VERSION_
+//
+//	AddVectoredExceptionHandler(1, (PVECTORED_EXCEPTION_HANDLER)VectoredHandler);
+//	SetUnhandledExceptionFilter(VectoredHandler);
+//
+//#endif // _TEST_VERSION_
 
 	CreateThread(0, 0, (LPTHREAD_START_ROUTINE)SettingThread, 0, 0, 0);
 	return TRUE;
@@ -3137,14 +3162,14 @@ DWORD SettingThread(LPVOID lpParam)
 
 	//////////////////////////////////////////// ROM Mobile로부터 추가된 코드 ////////////////////////////////////////
 	// -------------- Setup DecGlobalMetadata Hook -------------- //
-	AJLog(L"Setting up DecGlobalMetadata Hook...");
-	while (*(DWORD*)(GAMEADDR(Addr_DecGlobalMetaData)) != 0x0001B941)
-		Sleep(100);
-	SetupDecGlobalMetadataHook();
+	//AJLog(L"Setting up DecGlobalMetadata Hook...");
+	//while (*(DWORD*)(GAMEADDR(Addr_DecGlobalMetaData)) != 0x0001B941)
+	//	Sleep(100);
+	//SetupDecGlobalMetadataHook();
 
 	// -------------- Setup CountryCode Hook -------------- //
-	AJLog(L"Setting up CountryCode Hook...");
-	SetupCountryCodeHook();
+	//AJLog(L"Setting up CountryCode Hook...");
+	//SetupCountryCodeHook();
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	// -------------- Set Timer -------------- //
@@ -3414,7 +3439,10 @@ void OnDevelopMessage()
 		XMsg(L"[LEGEND<E>] Real Write memory Address %llX", dwRealWriteAddress);
 
 		if (VirtualProtect((LPVOID)dwRealWriteAddress, g_pGameMapping->qwWriteLength, PAGE_EXECUTE_READWRITE, &dwOldProtect) == NULL)
+		{ 
+			XMsg(L"[LEGEND<E>] Failed to protect virtual address %llX", dwRealWriteAddress);
 			return;
+		}
 
 		if (!IsBadWritePtr((void*)dwRealWriteAddress, g_pGameMapping->qwWriteLength))
 		{
@@ -3457,6 +3485,14 @@ void OnDevelopMessage()
 			g_pGameMapping->stExtraRegisterInfo.qwHexValueToWriteWhenHooked,
 			g_pGameMapping->stExtraRegisterInfo.dwUnprintSameRegIdxWhenHooked
 		);
+
+		DWORD dwOldProtect;
+		if (VirtualProtect((LPVOID)dwRVAAddress, 10, PAGE_EXECUTE_READWRITE, &dwOldProtect) == NULL)
+		{
+			XMsg(L"[LEGEND<E>] Failed to protect virtual address %llX", dwRVAAddress);
+			return;
+		}
+		VirtualProtect((LPVOID)dwRVAAddress, 10, dwOldProtect, NULL);
 
 		GetBpManager()->AddBreakPoint(dwRVAAddress, (int)g_pGameMapping->nNextHookDelta, &g_pGameMapping->stExtraRegisterInfo, CBpManager::OnHookedFuncCalled, CBpManager::OnHookedTempCalled);
 		GetBpManager()->StartBPHooking();

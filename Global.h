@@ -41,6 +41,8 @@
 #define MAX_NAME				50
 #define MAX_NAME_LEN			256
 
+#define NOINDEX					-1
+#define MAX_CLASS				3
 #define MAX_SERVER				10 //11
 #define MAX_WORLD				7
 #define MAX_FIELD				20
@@ -55,6 +57,7 @@
 #define MAX_PARTYDUNGEON		4
 #define MAX_EXPAND				9
 #define MAX_EXCHANGE			35
+#define MAX_SKILLRES			70
 
 #define ItemMode_None			0
 #define ItemMode_Sell			1
@@ -283,6 +286,14 @@ typedef struct _DETAIL_ITEM
 	BYTE	bEmpty[20];
 }DETAIL_ITEM;
 
+// -------------- ScheduleSkill --------------//
+typedef struct _SKILL_INTERVAL_
+{
+	BYTE		bEnable;
+	DWORD		dwSkillID;
+	int			nInterval;
+} SKILL_INTERVAL;
+
 // -------------- ScheduleOther --------------//
 
 typedef struct _OTHER_SETTING_
@@ -417,6 +428,20 @@ typedef struct _stExtraRegInfo
 
 }STExtraRegInfo, * PSTExtraRegInfo;
 
+typedef struct tagMultiName
+{
+	WCHAR	szKRName[MAX_NAME];
+	WCHAR	szTWName[MAX_NAME];
+} MultiName;
+
+typedef struct tagSkillRes
+{
+	WCHAR	szKRName[MAX_NAME];
+	WCHAR	szTWName[MAX_NAME];
+	DWORD	dwID;
+	BOOL	bCanAuto;
+	int		nClassType;
+} SkillRes;
 
 enum E_REGISTER_TYPE
 {
@@ -629,6 +654,8 @@ extern WCHAR		g_szItemMode[MAX_MODE][MAX_NAME];
 extern WCHAR		g_szItemGrade[MAX_GRADE][MAX_NAME];
 extern WCHAR		g_szItemType[MAX_TYPE][MAX_NAME];
 extern WCHAR		g_szPartyDungeonName[MAX_PARTYDUNGEON][MAX_NAME];
+extern MultiName	g_pCharActor[MAX_CLASS];
+extern SkillRes		g_pSkillRes[MAX_SKILLRES];
 
 extern WCHAR		g_szAppPath[MAX_PATH];
 
@@ -636,6 +663,7 @@ extern AVATAR_RES	g_pAvatarRes[MAX_AVATARRES];
 extern VEHICLE_RES	g_pVehicleRes[MAX_VEHICLERES];
 extern WEAPON_RES	g_pWeaponRes[MAX_WEAPONRES];
 extern MAINQUEST	g_pMainQuest[MAX_MAINQUEST];
+extern SKILL_INTERVAL	g_pDefaultSkill[MAX_CLASS][10];
 
 extern WCHAR		g_szExpendItemList[MAX_EXPAND][MAX_NAME];
 extern WCHAR		g_szExchangeItemList[MAX_EXCHANGE][MAX_NAME];

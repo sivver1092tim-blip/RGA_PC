@@ -906,17 +906,17 @@ DWORD TraceThread(int nIndex)		// 실행 쓰레드
 				break;
 			case STATUS_LOGINSUCCESS:
 				{
-					unsigned int nValue = (unsigned int)pStatusInfo->nValue;
+					//unsigned int nValue = (unsigned int)pStatusInfo->nValue;
 
-					int nDate = nValue / 100000000;
-					nDate = nDate * 100 + (nValue % 100000000) / 1000000;
-					nDate = nDate * 100 + (nValue % 1000000) / 10000;
-					swprintf_s(szStr, MAX_PATH, L"%d", nDate);
-					g_pAppDlg->m_lstUser.SetItemText(nIndex, 16, szStr);
+					//int nDate = nValue / 100000000;
+					//nDate = nDate * 100 + (nValue % 100000000) / 1000000;
+					//nDate = nDate * 100 + (nValue % 1000000) / 10000;
+					//swprintf_s(szStr, MAX_PATH, L"%d", nDate);
+					//g_pAppDlg->m_lstUser.SetItemText(nIndex, 16, szStr);
 
-					swprintf_s(szStr, MAX_PATH, VMProtectDecryptStringW(L"%02d-%02d-%02d %02d:%02d"), nValue / 100000000, (nValue % 100000000) / 1000000,
-						(nValue % 1000000) / 10000, (nValue % 10000) / 100, nValue % 100);
-					g_pAppDlg->m_lstUser.SetItemText(nIndex, 6, szStr);
+					//swprintf_s(szStr, MAX_PATH, VMProtectDecryptStringW(L"%02d-%02d-%02d %02d:%02d"), nValue / 100000000, (nValue % 100000000) / 1000000,
+					//	(nValue % 1000000) / 10000, (nValue % 10000) / 100, nValue % 100);
+					//g_pAppDlg->m_lstUser.SetItemText(nIndex, 6, szStr);
 
 					strLabel.LoadString(NULL, IDS_AUTHSUCCESS, g_wLanguageID);
 					g_pAppDlg->m_lstUser.SetItemText(nIndex, 8, strLabel.GetBuffer());
