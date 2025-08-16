@@ -381,7 +381,7 @@ BEGIN
     IDS_UPDATEERROR         "업데이트 목록을 확인할수 없습니다"
     IDS_SERVERERROR         "서버와 접속이 끊어졌습니다"
     IDS_TIMEEXPIRED         "사용기간이 만료되었습니다"
-    IDS_UPDATEALRAM         "오딘PC (Ver.%04X) (업데이트 가능)"
+    IDS_UPDATEALRAM         "RomGoldenAgePC (Ver.%04X) (업데이트 가능)"
     IDS_CARD                "코드"
     IDS_STATUS              "상태"
     IDS_FILEREADERROR       "파일 읽기에 실패하였습니다. 다시 확인해주십시오."
@@ -429,7 +429,7 @@ BEGIN
     IDS_GAMEPW              "게임비번"
     IDS_GAMESERVER          "게임서버"
     IDS_GAMECHAR            "캐릭"
-    IDS_GAMECAPTION         "오딘PC (Ver.%04X)"
+    IDS_GAMECAPTION         "RomGoldenAgePC (Ver.%04X)"
 END
 
 STRINGTABLE

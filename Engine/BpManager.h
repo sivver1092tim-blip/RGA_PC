@@ -31,12 +31,14 @@ struct	BP_INFO
 	STExtraRegInfo stExtraRegisterInfo;
 };
 
+extern HANDLE			g_hVectorHandler;
 extern CONTEXT			*g_pContext;
 extern DWORD64			g_hAssemblyModuleMain;
 extern HANDLE			g_hMyProc;
 
 #define Address_RVA2VA(x)	(DWORD64)(x + (DWORD64)g_hAssemblyModuleMain)
 #define Address_VA2RVA(x)	(DWORD64)(x - (DWORD64)g_hAssemblyModuleMain)
+LONG WINAPI MyVectoredHandler(struct _EXCEPTION_POINTERS* except);
 
 class CBpManager
 {

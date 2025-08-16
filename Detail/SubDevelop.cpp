@@ -231,6 +231,7 @@ void CSubDevelop::OnBnClickedBtnWriteMemory()
 		return;
 	}
 
+	g_pGameMapping->bWriteMemoryFlag = 1;
 	g_pGameMapping->qwWriteAddress = _tcstoui64(strWriteAddr.GetBuffer(), NULL, 16);
 	if (m_nWriteMemoryType == e_IO_Memory_BYTE)
 	{
@@ -293,7 +294,7 @@ void CSubDevelop::OnBnClickedBtnHookFunc()
 	g_pGameMapping->bHookMemoryFlag = 1;
 	g_pGameMapping->qwHookAddress = _tcstoui64(strHookAddr.GetBuffer(), NULL, 16);
 	g_pGameMapping->nNextHookDelta = GetDlgItemInt(IDC_EDT_DELTA_HOOK_OFFSET);
-	g_pGameMapping->bWriteIsRVA = GET_CHECK(IDC_CHK_IS_RVA_ADDRESS);
+	g_pGameMapping->bHookIsRVA = GET_CHECK(IDC_CHK_IS_RVA_ADDRESS);
 
 	g_pGameMapping->stExtraRegisterInfo.bUnprintSameCaller = GET_CHECK(IDC_CHK_UNPRINT_SAME_CALLER);
 	g_pGameMapping->stExtraRegisterInfo.bUnprintSameRegister = GET_CHECK(IDC_CHK_UNPRINT_SAME_PARAM);
