@@ -3486,6 +3486,14 @@ void OnDevelopMessage()
 			g_pGameMapping->stExtraRegisterInfo.dwUnprintSameRegIdxWhenHooked
 		);
 
+		DWORD dwOldProtect;
+		if (VirtualProtect((LPVOID)dwRVAAddress, 10, PAGE_EXECUTE_READWRITE, &dwOldProtect) == NULL)
+		{
+			XMsg(L"[LEGEND<E>] Failed to protect virtual address %llX", dwRVAAddress);
+			return;
+		}
+		VirtualProtect((LPVOID)dwRVAAddress, 10, dwOldProtect, NULL);
+
 		GetBpManager()->AddBreakPoint(dwRVAAddress, (int)g_pGameMapping->nNextHookDelta, &g_pGameMapping->stExtraRegisterInfo, CBpManager::OnHookedFuncCalled, CBpManager::OnHookedTempCalled);
 		GetBpManager()->StartBPHooking();
 		GetBpManager()->PrintCurrentBpList();
