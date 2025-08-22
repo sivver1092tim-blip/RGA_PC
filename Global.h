@@ -40,24 +40,47 @@
 #define MAX_STRING_LEN			256
 #define MAX_NAME				50
 #define MAX_NAME_LEN			256
+#define MAX_CHARACTER			5
+#define MAX_INVEN				300
+#define MAX_OBJECT				500
+#define MAX_WAREHOUSE			100
+#define MAX_SKILL				100
+#define MAX_SKILLCYCLE			50
+#define MAX_QUICKSLOT			32
+#define MAX_QUEST				20
+#define MAX_ITEMCOLLECTION		5000
+#define MAX_COSTUME				300
+#define MAX_PET					200
+#define MAX_MAP					200
+#define MAX_NPCITEM				50
+#define	MAX_MARKETMAP			200
+#define MAX_SALE				20
+#define MAX_AUCTION				50
+#define MAX_CAOQUEST			50
+#define MAX_MAKEMATRES			10
+#define MAX_SKILLBOOKRES		24
 
 #define NOINDEX					-1
 #define MAX_CLASS				3
-#define MAX_SERVER				10 //11
+#define MAX_STAT				5
+#define MAX_SERVER				15
 #define MAX_WORLD				7
-#define MAX_FIELD				20
-#define MAX_DUNGEON				52
+#define MAX_FIELD				54
+#define MAX_DUNGEON				68 + 6
+#define MAX_WORLDBOSS			6
+#define DUNGEON					68
+#define MAX_RAIDBOSS			6
+#define MAX_MAKEEVENTRES		5
 #define MAX_MODE				8
 #define MAX_GRADE				6
-#define MAX_TYPE				7
-#define MAX_AVATARRES			259 * 2 + 258 * 3 //1162
-#define MAX_VEHICLERES			155	//152
-#define MAX_WEAPONRES			1410	//1235
-#define MAX_MAINQUEST			880
-#define MAX_PARTYDUNGEON		4
-#define MAX_EXPAND				9
-#define MAX_EXCHANGE			35
+#define MAX_TYPE_1				7
 #define MAX_SKILLRES			70
+#define MAX_POTION				7
+#define MAX_ITEM				50
+#define MAX_CASHITEM			22
+#define MAX_MAKERES				25 + 5
+#define MAX_QUICKSLOTRES		10
+#define	NOSELLINGPRICE			999999.0f
 
 #define ItemMode_None			0
 #define ItemMode_Sell			1
@@ -75,6 +98,7 @@
 #define ItemType_Dungeon		4
 #define ItemType_Gold			5
 #define ItemType_Skill			6
+#define ItemType_None			7
 
 #define OPCODE_VERSIONCHECK		0
 #define OPCODE_USERLOGIN		1
@@ -148,6 +172,8 @@ typedef struct _SCHEDULE_SETTING_
 
 	int		nHuntTime;
 
+	BYTE	nWeek;
+
 	BYTE	bEmpty[100];
 }SCHEDULE_SETTING;
 
@@ -160,71 +186,77 @@ typedef struct _ITEM_RETURN_
 	int			nCount;
 }ITEM_RETURN;
 
+typedef struct _ITEM_RETURN_W_
+{
+	BYTE		bEnable;
+	WCHAR		szName[MAX_NAME];
+	int			nCount;
+} ITEM_RETURN_W;
+
 typedef struct _HUNT_SETTING_
 {
 	BYTE		nMoveMode;
 
-	BYTE		nWorldIndex;
-	BYTE		nFieldIndex;
-	float		fHuntPosX;
-	float		fHuntPosY;
-	float		fHuntPosZ;
+	BYTE		bDoQuest;
+	BYTE		bQuestTarget;
+	int			nQuestTarget;
 
-	BYTE		nDungeonIndex;
-
-	BYTE		nTargetRange;
-
-	BYTE		bMonTeleport;
-	int			nMonTeleport;
-
-	BYTE		bMannerMode;
-
-	BYTE		bGatherEnable;
-	BYTE		bGatherStone;
-	BYTE		bGatherWood;
-	BYTE		bGatherGrass;
-
-	BYTE		bPartyEnable;
-	BYTE		nPartyMode;
-
-	BYTE		bHpReturnEnable;
-	BYTE		nHpReturnValue;
-	int			nHpReturnTime;
-
-	BYTE		bWeightReturnEnable;
-	BYTE		nWeightReturnValue;
-	int			nWeightReturnTime;
-
-	BYTE		bDeadStop;
-	int			nDeadTime;
-	int			nDeadCount;
-
-	BYTE		bReconnectStop;
-	int			nReconnectTime;
-	int			nReconnectCount;
-
+	BYTE		nDungeon;
 	BYTE		bDungeonPos;
 	float		fDungeonPosX;
 	float		fDungeonPosY;
 	float		fDungeonPosZ;
 
-	BYTE		bContinueMainQuest;
-	BYTE		bPartyMove;					// 파장에게 이동
-	BYTE		bPartyMember;				// 파장 / 파원
-	WCHAR		szPartyMaster[MAX_NAME];	// 파장 이름
+	BYTE		nField;
+	BYTE		bFieldPos;
+	float		fFieldPosX;
+	float		fFieldPosY;
+	float		fFieldPosZ;
 
-	BYTE		bQuestLevel;				// 퀘스트 (레벨)
-	int			nQuestLevel;				//
-	BYTE		bQuestWorld;				// 퀘스트 (월드)
-	WORD		nQuestWorld;
+	BYTE		bLimitLv;
+	BYTE		nLimitLvMin;
+	BYTE		nLimitLvMax;
 
-	BYTE		bDeadStopResume;
-	BYTE		nDeadStopResume;
+	BYTE		bLimitPower;
+	int			nLimitPowerMin;
+	int			nLimitPowerMax;
 
-	BYTE		bEnablePickGrade;
-	BYTE		nItemPickGrade;
+	BYTE		bHpReturn;
+	BYTE		nHpReturnValue;
+	int			nHpReturnTime;
+
+	BYTE		bWeightReturn;
+	BYTE		nWeightReturnValue;
+	int			nWeightReturnTime;
+
+	BYTE		nHuntRange;
+
+	BYTE		bMobTel;
+	int			nMobTelTime;
+
+	BYTE		bChannel;
+	BYTE		nChannelMode;
+	BYTE		nChannelFixed;
+	int			nChannelFlexibleTime;
+
+	BYTE		bMannerMode;
+
+	BYTE		bGather;
+	BYTE		bGatherStone;
+	BYTE		bGatherIron;
+	BYTE		bGatherWood;
+	BYTE		bGatherGrass;
+
+	BYTE		bLimitDead;
+	int			nLimitDeadTime;
+	int			nLimitDeadCount;
+
+	BYTE		bLimitRecon;
+	int			nLimitReconTime;
+	int			nLimitReconCount;
 
 	BYTE		bEmpty[100];
+
 }HUNT_SETTING;
 
 // -------------- ScheduleBuy --------------//
@@ -237,34 +269,48 @@ typedef struct _ITEM_BUY_
 	int		nMaxCount;
 }ITEM_BUY;
 
+typedef struct _ITEM_BUY_W_
+{
+	BYTE		bEnable;
+	WCHAR		szName[MAX_NAME];
+	int			nCurCount;
+	int			nMaxCount;
+} ITEM_BUY_W;
+
 typedef struct _BUY_SETTING_
 {
-	int		nSummonGold;
-	BYTE	bSummonAvatar[3];
-	BYTE	bSummonRiding[3];
-	BYTE	bSummonRune[2];
+	int			nSummonGold;
+	BYTE		bSummonCostume[3];
+	BYTE		bSummonPet[3];
+	BYTE		bSummonEvent;
 
-	int		nPaperGold;
-	BYTE	bPaperBuy[4];
-	int		nPaperCount[4];
+	int			nScrollGold;
+	BYTE		bScrollBuy[2];
+	BYTE		nScrollBuy[2];
 
-	BYTE	bSkillGold;
-	int		nSkillGold;
+	int			nPotionGold;
+	BYTE		bBulk;
 
-	int		nExpendGold;
+	BYTE		bBuySkillGold;
+	int			nBuySkillGold;
+	BYTE		bBuyRareSkill;
 
-	BYTE	bBuyHighSkill;
+	int			nCristalGold;
+	BYTE		bCristalBox;
+	BYTE		nCristalBox;
+	BYTE		bCristalPet1;
+	BYTE		bCristalPet2;
 
-	BYTE	bCashItemBuy[3];
-	BYTE	nCashItemBuy[3];
+	int			nOtherGold;
+	BYTE		bEquipBox;
+	BYTE		nEquipBox;
 
-	BYTE	bWeaponType[3];
+	BYTE		bSummonMonster[3];
 
-	BYTE	bMimirPotion[5];
+	BYTE		bScrollElven;
+	BYTE		nScrollElven;
 
-	BYTE	bBlessingStone[2];
-
-	BYTE	bEmpty[100];
+	BYTE		bEmpty[100];
 }BUY_SETTING;
 
 // -------------- ScheduleItem --------------//
@@ -275,10 +321,10 @@ typedef struct _DETAIL_ITEM
 	WCHAR	szName[MAX_NAME];
 	BYTE	nMode;
 
-	int		nMarketCount;
-	BYTE	nMarketMode;
-	int		nMarketIndex;
-	int		nMarketPrice;
+	int		nMarketCount;		//경매등록개수
+	BYTE	nMarketMode;		//0:고정	1:최저
+	int		nMarketIndex;		//최저검색 몇번째
+	int		nMarketPrice;		//가격차이
 
 	BYTE	bItemEnchant;
 	int		nItemEnchant;
@@ -296,103 +342,85 @@ typedef struct _SKILL_INTERVAL_
 
 // -------------- ScheduleOther --------------//
 
+
+typedef struct _ITEM_SETTING_
+{
+	BYTE		bTradeLimitTime;
+	BYTE		nTradeLimitTime;
+
+	BYTE		bEmpty[100];
+} ITEM_SETTING;
+
+
 typedef struct _OTHER_SETTING_
 {
-	BYTE	bVillageRequest;			// 마을 의뢰 퀘스트
-	BYTE	bValhallaFight;				// 발할라 대전
-	BYTE	bRecoverFree;				// 무료 복구 (경험치)
-	BYTE	bRecoverGold;				// 골드 복구 (경험치)
-	BYTE	bAchieveReward;				// 업적 보상
-	BYTE	bAutoEquip;					// 자동 장착
-	BYTE	bEventReward;				// 이벤트 보상
-	BYTE	bGuildCheck;				// 길드 출석
-	BYTE	bGuildDonate;				// 길드 기부
-	int		nGuildDonate;				// 얼마이상일때
-	BYTE	bCharacMail;				// 캐릭 우편
-	BYTE	bAccountMail;				// 계정 우편
-	BYTE	bStoreEquips;				// 스케줄 완료시 장비 창고에 보관
-	BYTE	bGetStoreEquips;			// 스케줄 시작시 장비 창고에서 찾기
-	BYTE	nVillageRegion;				// 마을 의뢰 퀘스트 지역
-	BYTE	bGuildJoin;					// 길드 가입
-	BYTE	bUseVillageQuest;			// 마을 의뢰서 사용
-	BYTE	bMoveChaoEnable;			// 이동 카오 체크
-	WORD	nMoveChaoTime;
-	WORD	nMoveChaoCount;
-	BYTE	bQuestChaoEnable;
-	WORD	nQuestChaoTime;
+	BYTE		bReqQuest;
+	BYTE		bEmpty00[1];
 
-	BYTE	bCollectItem;				// 아이템 컬렉션
-	BYTE	bCollectGrade[4];			// 컬렉션 등급
-	BYTE	bCollectTab[4];				// 컬렉션 탭
-	BYTE	bCollectEnchant;			// 컬렉션 강화 장비
-	BYTE	nCollectMin;
-	BYTE	nCollectMax;
-	BYTE	bCollectFilter;				// 컬렉션 필터
-	BYTE	bCollectType[6];			// 컬렉션 종류
+	BYTE		bAutoEquip;
+	BYTE		bEquipEnchant;
 
-	BYTE	bDissolveItem;				// 아이템 분해
-	BYTE	bDissolveGrade[4];			// 분해 등급
-	BYTE	bDissolveEnchant;			// 강화된 장비 분해
-	BYTE	bDissolveManufacture;		// 세공된 장비 분해
-	BYTE	bDissolveBelong;			// 귀속 장비 분해
-	BYTE	bDissolveNotBelong;			// 비귀속 장비 분해
+	BYTE		bRecoverFree;
+	BYTE		bRecoverGold;
 
-	BYTE	bWorldBoss;					// 가름 월드 보스
-	BYTE	bTreasureBox;				// 보물 상자
+	BYTE		bEvent;
+	BYTE		bAchievement;
+	BYTE		bMail;
 
-	BYTE	bPartyDungeon;				// 파티 던전
-	BYTE	bDungeonType;
-	BYTE	nDungeonType;
-	BYTE	bDungeonDiff;
-	BYTE	nDungeonDiff;
+	BYTE		bGuildJoin;
+	BYTE		bGuildAttendance;
+	BYTE		bGuildDonate;
+	int			nGuildDonateGold;
 
-	BYTE	bEmptyByte;
-	BYTE	bSkillInteraction;
-	BYTE	bMimirPotion;
-	BYTE	bUseTicket;
+	BYTE		bMoveCao;
+	int			nMoveCaoTime;
+	int			nMoveCaoCount;
 
-	WORD	nDungeonLevel;				// 파티 던전 입장레벨
-	BYTE	bMemberCount;				// 파티 던전 인원수
-	BYTE	nMemberCount;
-	BYTE	bAverageLevel;				// 평균 레벨 체크
-	WORD	nAverageLevel;
-	BYTE	bBusLevel;					// 캐리받을 레벨
-	WORD	nBusLevel;
+	BYTE		bQuestCao;
+	int			nQuestCaoTime;
 
-	BYTE	bEnchantStone[3];			// 거래 가능 강화석 사용
+	BYTE		bGetEquip;
+	BYTE		bGetAll;
+	BYTE		bNetworkExit;
 
-	BYTE	bBuyBigPotion;				// 큰 물약 구매
-	BYTE	bEnableSubQuest;			// 서브 퀘스트
+	BYTE		bCollectItem;
+	BYTE		bCollectGrade[4];
+	BYTE		bCollectEnchant;
+	BYTE		nCollectEnchant;
 
-	// 쓰지 않는 옵션들 //
-	BYTE	bMoveHack;
-	int		nMoveHack;
-	BYTE	bAttackHack;
-	int		nAttackHack;
-	BYTE	bSkillHack;
-	int		nSkillHack;
-	BYTE	bCoolHack;
-	int		nCoolHack;
-	BYTE	bHitHack;
-	int		nHitHack;
-	// --------------- //
+	BYTE		bDissolveItem;
+	BYTE		bDissolveGrade[4];
+	BYTE		bDissolveEnchant;
+	BYTE		bDissolveSegong;
+	BYTE		bDissolveBelong;
+	BYTE		bDissolveNotBelong;
 
-	BYTE	bWeaponTreasure;			// 무기 형상 보물 상자
+	BYTE		bEnchantScroll[3];
 
-	BYTE	bTradeDissolve;				// 거래 가격에 따른ㄴ 장비 분해
-	int		nTradeDissolve;
+	BYTE		bTradeDissolve;
+	int			nTradeDissolve;
 
-	BYTE	bCombineAvatar;				// 합성
-	BYTE	bCombineRide;
-	BYTE	bCombineWeapon;
+	BYTE		bRaid;
 
-	BYTE	bFrameEnable;
-	int		nFrameValue;
+	BYTE		bCraft;
+	BYTE		bCraftWeapon;
+	BYTE		bCraftArmor;
+	BYTE		bCraftAcce;
 
-	BYTE	bEventBuff;					// 석상 버프
-	
-	BYTE	bEmpty[100];
+	int			nNetworkExit;
+
+	BYTE		bReqQuestGrade[4];
+	BYTE		bReqQuestCoin;
+
+	BYTE		bRaidBoss[8];
+
+	BYTE		bAutoCombineCostume;
+	BYTE		bAutoCombinePet;
+
+	BYTE		bEmpty[100];
 }OTHER_SETTING;
+
+
 
 typedef struct _stExtraRegInfo
 {
@@ -442,6 +470,105 @@ typedef struct tagSkillRes
 	BOOL	bCanAuto;
 	int		nClassType;
 } SkillRes;
+
+
+typedef struct tagPotionRes
+{
+	WCHAR		szKRName[MAX_NAME];
+	WCHAR		szTWName[MAX_NAME];
+	DWORD		dwID;
+	int			nClassType;
+} PotionRes;
+
+
+typedef struct tagSkillBookRes
+{
+	WCHAR		szName[MAX_NAME];
+	DWORD		dwID;
+	int			nLevel;
+	int			nPrice;
+	int			nGrade;
+	int			nClassType;
+} SkillBookRes;
+
+typedef struct tagMakeMatRes
+{
+	WCHAR		szName[MAX_NAME];
+	DWORD		dwID;
+	int			nCount;
+	int			nValue;
+	int			nEnchant;
+} MakeMatRes;
+
+typedef struct tagMakeRes
+{
+	WCHAR		szName[MAX_NAME];
+	int			nTab;		// CUIItemMakeWindow.ETab
+	int			nMain;
+	int			nSub;
+	DWORD		dwID;
+
+	BOOL		bDisable;
+
+	int			nMat;
+	MakeMatRes	pMat[MAX_MAKEMATRES];
+} MakeRes;
+
+typedef struct tagQuickSlotRes
+{
+	WCHAR		szKRName[MAX_NAME];
+	DWORD		dwID;
+	int			nClassType;
+} QuickSlotRes;
+
+typedef struct tagMakeResUI
+{
+	WCHAR	szKRName[MAX_NAME];
+	WCHAR	szTWName[MAX_NAME];
+	DWORD	dwID;
+} MakeResUI;
+
+// -------------- ScheduleMake --------------//
+typedef struct _MAKE_EVENT_
+{
+	BYTE		bEnable;
+	DWORD		dwMakeID;
+} MAKE_EVENT;
+
+typedef struct _MAKE_SETTING_
+{
+	BYTE		bAutoOpenBox;
+
+	BYTE		bMakeBoxEnable;
+	int			nMakeBoxGold;
+	BYTE		bMakeBox[4];
+
+	BYTE		bMakePetEnable;
+	int			nMakePetGold;
+	BYTE		bMakePet[2];
+
+	BYTE		bMakeMonEnable;
+	int			nMakeMonGold;
+	BYTE		bMakeMon[2];
+
+	BYTE		bMakeStoneEnable;
+	int			nMakeStoneGold;
+	BYTE		bMakeStone[7];
+
+	BYTE		bMakeMatEnable;
+	int			nMakeMatGold;
+	BYTE		bMakeMat[14];
+
+	BYTE		bMakeEventEnable;
+	int			nMakeEventGold;
+	BYTE		nMakeEventCount;
+	MAKE_EVENT	pMakeEventInfo[MAX_ITEM];
+
+	BYTE		bMakeCrystalBox;
+
+	BYTE		bEmpty[100];
+} MAKE_SETTING;
+
 
 enum E_REGISTER_TYPE
 {
@@ -527,6 +654,11 @@ typedef struct _GAME_MAPPING_
 	int		nLevel;
 	int		nGold;
 	int		nDia;
+	int		nPower;
+	int		nCurInvenCount;
+	int		nMaxInvenCount;
+	int		nCurCharacterIndex;
+	int		pCharacterInfo[MAX_CHARACTER];
 
 	BYTE	bDateInit;				// 날자 바껴서 스케줄 정보 초기화 되엇다
 	BYTE	bLogType;				// 0 - 무시, 1 - 스케줄 변경, 2 - 스케줄 완료
@@ -645,28 +777,23 @@ typedef struct _EXCHANGEITEM_
 	int		nGoodsType;
 }EXCHANGEITEM;
 
-extern WCHAR		g_szServerName[MAX_SERVER][MAX_NAME];
-extern WCHAR		g_szWorldName[MAX_WORLD][MAX_NAME];
-extern WCHAR		g_szFieldName[MAX_WORLD][MAX_FIELD][MAX_NAME];
-extern WCHAR		g_szVillageName[MAX_WORLD][MAX_NAME];
-extern WCHAR		g_szDungeonName[MAX_DUNGEON][MAX_NAME];
+extern MultiName	g_szServerName[MAX_SERVER];
+extern MultiName	g_pFieldName[MAX_FIELD];
+extern MultiName	g_pDungeonName[MAX_DUNGEON];
+extern MultiName	g_pRaidBossName[MAX_RAIDBOSS];
 extern WCHAR		g_szItemMode[MAX_MODE][MAX_NAME];
 extern WCHAR		g_szItemGrade[MAX_GRADE][MAX_NAME];
-extern WCHAR		g_szItemType[MAX_TYPE][MAX_NAME];
-extern WCHAR		g_szPartyDungeonName[MAX_PARTYDUNGEON][MAX_NAME];
+extern WCHAR		g_szItemType[MAX_TYPE_1][MAX_NAME];
 extern MultiName	g_pCharActor[MAX_CLASS];
+extern MultiName	g_pStat[MAX_STAT];
+extern PotionRes g_pPotionRes[MAX_POTION];
 extern SkillRes		g_pSkillRes[MAX_SKILLRES];
-
+extern MakeResUI	g_pMakeEventRes[MAX_MAKEEVENTRES];
+extern SkillBookRes	g_pSkillBookRes[];
 extern WCHAR		g_szAppPath[MAX_PATH];
 
-extern AVATAR_RES	g_pAvatarRes[MAX_AVATARRES];
-extern VEHICLE_RES	g_pVehicleRes[MAX_VEHICLERES];
-extern WEAPON_RES	g_pWeaponRes[MAX_WEAPONRES];
-extern MAINQUEST	g_pMainQuest[MAX_MAINQUEST];
 extern SKILL_INTERVAL	g_pDefaultSkill[MAX_CLASS][10];
 
-extern WCHAR		g_szExpendItemList[MAX_EXPAND][MAX_NAME];
-extern WCHAR		g_szExchangeItemList[MAX_EXCHANGE][MAX_NAME];
 
 extern WCHAR		g_aryRegisterList[e_Reg_Count][MAX_NAME_LEN];
 extern WCHAR		g_aryDataValueTypeList[e_DVT_Count][MAX_NAME_LEN];

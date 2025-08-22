@@ -105,6 +105,9 @@
     <ClCompile Include="ScheduleSkill.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ScheduleMake.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AttachEngine.h">
@@ -213,6 +216,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ScheduleSkill.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ScheduleMake.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

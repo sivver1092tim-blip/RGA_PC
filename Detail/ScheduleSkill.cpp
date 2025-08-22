@@ -1,4 +1,4 @@
-// ScheduleSkill.cpp : implementation file
+﻿// ScheduleSkill.cpp : implementation file
 //
 
 #include "stdafx.h"
@@ -36,6 +36,7 @@ BEGIN_MESSAGE_MAP(CScheduleSkill, CDialogEx)
 	ON_BN_CLICKED(IDC_BTN_DEL, &CScheduleSkill::OnBnClickedBtnDel)
 	ON_BN_CLICKED(IDC_BTN_AUTO, &CScheduleSkill::OnBnClickedBtnAuto)
 	ON_NOTIFY(NM_DBLCLK, IDC_LIST_SKILLSET, &CScheduleSkill::OnNMDblclkListSkillset)
+	ON_CBN_SELCHANGE(IDC_COMBO_CLASS, &CScheduleSkill::OnCbnSelchangeComboClass)
 END_MESSAGE_MAP()
 
 
@@ -46,6 +47,45 @@ BOOL CScheduleSkill::OnInitDialog()
 	CDialogEx::OnInitDialog();
 
 	// TODO:  Add extra initialization here
+	CString sLabel;
+	SetControlText();
+
+
+	for (int i = 0; i < MAX_CLASS; i++)
+	{
+		if (g_bTaiwanLang)
+			m_cbClass.AddString(g_pCharActor[i].szTWName);
+		else
+			m_cbClass.AddString(g_pCharActor[i].szKRName);
+	}
+
+	if (g_bTaiwanLang)
+		m_cbClass.AddString(L"我的技能");
+	else
+		m_cbClass.AddString(L"내스킬");
+
+	m_cbClass.SetCurSel(0);
+
+
+	m_lstSkillRes.SetExtendedStyle(m_lstSkillRes.GetExtendedStyle() | LVS_EX_FULLROWSELECT | LVS_EX_GRIDLINES);
+	m_lstSkillRes.InsertColumn(0, L"", LVCFMT_LEFT, 20);
+	sLabel.LoadString(NULL, IDS_SKILLNAME, g_wLanguageID);
+	m_lstSkillRes.InsertColumn(1, sLabel, LVCFMT_LEFT, 100);
+	sLabel.LoadString(NULL, IDS_CHAR, g_wLanguageID);
+	m_lstSkillRes.InsertColumn(2, sLabel, LVCFMT_LEFT, 50);
+
+
+	m_lstSkillSet.SetExtendedStyle(m_lstSkillSet.GetExtendedStyle() | LVS_EX_FULLROWSELECT | LVS_EX_GRIDLINES | LVS_EX_CHECKBOXES);
+	m_lstSkillSet.InsertColumn(0, L"", LVCFMT_LEFT, 20);
+	sLabel.LoadString(NULL, IDS_SKILLNAME, g_wLanguageID);
+	m_lstSkillSet.InsertColumn(1, sLabel, LVCFMT_LEFT, 100);
+	sLabel.LoadString(NULL, IDS_INTERVAL, g_wLanguageID);
+	m_lstSkillSet.InsertColumn(2, sLabel, LVCFMT_LEFT, 50);
+
+
+	UpdateData(FALSE);
+
+	OnCbnSelchangeComboClass();
 
 	return TRUE;  // return TRUE unless you set the focus to a control
 	// EXCEPTION: OCX Property Pages should return FALSE
@@ -327,3 +367,55 @@ void CScheduleSkill::OnNMDblclkListSkillset(NMHDR* pNMHDR, LRESULT* pResult)
 
 	*pResult = 0;
 }
+
+void CScheduleSkill::OnCbnSelchangeComboClass()
+{
+	// TODO: Add your control notification handler code here
+	m_lstSkillRes.DeleteAllItems();
+
+	int nCurSel = m_cbClass.GetCurSel();
+	if (nCurSel < 3)
+	{
+		for (int i = 0; i < MAX_SKILLRES; i++)
+		{
+			if (g_pSkillRes[i].nClassType == -1 || g_pSkillRes[i].nClassType == nCurSel)
+				AddSkillRes(g_pSkillRes[i].dwID);
+		}
+	}
+	else
+	{
+		GetDlgItem(IDC_COMBO_CLASS)->EnableWindow(FALSE);
+		//CreateThread(0, 0, (LPTHREAD_START_ROUTINE)GetSkillInfo, (LPVOID)this, 0, 0);
+	}
+}
+
+//DWORD GetSkillInfo(CScheduleSkill* pDlg)
+//{
+//	g_GameInfo.bType = 0;
+//	SendEvent(OPCODE_REQUEST_GAMEINFO, 4);
+//
+//	int nTickCount = 0;
+//	while (1)
+//	{
+//		if (g_GameInfo.bType == 4)
+//			break;
+//
+//		nTickCount++;
+//		if (nTickCount >= 300)
+//			goto Thread_End;
+//
+//		Sleep(1);
+//	}
+//
+//	for (int i = 0; i < g_GameInfo.nCount; i++)
+//	{
+//		DWORD dwSkillID = *(DWORD*)g_GameInfo.szName[i];
+//
+//		pDlg->AddSkillRes(dwSkillID);
+//	}
+//
+//Thread_End:
+//
+//	pDlg->GetDlgItem(IDC_COMBO_CLASS)->EnableWindow(TRUE);
+//	return 0;
+//}

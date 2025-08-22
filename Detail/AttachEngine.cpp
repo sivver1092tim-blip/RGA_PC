@@ -76,6 +76,7 @@ BOOL				g_bInitDaum = TRUE;
 int					g_nDelayTime = 10;
 
 BOOL				g_bRandomSchedule = FALSE;
+BOOL				g_bUseInitSchedule = TRUE;
 
 typedef LONG (NTAPI *NtSuspendProcess)(IN HANDLE ProcessHandle);
 typedef LONG (NTAPI *NtResumeProcess)(IN HANDLE ProcessHandle);
@@ -2477,7 +2478,7 @@ Game_Attach:
 		}
 
 		HWND hGameWnd = FindMyTopMostWindow((WCHAR*)WND_GAMENAME, (WCHAR*)WNDCLASS_GAMENAME, dwGamePID);
-		AJLog(L"hGameWnd: %d", hGameWnd);
+		XMsg(L"hGameWnd: %d", hGameWnd);
 		if (hGameWnd != NULL)
 		{
 			g_pGameMapping->hGameWnd = hGameWnd;
@@ -2486,6 +2487,7 @@ Game_Attach:
 
 		if (WaitForSingleObject(hGameProcess, 1) != WAIT_TIMEOUT || GetTickCount64() >= qwRunTickCount + 2 * 60 * 1000)
 		{
+			XMsg(L"Game crashed, restart!!");
 			TerminateProcess(hGameProcess, 0);
 			CloseHandle(hGameProcess);
 
@@ -2600,7 +2602,7 @@ Game_Attach:
 
 		if (WaitForSingleObject(hGameProcess, 10) != WAIT_TIMEOUT)
 		{
-			//ShowStatus(0, IDS_STRING60137);
+			ShowStatus(0, IDS_STRING60137);
 			AJLog(L"hGameProcess Event Triggered");
 
 			int nWaitTime = 0;

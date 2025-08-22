@@ -1,6 +1,7 @@
 ﻿#include "stdafx.h"
 #include "BpManager.h"
 #include "dbgSerial.h"
+#include <xstring>
 
 //#include "baseCommon.h"
 //#include "HookingFunc.h"

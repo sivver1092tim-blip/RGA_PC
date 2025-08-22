@@ -1,4 +1,4 @@
-// ItemReturn.cpp : implementation file
+﻿// ItemReturn.cpp : implementation file
 //
 
 #include "stdafx.h"
@@ -7,17 +7,17 @@
 
 
 // CItemReturn dialog
-WCHAR	g_szItemList[9][MAX_NAME] =
+MultiName	g_szItemList[7] =
 {
-	L"HP ȸ�� ����",
-	L"���� ������ũ",
-	L"���ܼ�",
-	L"���� ����",
-	L"�縮Ǯ",
-	L"���� �̵� �ֹ���",
-	L"���� �̸̹��� ����",
-	L"���� �̸̹��� ����",
-	L"���� �̸̹��� ����"
+	{ L"체력 회복제",						L"体力恢复药水",			},
+
+	{ L"각성의 물약",						L"觉醒药水",				},
+	{ L"강인한 소고기 스테이크",			L"坚韧牛排",				},
+	{ L"민첩한 양고기 스튜",				L"敏捷的炖羊肉",			},
+	{ L"지혜로운 두부 볶음",				L"智慧的炒豆腐",			},
+
+	{ L"텔레포트 주문서",					L"随机传送卷轴",			},
+	{ L"거점 귀환 주문서",					L"据点回归卷轴",			},
 };
 
 IMPLEMENT_DYNAMIC(CItemReturn, CDialog)
@@ -55,12 +55,17 @@ BOOL CItemReturn::OnInitDialog()
 
 	SetControlText();
 
-	for (int i = 0; i < 9; i++)
-		m_cbItemList.AddString(g_szItemList[i]);
+	for (int i = 0; i < 7; i++)
+	{
+		if (g_bTaiwanLang)
+			m_cbItemList.AddString(g_szItemList[i].szTWName);
+		else
+			m_cbItemList.AddString(g_szItemList[i].szKRName);
+	}
 
 	UpdateData(FALSE);
 
-	if(!m_szItemName.IsEmpty())
+	if (!m_szItemName.IsEmpty())
 		m_cbItemList.SetWindowText(m_szItemName);
 
 	return TRUE;

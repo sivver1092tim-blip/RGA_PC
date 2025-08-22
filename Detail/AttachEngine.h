@@ -114,6 +114,7 @@ extern DWORD64				g_qwScheduleTimeTick;
 extern WCHAR				g_szGamePath[MAX_PATH];
 
 extern BOOL					g_bRandomSchedule;
+extern BOOL					g_bUseInitSchedule;
 
 void	AJLog(WCHAR* szFormat, ...);
 

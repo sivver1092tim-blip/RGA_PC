@@ -22,10 +22,20 @@ IMPLEMENT_DYNAMIC(CSubSchedule, CDialog)
 CSubSchedule::CSubSchedule(CWnd* pParent /*=NULL*/)
 	: CDialog(CSubSchedule::IDD, pParent)
 	, m_szPrevName(_T(""))
-	, m_nCharActor(0)
+	, m_nCharActor(1)
 	//, m_nCharClass(0)
 	//, m_bSnakeDungeon(FALSE)
 	, m_bRandomSchedule(FALSE)
+	, m_bTryServerStop(FALSE)
+	, m_nStat1(0)
+	, m_nStat2(0)
+	, m_bSkipDeviceReg(FALSE)
+	, m_bCountry(FALSE)
+	, m_nCountry(0)
+	, m_b56002(FALSE)
+	, m_bOptimization(FALSE)
+	, m_bTryServer(FALSE)
+	, m_bUseInit(TRUE)
 {
 }
 
@@ -50,6 +60,21 @@ void CSubSchedule::DoDataExchange(CDataExchange* pDX)
 	DDX_Check(pDX, IDC_CHECK2, m_bRandomSchedule);
 
 	CDialog::DoDataExchange(pDX);
+	DDX_Control(pDX, IDC_COMBO_TRYSERVERLIST, m_cbTryServerList);
+	DDX_Control(pDX, IDC_LIST_TRYSERVERLIST, m_lstTryServerList);
+	DDX_Check(pDX, IDC_CHECK_TRYSERVERSTOP, m_bTryServerStop);
+	DDX_Control(pDX, IDC_COMBO_STAT1, m_cbStat1);
+	DDX_CBIndex(pDX, IDC_COMBO_STAT1, m_nStat1);
+	DDX_Control(pDX, IDC_COMBO_STAT2, m_cbStat2);
+	DDX_CBIndex(pDX, IDC_COMBO_STAT2, m_nStat2);
+	DDX_Check(pDX, IDC_CHECK_SKIPDEVICEREG, m_bSkipDeviceReg);
+	DDX_Check(pDX, IDC_CHECK_COUNTRY, m_bCountry);
+	DDX_Control(pDX, IDC_COMBO_COUNTRY, m_cbCountry);
+	DDX_CBIndex(pDX, IDC_COMBO_COUNTRY, m_nCountry);
+	DDX_Check(pDX, IDC_CHECK_56002, m_b56002);
+	DDX_Check(pDX, IDC_CHECK_OPTIMIZATION, m_bOptimization);
+	DDX_Check(pDX, IDC_CHECK_TRYSERVER, m_bTryServer);
+	DDX_Check(pDX, IDC_CHECK_USEINIT, m_bUseInit);
 }
 
 
@@ -65,6 +90,11 @@ BEGIN_MESSAGE_MAP(CSubSchedule, CDialog)
 	ON_BN_CLICKED(IDC_BUTTON7, &CSubSchedule::OnInitSchedule)
 	ON_NOTIFY(NM_CUSTOMDRAW, IDC_LIST1, &CSubSchedule::OnCustomdrawList)
 	ON_CBN_SELCHANGE(IDC_COMBO1, &CSubSchedule::OnChangeActor)
+	ON_BN_CLICKED(IDC_CHECK_TRYSERVER, &CSubSchedule::OnBnClickedCheckTryserver)
+	ON_BN_CLICKED(IDC_BTN_ADDTRYSERVER, &CSubSchedule::OnBnClickedBtnAddtryserver)
+	ON_BN_CLICKED(IDC_BTN_DELTRYSERVER, &CSubSchedule::OnBnClickedBtnDeltryserver)
+	ON_BN_CLICKED(IDC_BTN_UPTRYSERVER, &CSubSchedule::OnBnClickedBtnUptryserver)
+	ON_BN_CLICKED(IDC_BTN_DOWNTRYSERVER, &CSubSchedule::OnBnClickedBtnDowntryserver)
 END_MESSAGE_MAP()
 
 
@@ -109,7 +139,7 @@ BOOL CSubSchedule::OnInitDialog()
 	m_lstSubSchedule.InsertColumn(1, L"No", LVCFMT_LEFT, 25);
 
 	strLabel.LoadString(NULL, IDS_SCHEDULE, g_wLanguageID);
-	m_lstSubSchedule.InsertColumn(2, strLabel.GetBuffer(), LVCFMT_LEFT, 330);
+	m_lstSubSchedule.InsertColumn(2, strLabel.GetBuffer(), LVCFMT_LEFT, 200);
 
 	strLabel.LoadString(NULL, IDS_SCHEDULETIME, g_wLanguageID);
 	m_lstSubSchedule.InsertColumn(3, strLabel.GetBuffer(), LVCFMT_LEFT, 130);
@@ -120,16 +150,50 @@ BOOL CSubSchedule::OnInitDialog()
 	m_lstSubSchedule.InsertColumn(7, L"TimeStop", LVCFMT_LEFT, 0);
 	m_lstSubSchedule.InsertColumn(8, L"HuntTime", LVCFMT_LEFT, 0);
 
-	for (int i = 0; i < 5; i++)
-		m_cbCharActor.AddString(g_szCharActor[i]);
-	
-	//for (int i = 0; i < 3; i++)
-	//{
-	//	if (wcscmp(g_szCharClass[0][i], L""))
-	//		m_cbCharClass.AddString(g_szCharClass[0][i]);
-	//}	
+	for (int i = 0; i < MAX_CLASS; i++)
+	{
+		if (g_bTaiwanLang)
+			m_cbCharActor.AddString(g_pCharActor[i].szTWName);
+		else
+			m_cbCharActor.AddString(g_pCharActor[i].szKRName);
+	}
+
+
+	for (int i = 0; i < MAX_STAT; i++)
+	{
+		if (g_bTaiwanLang)
+			m_cbStat1.AddString(g_pStat[i].szTWName);
+		else
+			m_cbStat1.AddString(g_pStat[i].szKRName);
+	}
+
+
+	for (int i = 0; i < MAX_STAT; i++)
+	{
+		if (g_bTaiwanLang)
+			m_cbStat2.AddString(g_pStat[i].szTWName);
+		else
+			m_cbStat2.AddString(g_pStat[i].szKRName);
+	}
+
+	for (int i = 0; i < MAX_SERVER; i++)
+	{
+		if (g_bTaiwanLang)
+			m_cbTryServerList.AddString(g_szServerName[i].szTWName);
+		else
+			m_cbTryServerList.AddString(g_szServerName[i].szKRName);
+	}
+	m_cbTryServerList.SetCurSel(0);
+
+	m_cbCountry.AddString(L"KR");
+	m_cbCountry.AddString(L"JP");
+	m_cbCountry.AddString(L"US");
+	m_cbCountry.AddString(L"TW");
 	
 	UpdateData(FALSE);
+
+	OnBnClickedCheckTryserver();
+
 	return TRUE;
 }
 
@@ -186,7 +250,7 @@ void CSubSchedule::SetControlText()
 
 void CSubSchedule::LoadSetting()
 {
-	WCHAR szPath[MAX_PATH];
+	WCHAR szPath[MAX_PATH], szKey[MAX_PATH];
 	swprintf(szPath, L"%s\\Setting\\%d\\Schedule.dat", g_szAppPath, g_nIndex);
 
 	FILE *fp = _wfopen(szPath, L"rb");
@@ -274,13 +338,47 @@ void CSubSchedule::LoadSetting()
 
 	swprintf(szPath, L"%s\\Setting\\%d\\Schedule.ini", g_szAppPath, g_nIndex);
 	m_nCharActor = GetPrivateProfileInt(L"Create", L"Actor", 0, szPath);
-	m_nCharActor %= 5;
+	m_nCharActor %= MAX_CLASS;
+
+	m_nStat1 = GetPrivateProfileInt(L"Create", L"Stat1", 1, szPath);
+	m_nStat1 %= MAX_STAT;
+	m_nStat2 = GetPrivateProfileInt(L"Create", L"Stat2", 4, szPath);
+	m_nStat2 %= MAX_STAT;
 
 	//m_nCharClass = GetPrivateProfileInt(L"Create", L"Class", 0, szPath);
 	//m_nCharClass %= 3;
 
 	//m_bSnakeDungeon = GetPrivateProfileInt(L"Dungeon", L"Snake", 0, szPath);
 	m_bRandomSchedule = GetPrivateProfileInt(L"Schedule", L"Random", 0, szPath);
+
+	m_bOptimization = GetPrivateProfileInt(L"Schedule", L"Optimization", 0, szPath);
+
+	m_bTryServer = GetPrivateProfileInt(L"TryServer", L"Use", 0, szPath);
+
+	m_bUseInit = GetPrivateProfileInt(L"Schedule", L"UseInit", 1, szPath);
+	g_bUseInitSchedule = m_bUseInit;
+
+	int nTryServerCount = GetPrivateProfileInt(L"TryServer", L"Count", 0, szPath);
+	m_lstTryServerList.DeleteAllItems();
+	for (int i = 0; i < nTryServerCount; i++)
+	{
+		swprintf_s(szKey, L"Index%d", i);
+		int nTryServerIndex = GetPrivateProfileInt(L"TryServer", szKey, 0, szPath);
+
+		if (g_bTaiwanLang)
+			m_lstTryServerList.InsertItem(i, g_szServerName[nTryServerIndex % MAX_SERVER].szTWName);
+		else
+			m_lstTryServerList.InsertItem(i, g_szServerName[nTryServerIndex % MAX_SERVER].szKRName);
+
+		m_lstTryServerList.SetItemData(i, nTryServerIndex % MAX_SERVER);
+	}
+
+	m_bTryServerStop = GetPrivateProfileInt(L"TryServer", L"Stop", 0, szPath);
+
+	m_bCountry = GetPrivateProfileInt(L"Schedule", L"Country", 1, szPath);
+	m_nCountry = GetPrivateProfileInt(L"Schedule", L"CountryID", 3, szPath);
+	m_b56002 = GetPrivateProfileInt(L"Schedule", L"56002", 0, szPath);
+	m_bSkipDeviceReg = GetPrivateProfileInt(L"Schedule", L"SkipDeviceReg", 0, szPath);
 
 	SYSTEMTIME time;
 	GetLocalTime(&time);
@@ -342,10 +440,12 @@ void CSubSchedule::LoadSetting()
 			fread(&pScheduleSetting, sizeof(SCHEDULE_SETTING), 1, fp);
 			fclose(fp);
 
-			if(pScheduleSetting.bSelServer)
+			if (pScheduleSetting.bSelServer)
 			{
-				swprintf(szPath, L"%s%02d", g_szServerName[pScheduleSetting.nSelServer / 9], (pScheduleSetting.nSelServer % 9) + 1);
-				m_lstMainSchedule.SetItemText(i, 3, szPath);
+				if (g_bTaiwanLang)
+					m_lstMainSchedule.SetItemText(i, 3, g_szServerName[pScheduleSetting.nSelServer % MAX_SERVER].szTWName);
+				else
+					m_lstMainSchedule.SetItemText(i, 3, g_szServerName[pScheduleSetting.nSelServer % MAX_SERVER].szKRName);
 			}
 
 			if(pScheduleSetting.bSelChar)
@@ -488,6 +588,8 @@ void CSubSchedule::LoadSetting()
 	}
 */
 	UpdateData(FALSE);
+
+	OnBnClickedCheckTryserver();
 }
 
 
@@ -576,10 +678,15 @@ void CSubSchedule::SaveSetting()
 
 	swprintf(szPath, L"%s\\Setting\\%d\\Schedule.ini", g_szAppPath, g_nIndex);
 
-	WCHAR szVal[MAX_NAME];
+	WCHAR szVal[MAX_NAME], szKey[MAX_NAME];
 	
 	swprintf(szVal, L"%d", m_nCharActor);
 	WritePrivateProfileString(L"Create", L"Actor", szVal, szPath);
+
+	swprintf(szVal, L"%d", m_nStat1);
+	WritePrivateProfileString(L"Create", L"Stat1", szVal, szPath);
+	swprintf(szVal, L"%d", m_nStat2);
+	WritePrivateProfileString(L"Create", L"Stat2", szVal, szPath);
 
 	//swprintf(szVal, L"%d", m_nCharClass);
 	//WritePrivateProfileString(L"Create", L"Class", szVal, szPath);
@@ -589,6 +696,39 @@ void CSubSchedule::SaveSetting()
 
 	swprintf(szVal, L"%d", m_bRandomSchedule);
 	WritePrivateProfileString(L"Schedule", L"Random", szVal, szPath);
+
+	swprintf(szVal, L"%d", m_bUseInit);
+	WritePrivateProfileString(L"Schedule", L"UseInit", szVal, szPath);
+	g_bUseInitSchedule = m_bUseInit;
+
+	swprintf(szVal, L"%d", m_bOptimization);
+	WritePrivateProfileString(L"Schedule", L"Optimization", szVal, szPath);
+
+	swprintf_s(szVal, L"%d", m_bTryServer);
+	WritePrivateProfileString(L"TryServer", L"Use", szVal, szPath);
+
+	int nTryServerCount = m_lstTryServerList.GetItemCount();
+	swprintf_s(szVal, L"%d", nTryServerCount);
+	WritePrivateProfileString(L"TryServer", L"Count", szVal, szPath);
+
+	for (int i = 0; i < nTryServerCount; i++)
+	{
+		swprintf_s(szVal, L"%d", (int)m_lstTryServerList.GetItemData(i));
+		swprintf_s(szKey, L"Index%d", i);
+		WritePrivateProfileString(L"TryServer", szKey, szVal, szPath);
+	}
+
+	swprintf_s(szVal, L"%d", m_bTryServerStop);
+	WritePrivateProfileString(L"TryServer", L"Stop", szVal, szPath);
+
+	swprintf(szVal, L"%d", m_bCountry);
+	WritePrivateProfileString(L"Schedule", L"Country", szVal, szPath);
+	swprintf(szVal, L"%d", m_nCountry);
+	WritePrivateProfileString(L"Schedule", L"CountryID", szVal, szPath);
+	swprintf(szVal, L"%d", m_b56002);
+	WritePrivateProfileString(L"Schedule", L"56002", szVal, szPath);
+	swprintf(szVal, L"%d", m_bSkipDeviceReg);
+	WritePrivateProfileString(L"Schedule", L"SkipDeviceReg", szVal, szPath);
 
 	int nTimeDelay = 0;
 	if (nStartTime <= nStopTime)
@@ -701,10 +841,12 @@ void CSubSchedule::OnAddMainSchedule()
 
 	m_lstMainSchedule.SetItemText(m_lstMainSchedule.GetItemCount() - 1, 2, dlgDetail.m_szScheduleName.GetBuffer());
 
-	if(dlgDetail.m_bSelServer)
+	if (dlgDetail.m_bSelServer)
 	{
-		swprintf(szTmp, L"%s%02d", g_szServerName[dlgDetail.m_nServer / 9], (dlgDetail.m_nServer % 9) + 1);
-		m_lstMainSchedule.SetItemText(m_lstMainSchedule.GetItemCount() - 1, 3, szTmp);
+		if (g_bTaiwanLang)
+			m_lstMainSchedule.SetItemText(m_lstMainSchedule.GetItemCount() - 1, 3, g_szServerName[dlgDetail.m_nServer % MAX_SERVER].szTWName);
+		else
+			m_lstMainSchedule.SetItemText(m_lstMainSchedule.GetItemCount() - 1, 3, g_szServerName[dlgDetail.m_nServer % MAX_SERVER].szKRName);
 	}
 
 	if(dlgDetail.m_bSelChar)
@@ -712,6 +854,13 @@ void CSubSchedule::OnAddMainSchedule()
 		strLabel.LoadString(NULL, IDS_STRING60100, g_wLanguageID);
 		swprintf(szTmp, L"%d%s", dlgDetail.m_nChar + 1, strLabel.GetBuffer());
 		m_lstMainSchedule.SetItemText(m_lstMainSchedule.GetItemCount() - 1, 4, szTmp);
+	}
+
+	CString sWeek = L"";
+	if (dlgDetail.m_nWeek)
+	{
+		sWeek.LoadString(NULL, IDS_EVERYDAY + dlgDetail.m_nWeek, g_wLanguageID);
+		sWeek += L" ";
 	}
 
 	if(dlgDetail.m_bTimeEnable)
@@ -747,6 +896,9 @@ void CSubSchedule::OnAddMainSchedule()
 
 	strLabel.LoadString(NULL, IDS_WAITING, g_wLanguageID);
 	m_lstMainSchedule.SetItemText(m_lstMainSchedule.GetItemCount() - 1, 11, strLabel.GetBuffer());
+
+	swprintf_s(szTmp, L"%d", dlgDetail.m_nWeek);
+	m_lstMainSchedule.SetItemText(m_lstMainSchedule.GetItemCount() - 1, 12, szTmp);
 
 	m_lstMainSchedule.SetCheck(m_lstMainSchedule.GetItemCount() - 1);
 
@@ -808,10 +960,12 @@ void CSubSchedule::OnChangeMainSchedule(NMHDR *pNMHDR, LRESULT *pResult)
 
 	m_lstMainSchedule.SetItemText(pNMItemActivate->iItem, 2, dlgDetail.m_szScheduleName.GetBuffer());
 
-	if(dlgDetail.m_bSelServer)
+	if (dlgDetail.m_bSelServer)
 	{
-		swprintf(szTmp, L"%s%02d", g_szServerName[dlgDetail.m_nServer / 9], (dlgDetail.m_nServer % 9) + 1);
-		m_lstMainSchedule.SetItemText(pNMItemActivate->iItem, 3, szTmp);
+		if (g_bTaiwanLang)
+			m_lstMainSchedule.SetItemText(pNMItemActivate->iItem, 3, g_szServerName[dlgDetail.m_nServer % MAX_SERVER].szTWName);
+		else
+			m_lstMainSchedule.SetItemText(pNMItemActivate->iItem, 3, g_szServerName[dlgDetail.m_nServer % MAX_SERVER].szKRName);
 	}
 	else
 		m_lstMainSchedule.SetItemText(pNMItemActivate->iItem, 3, L"");
@@ -824,6 +978,13 @@ void CSubSchedule::OnChangeMainSchedule(NMHDR *pNMHDR, LRESULT *pResult)
 	}
 	else
 		m_lstMainSchedule.SetItemText(pNMItemActivate->iItem, 4, L"");
+
+	CString sWeek = L"";
+	if (dlgDetail.m_nWeek)
+	{
+		sWeek.LoadString(NULL, IDS_EVERYDAY + dlgDetail.m_nWeek, g_wLanguageID);
+		sWeek += L" ";
+	}
 
 	if(dlgDetail.m_bTimeEnable)
 	{
@@ -857,6 +1018,9 @@ void CSubSchedule::OnChangeMainSchedule(NMHDR *pNMHDR, LRESULT *pResult)
 
 	swprintf(szTmp, L"%d", dlgDetail.m_nHuntTime);
 	m_lstMainSchedule.SetItemText(pNMItemActivate->iItem, 10, szTmp);
+
+	swprintf_s(szTmp, L"%d", dlgDetail.m_nWeek);
+	m_lstMainSchedule.SetItemText(pNMItemActivate->iItem, 12, szTmp);
 
 	m_szPrevName = dlgDetail.m_szScheduleName;
 
@@ -1324,15 +1488,116 @@ void CSubSchedule::OnCustomdrawList(NMHDR* pNMHDR, LRESULT* pResult)
 
 void CSubSchedule::OnChangeActor()
 {
-	UpdateData();
+	UpdateData(TRUE);
 
-	//m_cbCharClass.ResetContent();
-	//
-	//for (int i = 0; i < 3; i++)
-	//{
-	//	if (wcscmp(g_szCharClass[m_nCharActor % 5][i], L""))
-	//		m_cbCharClass.AddString(g_szCharClass[m_nCharActor % 5][i]);
-	//}	
+	if (m_nCharActor == 0)
+	{
+		m_cbStat1.SetCurSel(0);
+		m_cbStat2.SetCurSel(4);
+	}
+	else if (m_nCharActor == 1)
+	{
+		m_cbStat1.SetCurSel(1);
+		m_cbStat2.SetCurSel(4);
+	}
+	else
+	{
+		m_cbStat1.SetCurSel(2);
+		m_cbStat2.SetCurSel(4);
+	}
+}
 
-	//m_cbCharClass.SetCurSel(0);
+void CSubSchedule::OnBnClickedCheckTryserver()
+{
+	// TODO: Add your control notification handler code here
+	UpdateData(TRUE);
+
+	GetDlgItem(IDC_COMBO_TRYSERVERLIST)->EnableWindow(m_bTryServer);
+	GetDlgItem(IDC_LIST_TRYSERVERLIST)->EnableWindow(m_bTryServer);
+	GetDlgItem(IDC_BTN_ADDTRYSERVER)->EnableWindow(m_bTryServer);
+	GetDlgItem(IDC_BTN_DELTRYSERVER)->EnableWindow(m_bTryServer);
+	GetDlgItem(IDC_BTN_UPTRYSERVER)->EnableWindow(m_bTryServer);
+	GetDlgItem(IDC_BTN_DOWNTRYSERVER)->EnableWindow(m_bTryServer);
+	GetDlgItem(IDC_CHECK_TRYSERVERSTOP)->EnableWindow(m_bTryServer);
+}
+
+void CSubSchedule::OnBnClickedBtnAddtryserver()
+{
+	// TODO: Add your control notification handler code here
+	int nIndex = m_cbTryServerList.GetCurSel();
+	if (nIndex < 0)
+		return;
+
+	int i, nCount = m_lstTryServerList.GetItemCount();
+	for (i = 0; i < nCount; i++)
+	{
+		if (m_lstTryServerList.GetItemData(i) == nIndex)
+			break;
+	}
+
+	if (i == nCount)
+	{
+		if (g_bTaiwanLang)
+			m_lstTryServerList.InsertItem(nCount, g_szServerName[nIndex].szTWName);
+		else
+			m_lstTryServerList.InsertItem(nCount, g_szServerName[nIndex].szKRName);
+		m_lstTryServerList.SetItemData(nCount, nIndex);
+	}
+}
+
+void CSubSchedule::OnBnClickedBtnDeltryserver()
+{
+	// TODO: Add your control notification handler code here
+	POSITION pos = m_lstTryServerList.GetFirstSelectedItemPosition();
+	if (pos == NULL)
+		return;
+
+	int nIndex = m_lstTryServerList.GetNextSelectedItem(pos);
+	m_lstTryServerList.DeleteItem(nIndex);
+}
+
+void CSubSchedule::OnBnClickedBtnUptryserver()
+{
+	// TODO: Add your control notification handler code here
+	POSITION pos = m_lstTryServerList.GetFirstSelectedItemPosition();
+	if (pos == NULL)
+		return;
+
+	int nIndex = m_lstTryServerList.GetNextSelectedItem(pos);
+	if (nIndex == 0)
+		return;
+
+	CString sTemp = m_lstTryServerList.GetItemText(nIndex - 1, 0);
+	m_lstTryServerList.SetItemText(nIndex - 1, 0, m_lstTryServerList.GetItemText(nIndex, 0));
+	m_lstTryServerList.SetItemText(nIndex, 0, sTemp);
+
+	int nValue = (int)m_lstTryServerList.GetItemData(nIndex - 1);
+	m_lstTryServerList.SetItemData(nIndex - 1, m_lstTryServerList.GetItemData(nIndex));
+	m_lstTryServerList.SetItemData(nIndex, nValue);
+
+	m_lstTryServerList.SetItemState(nIndex, 0, LVIS_SELECTED);
+	m_lstTryServerList.SetItemState(nIndex - 1, LVIS_SELECTED, LVIS_SELECTED);
+}
+
+void CSubSchedule::OnBnClickedBtnDowntryserver()
+{
+	// TODO: Add your control notification handler code here
+	POSITION pos = m_lstTryServerList.GetFirstSelectedItemPosition();
+	if (pos == NULL)
+		return;
+
+	int nIndex = m_lstTryServerList.GetNextSelectedItem(pos);
+	if (nIndex == m_lstTryServerList.GetItemCount() - 1)
+		return;
+
+	CString sTemp = m_lstTryServerList.GetItemText(nIndex + 1, 0);
+	m_lstTryServerList.SetItemText(nIndex + 1, 0, m_lstTryServerList.GetItemText(nIndex, 0));
+	m_lstTryServerList.SetItemText(nIndex, 0, sTemp);
+
+	int nValue = (int)m_lstTryServerList.GetItemData(nIndex + 1);
+	m_lstTryServerList.SetItemData(nIndex + 1, m_lstTryServerList.GetItemData(nIndex));
+	m_lstTryServerList.SetItemData(nIndex, nValue);
+
+	m_lstTryServerList.SetItemState(nIndex, 0, LVIS_SELECTED);
+	m_lstTryServerList.SetItemState(nIndex + 1, LVIS_SELECTED, LVIS_SELECTED);
 }

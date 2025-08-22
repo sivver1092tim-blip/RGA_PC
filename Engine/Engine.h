@@ -1,4 +1,5 @@
 #pragma once
+#include "GStruct.h"
 
 typedef struct _MovePacket_
 {

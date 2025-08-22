@@ -12,27 +12,26 @@ public:
 	CItemBuy(CWnd* pParent = NULL);   // standard constructor
 	virtual ~CItemBuy();
 
-// Dialog Data
+	// Dialog Data
 	enum { IDD = IDD_ITEM_BUY };
 
 protected:
-	
 	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV support
+	virtual BOOL OnInitDialog();
 
 	DECLARE_MESSAGE_MAP()
 
 public:
+	CString m_szName;
 
-	BOOL m_bExpendable;
+	CComboBox m_cbItemList;
+
+	BOOL m_bPotion;
 	int m_nCurCount;
 	int m_nTarCount;
 
-	CComboBox m_cbItemList;
-	CString m_szName;
 
 	void SetControlText();
 
-	virtual BOOL OnInitDialog();
-	
 	afx_msg void OnVerify();
 };

@@ -18,54 +18,61 @@ public:
 protected:
 	
 	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV support
+	virtual BOOL OnInitDialog();
+	virtual BOOL PreTranslateMessage(MSG* pMsg);
 
 	DECLARE_MESSAGE_MAP()
 
 public:
 
 	int m_nSummonGold;
-	int m_nPaperGold;
-	int m_nPaperCount[4];
-	int m_nSkillGold;
-	int m_nCashItemBuy[3];
-	int m_nExpendGold;
+	BOOL m_bSummonCostume[3];
+	BOOL m_bSummonPet[3];
+	BOOL m_bSummonMonster[3];
+	BOOL m_bSummonEvent;
 
-	BOOL m_bSummonAvatar[3];
-	BOOL m_bSummonRiding[3];
-	BOOL m_bWeaponType[3];
-	BOOL m_bSummonRune[2];
-	BOOL m_bPaperBuy[4];
-	BOOL m_bCashItemBuy[3];
-	BOOL m_bMimirPotion[5];
-	BOOL m_bBuyHighSkill;
-	BOOL m_bSkillGold;
-	BOOL m_bBlessingStone[2];
+	int m_nScrollGold;
+	BOOL m_bScrollBuy[2];
+	int m_nScrollBuy[2];
+	BOOL m_bScrollElven;
+	int m_nScrollElven;
 
+	int m_nPotionGold;
 	CListCtrl m_lstPotion;
+	BOOL m_bBulk;
+
 	CListCtrl m_lstExchange;
 
-	void SetControlText();
-	void LoadSetting(WCHAR *szPath);
-	void SaveSetting(WCHAR *szPath);
+	BOOL m_bBuySkillGold;
+	int m_nBuySkillGold;
+	BOOL m_bBuyRareSkill;
 
-	virtual BOOL OnInitDialog();
-	virtual BOOL PreTranslateMessage(MSG* pMsg);
-	
-	afx_msg void OnEnablePaper1();
-	afx_msg void OnEnablePaper2();
-	afx_msg void OnEnablePaper3();
-	afx_msg void OnEnablePaper4();
-	afx_msg void OnSkillGold();
+	int m_nCristalGold;
+	BOOL m_bCristalBox;
+	int m_nCristalBox;
+	BOOL m_bCristalPet1;
+	BOOL m_bCristalPet2;
+
+	int m_nOtherGold;
+	BOOL m_bEquipBox;
+	int m_nEquipBox;
+
+
+	void SetControlText();
+	void LoadSetting(WCHAR* szPath);
+	void SaveSetting(WCHAR* szPath);
+
+
+	afx_msg void OnBnClickedCheckScrollweapon();
+	afx_msg void OnBnClickedCheckScrollarmor();
+	afx_msg void OnBnClickedCheckScrollelven();
+	afx_msg void OnBnClickedCheckCristalbox();
+	afx_msg void OnBnClickedCheckEquipbox();
+	afx_msg void OnBnClickedCheckBuyskillgold();
 	afx_msg void OnAddPotionItem();
 	afx_msg void OnDelPotionItem();
-	afx_msg void OnChangePotionItem(NMHDR *pNMHDR, LRESULT *pResult);
+	afx_msg void OnChangePotionItem(NMHDR* pNMHDR, LRESULT* pResult);
 	afx_msg void OnAddExchangeItem();
 	afx_msg void OnDelExchangeItem();
-	afx_msg void OnChangeExchangeItem(NMHDR *pNMHDR, LRESULT *pResult);
-	afx_msg void OnEnableCashBuy1();
-	afx_msg void OnEnableCashBuy2();
-	afx_msg void OnEnableMimir1();
-	afx_msg void OnEnableMimir2();
-	afx_msg void OnEnableMimir3();
-	afx_msg void OnEnableMimir4();
+	afx_msg void OnChangeExchangeItem(NMHDR* pNMHDR, LRESULT* pResult);
 };
