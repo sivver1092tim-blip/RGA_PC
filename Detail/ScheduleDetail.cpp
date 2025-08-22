@@ -23,6 +23,7 @@ CScheduleDetail::CScheduleDetail(CWnd* pParent /*=NULL*/)
 	, m_nChar(0)
 	, m_nTimeStart(-1)
 	, m_nTimeStop(-1)
+	, m_nWeek(0)
 {
 }
 
@@ -50,7 +51,8 @@ void CScheduleDetail::DoDataExchange(CDataExchange* pDX)
 	DDX_CBIndex(pDX, IDC_COMBO1, m_nServer);
 	DDX_Control(pDX, IDC_COMBO2, m_cbCharList);
 	DDX_CBIndex(pDX, IDC_COMBO2, m_nChar);
-
+	DDX_Control(pDX, IDC_COMBO3, m_cbWeek);
+	DDX_CBIndex(pDX, IDC_COMBO3, m_nWeek);
 	CDialog::DoDataExchange(pDX);
 }
 
@@ -99,15 +101,22 @@ BOOL CScheduleDetail::OnInitDialog()
 	strLabel.LoadString(NULL, IDS_OTHER, g_wLanguageID);
 	m_tabCtrl.AddTab(&m_ScheduleOther, strLabel.GetBuffer());
 
+	m_ScheduleSkill.Create(IDD_SCHEDULE_SKILL, &m_tabCtrl);
+	strLabel.LoadString(NULL, IDS_SKILL, g_wLanguageID);
+	m_tabCtrl.AddTab(&m_ScheduleSkill, strLabel.GetBuffer());
+
+	m_ScheduleMake.Create(IDD_SCHEDULE_MAKE, &m_tabCtrl);
+	strLabel.LoadString(NULL, IDS_MAKE, g_wLanguageID);
+	m_tabCtrl.AddTab(&m_ScheduleMake, strLabel.GetBuffer());
+
 	WCHAR szTmp[MAX_NAME];
 
-	for(int i = 0; i < MAX_SERVER; i++)
+	for (int i = 0; i < MAX_SERVER; i++)
 	{
-		for(int j = 0; j < 9; j++)
-		{
-			swprintf(szTmp, L"%s%02d", g_szServerName[i], j + 1);
-			m_cbServerList.AddString(szTmp);
-		}
+		if (g_bTaiwanLang)
+			m_cbServerList.AddString(g_szServerName[i].szTWName);
+		else
+			m_cbServerList.AddString(g_szServerName[i].szKRName);
 	}
 
 	strLabel.LoadString(NULL, IDS_CHARSLOT, g_wLanguageID);
@@ -115,6 +124,12 @@ BOOL CScheduleDetail::OnInitDialog()
 	{
 		swprintf(szTmp, strLabel.GetBuffer(), i + 1);
 		m_cbCharList.AddString(szTmp);
+	}
+
+	for (int i = 0; i < 8; i++)
+	{
+		strLabel.LoadString(NULL, IDS_EVERYDAY + i, g_wLanguageID);
+		m_cbWeek.AddString(strLabel);
 	}
 
 	m_dtTimeStart.SetFormat(L"HH:mm:ss");
@@ -230,6 +245,8 @@ void CScheduleDetail::LoadSetting(WCHAR *szPath, BOOL bLoadMain)
 	m_ScheduleItem.LoadSetting(szPath);
 //	m_SchedulePK.LoadSetting(szPath);
 	m_ScheduleOther.LoadSetting(szPath);
+	m_ScheduleSkill.LoadSetting(szPath);
+	m_ScheduleMake.LoadSetting(szPath);
 
 	if(bLoadMain)
 	{
@@ -262,6 +279,8 @@ void CScheduleDetail::LoadSetting(WCHAR *szPath, BOOL bLoadMain)
 		m_dtTimeStop.SetTime(odtTime);
 
 		m_nHuntTime = m_MainSetting.nHuntTime;
+
+		m_nWeek = m_MainSetting.nWeek;
 	}
 }
 
@@ -273,6 +292,8 @@ void CScheduleDetail::SaveSetting(WCHAR *szPath)
 	m_ScheduleItem.SaveSetting(szPath);
 //	m_SchedulePK.SaveSetting(szPath);
 	m_ScheduleOther.SaveSetting(szPath);
+	m_ScheduleSkill.SaveSetting(szPath);
+	m_ScheduleMake.SaveSetting(szPath);
 
 	WCHAR szFile[MAX_PATH];
 	swprintf(szFile, L"%s\\Main.dat", szPath);
@@ -303,6 +324,8 @@ void CScheduleDetail::SaveSetting(WCHAR *szPath)
 	m_nTimeStop = m_MainSetting.nTimeStop;
 
 	m_MainSetting.nHuntTime = m_nHuntTime;
+
+	m_MainSetting.nWeek = m_nWeek;
 
 	fwrite(&m_MainSetting, sizeof(SCHEDULE_SETTING), 1, fp);
 	fclose(fp);

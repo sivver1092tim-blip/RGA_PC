@@ -17,105 +17,86 @@ public:
 protected:
 	
 	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV support
+	virtual BOOL OnInitDialog();
+	virtual BOOL PreTranslateMessage(MSG* pMsg);
 
 	DECLARE_MESSAGE_MAP()
 
 public:
 
-	BOOL m_bVillageRequest;
-	BOOL m_bValhallaFight;
+	BOOL m_bReqQuest;
+	BOOL m_bReqQuestGrade[4];
+	BOOL m_bReqQuestCoin;
+
+	BOOL m_bAutoEquip;
+	BOOL m_bEquipEnchant;
+
 	BOOL m_bRecoverFree;
 	BOOL m_bRecoverGold;
-	BOOL m_bAchieveReward;
-	BOOL m_bAutoEquip;
-	BOOL m_bEventReward;
-	BOOL m_bGuildCheck;
-	BOOL m_bGuildDonate;
-	BOOL m_bCharacMail;
-	BOOL m_bAccountMail;
-	BOOL m_bStoreEquips;
-	BOOL m_bGetStoreEquips;
+
+	BOOL m_bEvent;
+	BOOL m_bAchievement;
+	BOOL m_bMail;
+
 	BOOL m_bGuildJoin;
-	BOOL m_bUseVillageQuest;
-	BOOL m_bMoveChaoEnable;
-	BOOL m_bQuestChaoEnable;
+	BOOL m_bGuildAttendance;
+	BOOL m_bGuildDonate;
+	int m_nGuildDonateGold;
+
+	BOOL m_bMoveCao;
+	int m_nMoveCaoTime;
+	int m_nMoveCaoCount;
+
+	BOOL m_bQuestCao;
+	int m_nQuestCaoTime;
+
+	BOOL m_bGetEquip;
+	BOOL m_bGetAll;
+	BOOL m_bNetworkExit;
+	int m_nNetworkExit;
+
 	BOOL m_bCollectItem;
 	BOOL m_bCollectGrade[4];
-	BOOL m_bCollectTab[4];
 	BOOL m_bCollectEnchant;
-	BOOL m_bCollectFilter;
-	BOOL m_bCollectType[6];
+	int m_nCollectEnchant;
+
 	BOOL m_bDissolveItem;
 	BOOL m_bDissolveGrade[4];
 	BOOL m_bDissolveEnchant;
-	BOOL m_bDissolveManufacture;
+	BOOL m_bDissolveSegong;
 	BOOL m_bDissolveBelong;
 	BOOL m_bDissolveNotBelong;
-	BOOL m_bWorldBoss;
-	BOOL m_bTreasureBox;
-	BOOL m_bPartyDungeon;
-	BOOL m_bDungeonType;
-	BOOL m_bDungeonDiff;
-	BOOL m_bEnableSubQuest;
-	BOOL m_bSkillInteraction;
-	BOOL m_bMimirPotion;
-	BOOL m_bUseTicket;
-	BOOL m_bMemberCount;
-	BOOL m_bAverageLV;
-	BOOL m_bBusLevel;
-	BOOL m_bEnchantStone[3];
-	BOOL m_bBuyBigPotion;
-	BOOL m_bWeaponTreasure;
+
+	BOOL m_bEnchantScroll[3];
+
 	BOOL m_bTradeDissolve;
-	BOOL m_bCombineAvatar;
-	BOOL m_bCombineRide;
-	BOOL m_bCombineWeapon;
-	BOOL m_bFrameEnable;
-
-	int m_nGuildDonate;
-	int m_nVillageRegion;
-	int m_nMoveChaoTime;
-	int m_nMoveChaoCount;
-	int m_nQuestChaoTime;
-	int m_nCollectMin;
-	int m_nCollectMax;
-	int m_nDungeonType;
-	int m_nDungeonDiff;
-	int m_nDungeonLV;
-	int m_nMemberCount;
-	int m_nAverageLV;
-	int m_nBusLevel;
 	int m_nTradeDissolve;
-	int m_nFrameValue;
 
-	CComboBox m_cbVillageRegion;
-	CComboBox m_cbPartyDungeon;
-	CComboBox m_cbDungeonDiff;
+	BOOL m_bRaid;
+	BOOL m_bRaidBoss[5];
+
+	BOOL m_bCraft;
+	BOOL m_bCraftWeapon;
+	BOOL m_bCraftArmor;
+	BOOL m_bCraftAcce;
+
+	BOOL m_bAutoCombineCostume;
+	BOOL m_bAutoCombinePet;
 
 	void SetControlText();
 	void LoadSetting(WCHAR *szPath);
 	void SaveSetting(WCHAR *szPath);
-
-	virtual BOOL OnInitDialog();
-	virtual BOOL PreTranslateMessage(MSG* pMsg);
 	
-	afx_msg void OnGuildDonate();
-	afx_msg void OnCheckVillage();
-	afx_msg void OnEnableGuild();	
-	afx_msg void OnEnableMoveChao();
-	afx_msg void OnEnableQuestChao();
-	afx_msg void OnCollectItem();
-	afx_msg void OnCollectEnchant();
-	afx_msg void OnCollectFilter();
-	afx_msg void OnDissolveItem();
-	afx_msg void OnEnablePartyDungeon();
-	afx_msg void OnEnableDungeonType();
-	afx_msg void OnEnableDungeonDiff();
-	afx_msg void OnVerifyMemberCount();
-	afx_msg void OnVerifyAverageLV();
-	afx_msg void OnVerifyBusLV();
-	afx_msg void OnHScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar);
-	afx_msg void OnEnableTradeDissolve();
-	afx_msg void OnEnableFrame();
-	BOOL m_bEventBuff;
+	afx_msg void OnBnClickedCheckReqquest();
+	afx_msg void OnBnClickedCheckGuildjoin();
+	afx_msg void OnBnClickedCheckGuilddonate();
+	afx_msg void OnBnClickedCheckMovecao();
+	afx_msg void OnBnClickedCheckQuestcao();
+	afx_msg void OnBnClickedCheckNetworkexit();
+	afx_msg void OnBnClickedCheckCollectitem();
+	afx_msg void OnBnClickedCheckCollectenchant();
+	afx_msg void OnBnClickedCheckDissolveitem();
+	afx_msg void OnBnClickedCheckTradedissolve();
+	afx_msg void OnBnClickedCheckCraft();
+	afx_msg void OnBnClickedCheckRaid();
 };

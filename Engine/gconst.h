@@ -39,52 +39,7 @@
 #define MAX_ITEM_CNT				50
 #define MAX_DAMAGE_SKILL_CNT		200
 
-//enum E_PROC_RESULT
-//{
-//	e_Proc_Continue = 0,
-//	e_Proc_Return = 1,
-//	e_Proc_ReturnTown = 2,
-//	e_Proc_Count,
-//};
-//
-//enum E_REGISTER_TYPE
-//{
-//	e_Reg_RAX = 0,
-//	e_Reg_RBX,
-//	e_Reg_RCX,
-//	e_Reg_RDX,
-//	e_Reg_RSI,
-//	e_Reg_RDI,
-//	e_Reg_RIP,
-//	e_Reg_RSP,
-//	e_Reg_RBP,
-//	e_Reg_RFL,
-//	e_Reg_R8,
-//	e_Reg_R9,
-//	e_Reg_R10,
-//	e_Reg_R11,
-//	e_Reg_R12,
-//	e_Reg_R13,
-//	e_Reg_R14,
-//	e_Reg_R15,
-//	e_Reg_Arg5,
-//	e_Reg_Arg6,
-//	e_Reg_Count,
-//};
-//
-//enum E_DATA_VALUE_TYPE
-//{
-//	e_DVT_BIT = 0,
-//	e_DVT_BYTE,
-//	e_DVT_WORD,
-//	e_DVT_DWORD,
-//	e_DVT_DWORD64,
-//	e_DVT_Count,
-//};
-//
-//enum E_SIGN_TYPE
-//{
-//	e_Sign_Plus = 0,
-//	e_Sign_Minus,
-//	e_Sign_Count,
-//};
+#define LogType_None				0
+#define LogType_ChangeSchedule		1
+#define LogType_FinishSchedule		2
+#define LogType_ChangeAutoState		3

@@ -1073,9 +1073,9 @@ void ChangeItemSetting(WCHAR* szDir)
 		_wfopen_s(&fpNew, szNew, L"wb");
 		if (fpNew)
 		{
-			BYTE pbDefaultMode[MAX_GRADE][MAX_TYPE];
-			fread(pbDefaultMode, sizeof(BYTE), MAX_GRADE * MAX_TYPE, fpOld);
-			fwrite(pbDefaultMode, sizeof(BYTE), MAX_GRADE * MAX_TYPE, fpNew);
+			BYTE pbDefaultMode[MAX_GRADE][MAX_TYPE_1];
+			fread(pbDefaultMode, sizeof(BYTE), MAX_GRADE * MAX_TYPE_1, fpOld);
+			fwrite(pbDefaultMode, sizeof(BYTE), MAX_GRADE * MAX_TYPE_1, fpNew);
 
 			int nCount = 0;
 			fread(&nCount, sizeof(int), 1, fpOld);

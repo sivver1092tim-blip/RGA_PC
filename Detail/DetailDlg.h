@@ -82,4 +82,5 @@ public:
 	BOOL m_bFrameEnable;
 	int m_nFrameValue;
 	afx_msg void OnEnableFrame();
+	afx_msg void OnBnClickedBtnCompleteschedule();
 };

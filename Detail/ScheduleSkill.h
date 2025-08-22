@@ -37,4 +37,5 @@ public:
 	afx_msg void OnBnClickedBtnDel();
 	afx_msg void OnBnClickedBtnAuto();
 	afx_msg void OnNMDblclkListSkillset(NMHDR* pNMHDR, LRESULT* pResult);
+	afx_msg void OnCbnSelchangeComboClass();
 };

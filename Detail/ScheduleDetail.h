@@ -7,6 +7,8 @@
 #include "ScheduleItem.h"
 #include "SchedulePK.h"
 #include "ScheduleOther.h"
+#include "ScheduleSkill.h"
+#include "ScheduleMake.h"
 #include "afxwin.h"
 
 // CScheduleDetail dialog
@@ -51,6 +53,8 @@ public:
 	CScheduleItem	m_ScheduleItem;
 	CSchedulePK		m_SchedulePK;
 	CScheduleOther	m_ScheduleOther;
+	CScheduleSkill	m_ScheduleSkill;
+	CScheduleMake	m_ScheduleMake;
 
 	void SetControlText();
 	void LoadSetting(WCHAR *szPath, BOOL bLoadMain = TRUE);
@@ -74,4 +78,6 @@ public:
 	afx_msg void OnEnableChar();
 	afx_msg void OnContextMenu(CWnd* /*pWnd*/, CPoint /*point*/);
 	void OnPopupMenu_ApplySetting(CCmdUI* pCmdUI);
+	CComboBox m_cbWeek;
+	int m_nWeek;
 };

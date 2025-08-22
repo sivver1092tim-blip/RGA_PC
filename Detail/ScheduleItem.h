@@ -42,4 +42,8 @@ public:
 	afx_msg void OnDelItemDetail();
 	afx_msg void OnChangeItemDetail(NMHDR *pNMHDR, LRESULT *pResult);
 	afx_msg void OnSort();
+	BOOL m_bTradeLimitTime;
+	int m_nTradeLimitTime;
+	afx_msg void OnBnClickedCheckTradelimittime();
+	afx_msg void OnSortItemDetail(NMHDR* pNMHDR, LRESULT* pResult);
 };

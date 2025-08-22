@@ -1,4 +1,4 @@
-// ScheduleItem.cpp : implementation file
+Ôªø// ScheduleItem.cpp : implementation file
 //
 
 #include "stdafx.h"
@@ -13,6 +13,8 @@ IMPLEMENT_DYNAMIC(CScheduleItem, CDialog)
 
 CScheduleItem::CScheduleItem(CWnd* pParent /*=NULL*/)
 	: CDialog(CScheduleItem::IDD, pParent)
+	, m_bTradeLimitTime(FALSE)
+	, m_nTradeLimitTime(48)
 {
 
 }
@@ -23,10 +25,12 @@ CScheduleItem::~CScheduleItem()
 
 void CScheduleItem::DoDataExchange(CDataExchange* pDX)
 {
+	CDialog::DoDataExchange(pDX);
+
 	DDX_Control(pDX, IDC_LIST1, m_lstDefault);
 	DDX_Control(pDX, IDC_LIST2, m_lstDetail);
-
-	CDialog::DoDataExchange(pDX);
+	DDX_Check(pDX, IDC_CHECK_TRADELIMITTIME, m_bTradeLimitTime);
+	DDX_Text(pDX, IDC_EDIT_TRADELIMITTIME, m_nTradeLimitTime);
 }
 
 
@@ -36,6 +40,8 @@ BEGIN_MESSAGE_MAP(CScheduleItem, CDialog)
 	ON_BN_CLICKED(IDC_BUTTON2, &CScheduleItem::OnDelItemDetail)
 	ON_NOTIFY(NM_DBLCLK, IDC_LIST2, &CScheduleItem::OnChangeItemDetail)
 	ON_BN_CLICKED(IDC_BUTTON3, &CScheduleItem::OnSort)
+	ON_BN_CLICKED(IDC_CHECK_TRADELIMITTIME, &CScheduleItem::OnBnClickedCheckTradelimittime)
+	ON_NOTIFY(LVN_COLUMNCLICK, IDC_LIST2, &CScheduleItem::OnSortItemDetail)
 END_MESSAGE_MAP()
 
 
@@ -102,7 +108,7 @@ BOOL CScheduleItem::OnInitDialog()
 
 	for(int i = 0; i < MAX_GRADE; i++)
 	{
-		for(int j = 0; j < MAX_TYPE; j++)
+		for(int j = 0; j < MAX_TYPE_1; j++)
 		{
 			m_lstDefault.SetItemText(i, j + 1, g_szItemMode[0]);
 		}
@@ -128,6 +134,11 @@ BOOL CScheduleItem::OnInitDialog()
 
 	m_lstDetail.InsertColumn(9, L"EnchantEnable", LVCFMT_LEFT, 0);
 	m_lstDetail.InsertColumn(10, L"EnchantValue", LVCFMT_LEFT, 0);
+
+
+	UpdateData(FALSE);
+
+	OnBnClickedCheckTradelimittime();
 
 	return TRUE;
 }
@@ -159,6 +170,11 @@ void CScheduleItem::SetControlText()
 
 	strLabel.LoadString(NULL, IDS_STRING60427, g_wLanguageID);
 	GetDlgItem(IDC_BUTTON3)->SetWindowText(strLabel);
+
+	if (g_wLanguageID != 0x412)
+	{
+		GetDlgItem(IDC_STATIC_TRADELIMITTIME)->SetWindowTextW(L"Â∞èÊó∂ÂêéÈáçÊñ∞‰∏äÊû∂");
+	}
 }
 
 
@@ -187,7 +203,7 @@ void CScheduleItem::OnAddItemDetail()
 	m_lstDetail.SetItemText(m_lstDetail.GetItemCount() - 1, 3, g_szItemMode[dlgItem.m_nItemMode % MAX_MODE]);
 	m_lstDetail.SetCheck(m_lstDetail.GetItemCount() - 1);
 
-	if(dlgItem.m_nItemMode == ItemMode_Trade)			// ∞≈∑°º“¿Œ ∞ÊøÏ (∞°∞›∏µÂ, π≠¿Ω∞≥ºˆ º≥¡§«œ¿⁄)
+	if(dlgItem.m_nItemMode == ItemMode_Trade)			// Í±∞ÎûòÏÜåÏù∏ Í≤ΩÏö∞ (Í∞ÄÍ≤©Î™®Îìú, Î¨∂ÏùåÍ∞úÏàò ÏÑ§Ï†ïÌïòÏûê)
 	{
 		swprintf(szTmp, L"%d", dlgItem.m_nMarketCount);
 		m_lstDetail.SetItemText(m_lstDetail.GetItemCount() - 1, 4, szTmp);
@@ -360,14 +376,14 @@ void CScheduleItem::LoadSetting(WCHAR *szPath)
 	if(!fp)
 		return;
 
-	BYTE pbDefaultMode[MAX_GRADE][MAX_TYPE];
-	memset(pbDefaultMode, 0, MAX_GRADE * MAX_TYPE);
+	BYTE pbDefaultMode[MAX_GRADE][MAX_TYPE_1];
+	memset(pbDefaultMode, 0, MAX_GRADE * MAX_TYPE_1);
 
-	fread(pbDefaultMode, sizeof(BYTE), MAX_GRADE * MAX_TYPE, fp);
+	fread(pbDefaultMode, sizeof(BYTE), MAX_GRADE * MAX_TYPE_1, fp);
 
 	for(int i = 0; i < MAX_GRADE; i++)
 	{
-		for(int j = 0; j < MAX_TYPE; j++)
+		for(int j = 0; j < MAX_TYPE_1; j++)
 		{
 			m_lstDefault.SetItemText(i, j + 1, g_szItemMode[pbDefaultMode[i][j] % MAX_MODE]);
 		}
@@ -408,8 +424,8 @@ void CScheduleItem::LoadSetting(WCHAR *szPath)
 				swprintf(szTmp, L"%d", pDetailItem[i].nMarketIndex);
 				m_lstDetail.SetItemText(i, 6, szTmp);
 
-				if (pDetailItem[i].nMarketMode == 1 && pDetailItem[i].nMarketPrice < 0)
-					pDetailItem[i].nMarketPrice = 0;
+				//if (pDetailItem[i].nMarketMode == 1 && pDetailItem[i].nMarketPrice < 0)
+				//	pDetailItem[i].nMarketPrice = 0;
 
 				swprintf(szTmp, L"%d", pDetailItem[i].nMarketPrice);
 				m_lstDetail.SetItemText(i, 7, szTmp);
@@ -434,7 +450,17 @@ void CScheduleItem::LoadSetting(WCHAR *szPath)
 		pDetailItem = NULL;
 	}
 
+	ITEM_SETTING m_ItemSetting;
+	memset(&m_ItemSetting, 0, sizeof(ITEM_SETTING));
+	fread(&m_ItemSetting, sizeof(ITEM_SETTING), 1, fp);
 	fclose(fp);
+
+	m_bTradeLimitTime = m_ItemSetting.bTradeLimitTime;
+	m_nTradeLimitTime = m_ItemSetting.nTradeLimitTime;
+
+	UpdateData(FALSE);
+
+	OnBnClickedCheckTradelimittime();
 }
 
 
@@ -446,12 +472,14 @@ void CScheduleItem::SaveSetting(WCHAR *szPath)
 	if(!fp)
 		return;
 
-	BYTE pbDefaultMode[MAX_GRADE][MAX_TYPE];
-	memset(pbDefaultMode, 0, MAX_GRADE * MAX_TYPE);
+	UpdateData(TRUE);
+
+	BYTE pbDefaultMode[MAX_GRADE][MAX_TYPE_1];
+	memset(pbDefaultMode, 0, MAX_GRADE * MAX_TYPE_1);
 
 	for(int i = 0; i < MAX_GRADE; i++)
 	{
-		for(int j = 0; j < MAX_TYPE; j++)
+		for(int j = 0; j < MAX_TYPE_1; j++)
 		{
 			for(int k = 0; k < MAX_MODE; k++)
 			{
@@ -464,7 +492,7 @@ void CScheduleItem::SaveSetting(WCHAR *szPath)
 		}
 	}
 
-	fwrite(pbDefaultMode, sizeof(BYTE), MAX_GRADE * MAX_TYPE, fp);
+	fwrite(pbDefaultMode, sizeof(BYTE), MAX_GRADE * MAX_TYPE_1, fp);
 
 	int nCount = m_lstDetail.GetItemCount();
 	fwrite(&nCount, sizeof(int), 1, fp);
@@ -505,6 +533,13 @@ void CScheduleItem::SaveSetting(WCHAR *szPath)
 		}
 	}
 
+	ITEM_SETTING m_ItemSetting;
+	memset(&m_ItemSetting, 0, sizeof(ITEM_SETTING));
+
+	m_ItemSetting.bTradeLimitTime = m_bTradeLimitTime;
+	m_ItemSetting.nTradeLimitTime = m_nTradeLimitTime;
+
+	fwrite(&m_ItemSetting, sizeof(ITEM_SETTING), 1, fp);
 	fclose(fp);
 }
 
@@ -534,7 +569,7 @@ void CScheduleItem::OnSort()
 {
 	CString strTmp;
 
-	// ∏’¿˙ πÊΩƒø° µ˚∂Û ¡§∑ƒ«œ¿⁄
+	// Î®ºÏ†Ä Î∞©ÏãùÏóê Îî∞Îùº Ï†ïÎ†¨ÌïòÏûê
 	for (int i = 0; i < m_lstDetail.GetItemCount() - 1; i++)
 	{
 		for (int j = i + 1; j < m_lstDetail.GetItemCount(); j++)
@@ -586,7 +621,7 @@ void CScheduleItem::OnSort()
 		}
 	}
 
-	// ∞∞¿∫ πÊΩƒø° «—«ÿº≠ §°§§§ß§© º¯º≠∑Œ ¡§∑ƒ«œ¿⁄
+	// Í∞ôÏùÄ Î∞©ÏãùÏóê ÌïúÌï¥ÏÑú „Ñ±„Ñ¥„Ñ∑„Ñπ ÏàúÏÑúÎ°ú Ï†ïÎ†¨ÌïòÏûê
 	for (int i = 0; i < m_lstDetail.GetItemCount() - 1; i++)
 	{
 		int nVal1 = (int)m_lstDetail.GetItemData(i);
@@ -636,4 +671,40 @@ void CScheduleItem::OnSort()
 			}
 		}
 	}
+}
+
+void CScheduleItem::OnBnClickedCheckTradelimittime()
+{
+	// TODO: Add your control notification handler code here
+	UpdateData(TRUE);
+
+	GetDlgItem(IDC_EDIT_TRADELIMITTIME)->EnableWindow(m_bTradeLimitTime);
+}
+
+int CompareFunc(LPARAM lParam1, LPARAM lParam2, LPARAM lParamSort)
+{
+	CListCtrl* pListCtrl = (CListCtrl*)lParamSort;
+
+	CString sItem1 = pListCtrl->GetItemText(lParam1, 2);
+	CString sItem2 = pListCtrl->GetItemText(lParam2, 2);
+
+	return wcscmp(sItem1, sItem2);
+}
+
+void CScheduleItem::OnSortItemDetail(NMHDR* pNMHDR, LRESULT* pResult)
+{
+	LPNMLISTVIEW pNMLV = reinterpret_cast<LPNMLISTVIEW>(pNMHDR);
+	if (pNMLV->iSubItem == 2)
+	{
+		m_lstDetail.SortItemsEx(CompareFunc, (LPARAM)&m_lstDetail);
+
+		WCHAR szTemp[MAX_NAME];
+		int nCount = m_lstDetail.GetItemCount();
+		for (int i = 0; i < nCount; i++)
+		{
+			swprintf_s(szTemp, L"%d", i + 1);
+			m_lstDetail.SetItemText(i, 1, szTemp);
+		}
+	}
+	*pResult = 0;
 }

@@ -47,6 +47,7 @@ BEGIN_MESSAGE_MAP(CDetailDlg, CDialog)
 	ON_WM_CONTEXTMENU()
 	ON_UPDATE_COMMAND_UI(ID_R_APPLYALLSETTINGS, &CDetailDlg::OnPopupMenu_ApplySetting)
 	ON_BN_CLICKED(IDC_CHECK1, &CDetailDlg::OnEnableFrame)
+	ON_BN_CLICKED(IDC_BTN_COMPLETESCHEDULE, &CDetailDlg::OnBnClickedBtnCompleteschedule)
 END_MESSAGE_MAP()
 
 
@@ -625,17 +626,21 @@ void CDetailDlg::OnTimer(UINT_PTR nIDEvent)
 		SYSTEMTIME time;
 		GetLocalTime(&time);
 
-		if (m_dwScheduleDate != time.wHour * 100 + time.wMinute)
+		if (g_bUseInitSchedule)
 		{
-			m_dwScheduleDate = time.wHour * 100 + time.wMinute;
-			if (m_dwScheduleDate == g_nScheduleInitTime)
+			if (m_dwScheduleDate != time.wHour * 100 + time.wMinute)
 			{
-				m_SubSchedule.PostMessage(WM_RESETMESSAGE);
+				m_dwScheduleDate = time.wHour * 100 + time.wMinute;
+				if (m_dwScheduleDate == g_nScheduleInitTime)
+				{
+					m_SubSchedule.PostMessage(WM_RESETMESSAGE);
 
-				if(g_pGameMapping)
-					g_pGameMapping->bDateInit = 1;
+					if (g_pGameMapping)
+						g_pGameMapping->bDateInit = 1;
+				}
 			}
 		}
+		
 
 		// 날자 변경이 되었으면 초기화 시간 바꾸자
 		if (time.wMonth * 100 + time.wDay != g_nScheduleInitDate)
@@ -789,4 +794,14 @@ void CDetailDlg::OnEnableFrame()
 	UpdateData();
 
 	GetDlgItem(IDC_EDIT1)->EnableWindow(m_bFrameEnable);
+}
+
+void CDetailDlg::OnBnClickedBtnCompleteschedule()
+{
+	// TODO: Add your control notification handler code here
+	g_bScheduleTimeCheck = FALSE;
+	g_nScheduleTimeValue = 0;
+	g_qwScheduleTimeTick = 0;
+
+	PostMessage(WM_SCHEDULEMESSAGE, 2);
 }

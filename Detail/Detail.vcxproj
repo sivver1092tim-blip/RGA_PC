@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -249,6 +249,7 @@
     <ClCompile Include="ScheduleDetail.cpp" />
     <ClCompile Include="ScheduleHunt.cpp" />
     <ClCompile Include="ScheduleItem.cpp" />
+    <ClCompile Include="ScheduleMake.cpp" />
     <ClCompile Include="ScheduleOther.cpp" />
     <ClCompile Include="SchedulePK.cpp" />
     <ClCompile Include="ScheduleSkill.cpp" />
@@ -291,6 +292,7 @@
     <ClInclude Include="ScheduleDetail.h" />
     <ClInclude Include="ScheduleHunt.h" />
     <ClInclude Include="ScheduleItem.h" />
+    <ClInclude Include="ScheduleMake.h" />
     <ClInclude Include="ScheduleOther.h" />
     <ClInclude Include="SchedulePK.h" />
     <ClInclude Include="ScheduleSkill.h" />

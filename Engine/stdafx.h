@@ -11,7 +11,4 @@
 // Windows Header Files:
 #include <windows.h>
 
-#include "SDK.h"
-using namespace SDK;
-
 #include "Update.h"

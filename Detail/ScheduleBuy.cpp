@@ -1,4 +1,4 @@
-// ScheduleBuy.cpp : implementation file
+﻿// ScheduleBuy.cpp : implementation file
 //
 
 #include "stdafx.h"
@@ -13,25 +13,30 @@ IMPLEMENT_DYNAMIC(CScheduleBuy, CDialog)
 
 CScheduleBuy::CScheduleBuy(CWnd* pParent /*=NULL*/)
 	: CDialog(CScheduleBuy::IDD, pParent)
-	, m_nSummonGold(1000000)
-	, m_nPaperGold(1000000)
-	, m_bSkillGold(TRUE)
-	, m_nSkillGold(500000)
-	, m_nExpendGold(500000)
-	, m_bBuyHighSkill(FALSE)
+	, m_nSummonGold(2000000)
+	, m_nScrollGold(1000000)
+	, m_nPotionGold(500000)
+	, m_bBulk(FALSE)
+	, m_bBuySkillGold(TRUE)
+	, m_nBuySkillGold(500000)
+	, m_bBuyRareSkill(FALSE)
+	, m_nCristalGold(1000000)
+	, m_bCristalBox(FALSE)
+	, m_nCristalBox(2)
+	, m_bCristalPet1(FALSE)
+	, m_bCristalPet2(TRUE)
+	, m_nOtherGold(2000000)
+	, m_bEquipBox(FALSE)
+	, m_nEquipBox(5)
 {
-	m_bSummonAvatar[0] = m_bSummonAvatar[1] = m_bSummonAvatar[2] = TRUE;
-	m_bSummonRiding[0] = m_bSummonRiding[1] = m_bSummonRiding[2] = TRUE;
-	m_bWeaponType[0] = m_bWeaponType[1] = m_bWeaponType[2] = FALSE;
-	m_bSummonRune[0] = m_bSummonRune[1] = TRUE;
-	m_bMimirPotion[0] = m_bMimirPotion[1] = m_bMimirPotion[2] = m_bMimirPotion[3] = m_bMimirPotion[4] = FALSE;
-	m_bBlessingStone[0] = m_bBlessingStone[1] = FALSE;
+	m_bSummonCostume[0] = m_bSummonCostume[1] = m_bSummonCostume[2] = TRUE;
+	m_bSummonPet[0] = m_bSummonPet[1] = m_bSummonPet[2] = TRUE;
+	m_bSummonMonster[0] = m_bSummonMonster[1] = m_bSummonMonster[2] = FALSE;
+	m_bSummonEvent = TRUE;
 
-	m_bPaperBuy[0] = m_bPaperBuy[1] = m_bPaperBuy[2] = m_bPaperBuy[3] = TRUE;
-	m_nPaperCount[0] = m_nPaperCount[1] = m_nPaperCount[2] = m_nPaperCount[3] = 5;
-
-	m_bCashItemBuy[0] = m_bCashItemBuy[1] = m_bCashItemBuy[2] = FALSE;
-	m_nCashItemBuy[0] = m_nCashItemBuy[1] = m_nCashItemBuy[2] = 0;
+	m_bScrollBuy[0] = TRUE;	m_nScrollBuy[0] = 5;
+	m_bScrollBuy[1] = TRUE;	m_nScrollBuy[1] = 5;
+	m_bScrollElven = FALSE; m_nScrollElven = 5;
 }
 
 CScheduleBuy::~CScheduleBuy()
@@ -40,69 +45,55 @@ CScheduleBuy::~CScheduleBuy()
 
 void CScheduleBuy::DoDataExchange(CDataExchange* pDX)
 {
-	DDX_Text(pDX, IDC_EDIT1, m_nSummonGold);
-	DDX_Text(pDX, IDC_EDIT2, m_nPaperGold);
-	DDX_Text(pDX, IDC_EDIT3, m_nPaperCount[0]);
-	DDX_Text(pDX, IDC_EDIT4, m_nPaperCount[1]);
-	DDX_Text(pDX, IDC_EDIT5, m_nPaperCount[2]);
-	DDX_Text(pDX, IDC_EDIT6, m_nPaperCount[3]);
-	DDX_Text(pDX, IDC_EDIT7, m_nSkillGold);
-	DDX_Text(pDX, IDC_EDIT8, m_nExpendGold);
-	DDX_Text(pDX, IDC_EDIT9, m_nCashItemBuy[0]);
-	DDX_Text(pDX, IDC_EDIT10, m_nCashItemBuy[1]);
-
-	DDX_Check(pDX, IDC_CHECK1, m_bSummonAvatar[0]);
-	DDX_Check(pDX, IDC_CHECK2, m_bSummonAvatar[1]);
-	DDX_Check(pDX, IDC_CHECK3, m_bSummonAvatar[2]);
-	DDX_Check(pDX, IDC_CHECK4, m_bSummonRiding[0]);
-	DDX_Check(pDX, IDC_CHECK5, m_bSummonRiding[1]);
-	DDX_Check(pDX, IDC_CHECK6, m_bSummonRiding[2]);
-	DDX_Check(pDX, IDC_CHECK7, m_bSummonRune[0]);
-	DDX_Check(pDX, IDC_CHECK8, m_bSummonRune[1]);
-	DDX_Check(pDX, IDC_CHECK9, m_bPaperBuy[0]);
-	DDX_Check(pDX, IDC_CHECK10, m_bPaperBuy[1]);
-	DDX_Check(pDX, IDC_CHECK11, m_bPaperBuy[2]);
-	DDX_Check(pDX, IDC_CHECK12, m_bPaperBuy[3]);
-	DDX_Check(pDX, IDC_CHECK13, m_bSkillGold);
-	DDX_Check(pDX, IDC_CHECK14, m_bBuyHighSkill);
-	DDX_Check(pDX, IDC_CHECK15, m_bCashItemBuy[0]);
-	DDX_Check(pDX, IDC_CHECK16, m_bCashItemBuy[1]);
-	DDX_Check(pDX, IDC_CHECK17, m_bWeaponType[0]);
-	DDX_Check(pDX, IDC_CHECK18, m_bWeaponType[1]);
-	DDX_Check(pDX, IDC_CHECK19, m_bWeaponType[2]);
-	DDX_Check(pDX, IDC_CHECK20, m_bMimirPotion[0]);
-	DDX_Check(pDX, IDC_CHECK21, m_bMimirPotion[1]);
-	DDX_Check(pDX, IDC_CHECK22, m_bMimirPotion[2]);
-	DDX_Check(pDX, IDC_CHECK23, m_bMimirPotion[3]);
-	DDX_Check(pDX, IDC_CHECK24, m_bMimirPotion[4]);
-	DDX_Check(pDX, IDC_CHECK25, m_bBlessingStone[0]);
-	DDX_Check(pDX, IDC_CHECK26, m_bBlessingStone[1]);
-
-	DDX_Control(pDX, IDC_LIST1, m_lstPotion);
-	DDX_Control(pDX, IDC_LIST2, m_lstExchange);
-
-	CDialog::DoDataExchange(pDX);
+	DDX_Text(pDX, IDC_EDIT_SUMMONGOLD, m_nSummonGold);
+	DDX_Check(pDX, IDC_CHECK_SUMMONCOSTUME1, m_bSummonCostume[0]);
+	DDX_Check(pDX, IDC_CHECK_SUMMONCOSTUME2, m_bSummonCostume[1]);
+	DDX_Check(pDX, IDC_CHECK_SUMMONCOSTUME3, m_bSummonCostume[2]);
+	DDX_Check(pDX, IDC_CHECK_SUMMONPET1, m_bSummonPet[0]);
+	DDX_Check(pDX, IDC_CHECK_SUMMONPET2, m_bSummonPet[1]);
+	DDX_Check(pDX, IDC_CHECK_SUMMONPET3, m_bSummonPet[2]);
+	DDX_Check(pDX, IDC_CHECK_SUMMONMONSTER1, m_bSummonMonster[0]);
+	DDX_Check(pDX, IDC_CHECK_SUMMONMONSTER2, m_bSummonMonster[1]);
+	DDX_Check(pDX, IDC_CHECK_SUMMONMONSTER3, m_bSummonMonster[2]);
+	DDX_Check(pDX, IDC_CHECK_SUMMONEVENT, m_bSummonEvent);
+	DDX_Text(pDX, IDC_EDIT_SCROLLGOLD, m_nScrollGold);
+	DDX_Check(pDX, IDC_CHECK_SCROLLWEAPON, m_bScrollBuy[0]);
+	DDX_Text(pDX, IDC_EDIT_SCROLLWEAPONCOUNT, m_nScrollBuy[0]);
+	DDX_Check(pDX, IDC_CHECK_SCROLLARMOR, m_bScrollBuy[1]);
+	DDX_Text(pDX, IDC_EDIT_SCROLLARMORCOUNT, m_nScrollBuy[1]);
+	DDX_Check(pDX, IDC_CHECK_SCROLLELVEN, m_bScrollElven);
+	DDX_Text(pDX, IDC_EDIT_SCROLLELVENCOUNT, m_nScrollElven);
+	DDX_Text(pDX, IDC_EDIT_POTIONGOLD, m_nPotionGold);
+	DDX_Control(pDX, IDC_LIST_POTION, m_lstPotion);
+	DDX_Check(pDX, IDC_CHECK_BULK, m_bBulk);
+	DDX_Control(pDX, IDC_LIST_EXCHANGE, m_lstExchange);
+	DDX_Check(pDX, IDC_CHECK_BUYSKILLGOLD, m_bBuySkillGold);
+	DDX_Text(pDX, IDC_EDIT_BUYSKILLGOLD, m_nBuySkillGold);
+	DDX_Check(pDX, IDC_CHECK_BUYRARESKILL, m_bBuyRareSkill);
+	DDX_Text(pDX, IDC_EDIT_CRISTALGOLD, m_nCristalGold);
+	DDX_Check(pDX, IDC_CHECK_CRISTALBOX, m_bCristalBox);
+	DDX_Text(pDX, IDC_EDIT_CRISTALBOX, m_nCristalBox);
+	DDX_Check(pDX, IDC_CHECK_CRISTALPET1, m_bCristalPet1);
+	DDX_Check(pDX, IDC_CHECK_CRISTALPET2, m_bCristalPet2);
+	DDX_Text(pDX, IDC_EDIT_OTHERGOLD, m_nOtherGold);
+	DDX_Check(pDX, IDC_CHECK_EQUIPBOX, m_bEquipBox);
+	DDX_Text(pDX, IDC_EDIT_EQUIPBOX, m_nEquipBox);
 }
 
 
 BEGIN_MESSAGE_MAP(CScheduleBuy, CDialog)
-	ON_BN_CLICKED(IDC_CHECK9, &CScheduleBuy::OnEnablePaper1)
-	ON_BN_CLICKED(IDC_CHECK10, &CScheduleBuy::OnEnablePaper2)
-	ON_BN_CLICKED(IDC_CHECK11, &CScheduleBuy::OnEnablePaper3)
-	ON_BN_CLICKED(IDC_CHECK12, &CScheduleBuy::OnEnablePaper4)
-	ON_BN_CLICKED(IDC_CHECK13, &CScheduleBuy::OnSkillGold)
-	ON_BN_CLICKED(IDC_BUTTON1, &CScheduleBuy::OnAddPotionItem)
-	ON_BN_CLICKED(IDC_BUTTON2, &CScheduleBuy::OnDelPotionItem)
-	ON_NOTIFY(NM_DBLCLK, IDC_LIST1, &CScheduleBuy::OnChangePotionItem)
-	ON_BN_CLICKED(IDC_BUTTON3, &CScheduleBuy::OnAddExchangeItem)
-	ON_BN_CLICKED(IDC_BUTTON4, &CScheduleBuy::OnDelExchangeItem)
-	ON_NOTIFY(NM_DBLCLK, IDC_LIST2, &CScheduleBuy::OnChangeExchangeItem)
-	ON_BN_CLICKED(IDC_CHECK15, &CScheduleBuy::OnEnableCashBuy1)
-	ON_BN_CLICKED(IDC_CHECK16, &CScheduleBuy::OnEnableCashBuy2)
-	ON_BN_CLICKED(IDC_CHECK20, &CScheduleBuy::OnEnableMimir1)
-	ON_BN_CLICKED(IDC_CHECK21, &CScheduleBuy::OnEnableMimir2)
-	ON_BN_CLICKED(IDC_CHECK22, &CScheduleBuy::OnEnableMimir3)
-	ON_BN_CLICKED(IDC_CHECK23, &CScheduleBuy::OnEnableMimir4)
+	ON_BN_CLICKED(IDC_CHECK_SCROLLWEAPON, &CScheduleBuy::OnBnClickedCheckScrollweapon)
+	ON_BN_CLICKED(IDC_CHECK_SCROLLARMOR, &CScheduleBuy::OnBnClickedCheckScrollarmor)
+	ON_BN_CLICKED(IDC_CHECK_SCROLLELVEN, &CScheduleBuy::OnBnClickedCheckScrollelven)
+	ON_BN_CLICKED(IDC_CHECK_CRISTALBOX, &CScheduleBuy::OnBnClickedCheckCristalbox)
+	ON_BN_CLICKED(IDC_CHECK_EQUIPBOX, &CScheduleBuy::OnBnClickedCheckEquipbox)
+	ON_BN_CLICKED(IDC_CHECK_BUYSKILLGOLD, &CScheduleBuy::OnBnClickedCheckBuyskillgold)
+	ON_BN_CLICKED(IDC_BTN_ADDPOTIONITEM, &CScheduleBuy::OnAddPotionItem)
+	ON_BN_CLICKED(IDC_BTN_DELPOTIONITEM, &CScheduleBuy::OnDelPotionItem)
+	ON_NOTIFY(NM_DBLCLK, IDC_LIST_POTION, &CScheduleBuy::OnChangePotionItem)
+	ON_BN_CLICKED(IDC_BTN_ADDEXCHANGEITEM, &CScheduleBuy::OnAddExchangeItem)
+	ON_BN_CLICKED(IDC_BTN_DELEXCHANGEITEM, &CScheduleBuy::OnDelExchangeItem)
+	ON_NOTIFY(NM_DBLCLK, IDC_LIST_EXCHANGE, &CScheduleBuy::OnChangeExchangeItem)
 END_MESSAGE_MAP()
 
 
@@ -114,44 +105,45 @@ BOOL CScheduleBuy::OnInitDialog()
 
 	SetControlText();
 
-	CString strLabel;
 
 	m_lstPotion.SetExtendedStyle(m_lstPotion.GetExtendedStyle() | LVS_EX_FULLROWSELECT | LVS_EX_GRIDLINES | LVS_EX_CHECKBOXES);
 	m_lstPotion.InsertColumn(0, L"", LVCFMT_LEFT, 20);
 	m_lstPotion.InsertColumn(1, L"No", LVCFMT_LEFT, 25);
 
-	strLabel.LoadString(NULL, IDS_ITEM, g_wLanguageID);
-	m_lstPotion.InsertColumn(2, strLabel.GetBuffer(), LVCFMT_LEFT, 115);
+	CString sLabel;
+	sLabel.LoadString(NULL, IDS_ITEM, g_wLanguageID);
+	m_lstPotion.InsertColumn(2, sLabel.GetBuffer(), LVCFMT_LEFT, 115);
 
-	strLabel.LoadString(NULL, IDS_CURCOUNT, g_wLanguageID);
-	m_lstPotion.InsertColumn(3, strLabel.GetBuffer(), LVCFMT_LEFT, 40);
+	sLabel.LoadString(NULL, IDS_CURCOUNT, g_wLanguageID);
+	m_lstPotion.InsertColumn(3, sLabel.GetBuffer(), LVCFMT_LEFT, 40);
 
-	strLabel.LoadString(NULL, IDS_TARCOUNT, g_wLanguageID);
-	m_lstPotion.InsertColumn(4, strLabel.GetBuffer(), LVCFMT_LEFT, 40);
+	sLabel.LoadString(NULL, IDS_TARCOUNT, g_wLanguageID);
+	m_lstPotion.InsertColumn(4, sLabel.GetBuffer(), LVCFMT_LEFT, 40);
+
 
 	m_lstExchange.SetExtendedStyle(m_lstExchange.GetExtendedStyle() | LVS_EX_FULLROWSELECT | LVS_EX_GRIDLINES | LVS_EX_CHECKBOXES);
 	m_lstExchange.InsertColumn(0, L"", LVCFMT_LEFT, 20);
 	m_lstExchange.InsertColumn(1, L"No", LVCFMT_LEFT, 25);
 
-	strLabel.LoadString(NULL, IDS_ITEM, g_wLanguageID);
-	m_lstExchange.InsertColumn(2, strLabel.GetBuffer(), LVCFMT_LEFT, 112);
+	sLabel.LoadString(NULL, IDS_ITEM, g_wLanguageID);
+	m_lstExchange.InsertColumn(2, sLabel.GetBuffer(), LVCFMT_LEFT, 115);
 
-	strLabel.LoadString(NULL, IDS_CURCOUNT, g_wLanguageID);
-	m_lstExchange.InsertColumn(3, strLabel.GetBuffer(), LVCFMT_LEFT, 40);
+	sLabel.LoadString(NULL, IDS_CURCOUNT, g_wLanguageID);
+	m_lstExchange.InsertColumn(3, sLabel.GetBuffer(), LVCFMT_LEFT, 40);
 
-	strLabel.LoadString(NULL, IDS_TARCOUNT, g_wLanguageID);
-	m_lstExchange.InsertColumn(4, strLabel.GetBuffer(), LVCFMT_LEFT, 40);
+	sLabel.LoadString(NULL, IDS_TARCOUNT, g_wLanguageID);
+	m_lstExchange.InsertColumn(4, sLabel.GetBuffer(), LVCFMT_LEFT, 40);
+
 
 	UpdateData(FALSE);
 
-	OnEnablePaper1();
-	OnEnablePaper2();
-	OnEnablePaper3();
-	OnEnablePaper4();
-	OnSkillGold();
-	OnEnableCashBuy1();
-	OnEnableCashBuy2();
-	OnEnableMimir1();
+	OnBnClickedCheckScrollweapon();
+	OnBnClickedCheckScrollarmor();
+	OnBnClickedCheckScrollelven();
+	OnBnClickedCheckCristalbox();
+	OnBnClickedCheckEquipbox();
+	OnBnClickedCheckBuyskillgold();
+
 	return TRUE;
 }
 
@@ -165,191 +157,381 @@ BOOL CScheduleBuy::PreTranslateMessage(MSG* pMsg)
 }
 
 
+
+
 void CScheduleBuy::SetControlText()
 {
-	CString strLabel;
+	CString sLabel;
 
-	strLabel.LoadString(NULL, IDS_DIASHOP, g_wLanguageID);
-	GetDlgItem(IDC_STATIC11)->SetWindowText(strLabel);
+	if (g_wLanguageID != 0x412)
+	{
+		GetDlgItem(IDC_STATIC1)->SetWindowTextW(L"钻石商店");
+		GetDlgItem(IDC_STATIC2)->SetWindowTextW(L"金币以上时");
+		GetDlgItem(IDC_CHECK_SUMMONCOSTUME1)->SetWindowTextW(L"时装召唤 I");
+		GetDlgItem(IDC_CHECK_SUMMONCOSTUME2)->SetWindowTextW(L"时装召唤 II");
+		GetDlgItem(IDC_CHECK_SUMMONCOSTUME3)->SetWindowTextW(L"时装召唤 III");
+		GetDlgItem(IDC_CHECK_SUMMONPET1)->SetWindowTextW(L"宠物召唤 I");
+		GetDlgItem(IDC_CHECK_SUMMONPET2)->SetWindowTextW(L"宠物召唤 II");
+		GetDlgItem(IDC_CHECK_SUMMONPET3)->SetWindowTextW(L"宠物召唤 III");
+		GetDlgItem(IDC_CHECK_SUMMONMONSTER1)->SetWindowTextW(L"怪物召唤 I");
+		GetDlgItem(IDC_CHECK_SUMMONMONSTER2)->SetWindowTextW(L"怪物召唤 II");
+		GetDlgItem(IDC_CHECK_SUMMONMONSTER3)->SetWindowTextW(L"怪物召唤 III");
+		GetDlgItem(IDC_CHECK_SUMMONEVENT)->SetWindowTextW(L"金币活动");
+		GetDlgItem(IDC_STATIC3)->SetWindowTextW(L"金币以上时");
+		GetDlgItem(IDC_CHECK_SCROLLWEAPON)->SetWindowTextW(L"武器卷");
+		GetDlgItem(IDC_CHECK_SCROLLARMOR)->SetWindowTextW(L"防御卷");
+		GetDlgItem(IDC_CHECK_SCROLLELVEN)->SetWindowTextW(L"精灵卷轴");
+		GetDlgItem(IDC_STATIC8)->SetWindowTextW(L"个买");
+		GetDlgItem(IDC_STATIC9)->SetWindowTextW(L"个买");
+		GetDlgItem(IDC_STATIC10)->SetWindowTextW(L"个买");
+		GetDlgItem(IDC_STATIC4)->SetWindowTextW(L"水药商店");
+		GetDlgItem(IDC_STATIC5)->SetWindowTextW(L"金币以上时");
+		GetDlgItem(IDC_CHECK_BULK)->SetWindowTextW(L"指定购买");
+		GetDlgItem(IDC_BTN_ADDPOTIONITEM)->SetWindowTextW(L"添加");
+		GetDlgItem(IDC_BTN_DELPOTIONITEM)->SetWindowTextW(L"删掉");
+		GetDlgItem(IDC_STATIC6)->SetWindowTextW(L"交换商店");
+		GetDlgItem(IDC_BTN_ADDEXCHANGEITEM)->SetWindowTextW(L"添加");
+		GetDlgItem(IDC_BTN_DELEXCHANGEITEM)->SetWindowTextW(L"删掉");
+		GetDlgItem(IDC_CHECK_BUYSKILLGOLD)->SetWindowTextW(L"留下");
+		GetDlgItem(IDC_STATIC7)->SetWindowTextW(L"金币, 购买技能");
+		GetDlgItem(IDC_CHECK_BUYRARESKILL)->SetWindowTextW(L"购买蓝色技能");
 
-	strLabel.LoadString(NULL, IDS_GOLDABOVE, g_wLanguageID);
-	GetDlgItem(IDC_STATIC12)->SetWindowText(strLabel);
-	GetDlgItem(IDC_STATIC13)->SetWindowText(strLabel);
-	GetDlgItem(IDC_STATIC21)->SetWindowText(strLabel);
+		GetDlgItem(IDC_STATIC_CRISTALGOLD)->SetWindowTextW(L"金币以上时");
+		GetDlgItem(IDC_CHECK_CRISTALBOX)->SetWindowTextW(L"水晶随机宝箱");
+		GetDlgItem(IDC_STATIC_CRISTALBOX)->SetWindowTextW(L"个买");
+		GetDlgItem(IDC_CHECK_CRISTALPET1)->SetWindowTextW(L"顶级宠物召唤1次");
+		GetDlgItem(IDC_CHECK_CRISTALPET2)->SetWindowTextW(L"顶级宠物召唤11次");
 
-	strLabel.LoadString(NULL, IDS_BUYAVATAR_1, g_wLanguageID);
-	GetDlgItem(IDC_CHECK1)->SetWindowText(strLabel);
-
-	strLabel.LoadString(NULL, IDS_BUYAVATAR_2, g_wLanguageID);
-	GetDlgItem(IDC_CHECK2)->SetWindowText(strLabel);
-
-	strLabel.LoadString(NULL, IDS_BUYAVATAR_3, g_wLanguageID);
-	GetDlgItem(IDC_CHECK3)->SetWindowText(strLabel);
-
-	strLabel.LoadString(NULL, IDS_BUYRIDER_1, g_wLanguageID);
-	GetDlgItem(IDC_CHECK4)->SetWindowText(strLabel);
-
-	strLabel.LoadString(NULL, IDS_BUYRIDER_2, g_wLanguageID);
-	GetDlgItem(IDC_CHECK5)->SetWindowText(strLabel);
-
-	strLabel.LoadString(NULL, IDS_BUYRIDER_3, g_wLanguageID);
-	GetDlgItem(IDC_CHECK6)->SetWindowText(strLabel);
-
-	strLabel.LoadString(NULL, IDS_BUYRUNE_1, g_wLanguageID);
-	GetDlgItem(IDC_CHECK7)->SetWindowText(strLabel);
-
-	strLabel.LoadString(NULL, IDS_BUYRUNE_2, g_wLanguageID);
-	GetDlgItem(IDC_CHECK8)->SetWindowText(strLabel);
-
-	strLabel.LoadString(NULL, IDS_WEAPONPAPER, g_wLanguageID);
-	GetDlgItem(IDC_CHECK9)->SetWindowText(strLabel);
-
-	strLabel.LoadString(NULL, IDS_ARMORPAPER, g_wLanguageID);
-	GetDlgItem(IDC_CHECK10)->SetWindowText(strLabel);
-
-	strLabel.LoadString(NULL, IDS_WEAPONBOX, g_wLanguageID);
-	GetDlgItem(IDC_CHECK11)->SetWindowText(strLabel);
-
-	strLabel.LoadString(NULL, IDS_ARMORBOX, g_wLanguageID);
-	GetDlgItem(IDC_CHECK12)->SetWindowText(strLabel);
-
-	strLabel.LoadString(NULL, IDS_BUYCOUNT, g_wLanguageID);
-	GetDlgItem(IDC_STATIC14)->SetWindowText(strLabel);
-	GetDlgItem(IDC_STATIC15)->SetWindowText(strLabel);
-	GetDlgItem(IDC_STATIC16)->SetWindowText(strLabel);
-	GetDlgItem(IDC_STATIC17)->SetWindowText(strLabel);
-	GetDlgItem(IDC_STATIC22)->SetWindowText(strLabel);
-	GetDlgItem(IDC_STATIC23)->SetWindowText(strLabel);
-
-	strLabel.LoadString(NULL, IDS_POTIONNPC, g_wLanguageID);
-	GetDlgItem(IDC_STATIC18)->SetWindowText(strLabel);
-
-	strLabel.LoadString(NULL, IDS_EXCHANGENPC, g_wLanguageID);
-	GetDlgItem(IDC_STATIC19)->SetWindowText(strLabel);
-
-	strLabel.LoadString(NULL, IDS_ADD, g_wLanguageID);
-	GetDlgItem(IDC_BUTTON1)->SetWindowText(strLabel);
-	GetDlgItem(IDC_BUTTON3)->SetWindowText(strLabel);
-
-	strLabel.LoadString(NULL, IDS_DEL, g_wLanguageID);
-	GetDlgItem(IDC_BUTTON2)->SetWindowText(strLabel);
-	GetDlgItem(IDC_BUTTON4)->SetWindowText(strLabel);
-
-	strLabel.LoadString(NULL, IDS_GOLD, g_wLanguageID);
-	GetDlgItem(IDC_CHECK13)->SetWindowText(strLabel);
-
-	strLabel.LoadString(NULL, IDS_KEEPGOLDSKILL, g_wLanguageID);
-	GetDlgItem(IDC_STATIC20)->SetWindowText(strLabel);
-
-	strLabel.LoadString(NULL, IDS_STRING60277, g_wLanguageID);
-	GetDlgItem(IDC_CHECK14)->SetWindowText(strLabel);
-
-	strLabel.LoadString(NULL, IDS_STRING60361, g_wLanguageID);
-	GetDlgItem(IDC_CHECK15)->SetWindowText(strLabel);
-
-	strLabel.LoadString(NULL, IDS_STRING60362, g_wLanguageID);
-	GetDlgItem(IDC_CHECK16)->SetWindowText(strLabel);
-
-	strLabel.LoadString(NULL, IDS_WEAPONTYPE1, g_wLanguageID);
-	GetDlgItem(IDC_CHECK17)->SetWindowText(strLabel);
-
-	strLabel.LoadString(NULL, IDS_WEAPONTYPE2, g_wLanguageID);
-	GetDlgItem(IDC_CHECK18)->SetWindowText(strLabel);
-
-	strLabel.LoadString(NULL, IDS_WEAPONTYPE3, g_wLanguageID);
-	GetDlgItem(IDC_CHECK19)->SetWindowText(strLabel);
-
-	strLabel.LoadString(NULL, IDS_MIMIRPOTION1, g_wLanguageID);
-	GetDlgItem(IDC_CHECK20)->SetWindowText(strLabel);
-
-	strLabel.LoadString(NULL, IDS_MIMIRPOTION2, g_wLanguageID);
-	GetDlgItem(IDC_CHECK21)->SetWindowText(strLabel);
-
-	strLabel.LoadString(NULL, IDS_MIMIRPOTION3, g_wLanguageID);
-	GetDlgItem(IDC_CHECK22)->SetWindowText(strLabel);
-
-	strLabel.LoadString(NULL, IDS_MIMIRPOTION4, g_wLanguageID);
-	GetDlgItem(IDC_CHECK23)->SetWindowText(strLabel);
-
-	strLabel.LoadString(NULL, IDS_MIMIRPOTION5, g_wLanguageID);
-	GetDlgItem(IDC_CHECK24)->SetWindowText(strLabel);
-
-	strLabel.LoadString(NULL, IDS_STRING60425, g_wLanguageID);
-	GetDlgItem(IDC_CHECK25)->SetWindowText(strLabel);
-
-	strLabel.LoadString(NULL, IDS_STRING60426, g_wLanguageID);
-	GetDlgItem(IDC_CHECK26)->SetWindowText(strLabel);
+		GetDlgItem(IDC_STATIC_OTHERGOLD)->SetWindowTextW(L"金币以上时");
+		GetDlgItem(IDC_CHECK_EQUIPBOX)->SetWindowTextW(L"普通装备宝箱");
+		GetDlgItem(IDC_STATIC_EQUIPBOX)->SetWindowTextW(L"个买");
+	}
 }
 
 
-void CScheduleBuy::OnEnablePaper1()
+void CScheduleBuy::LoadSetting(WCHAR* szPath)
 {
-	UpdateData();
+	FILE* fp;
+	WCHAR szFile[MAX_PATH];
 
-	GetDlgItem(IDC_EDIT3)->EnableWindow(m_bPaperBuy[0]);
+	swprintf_s(szFile, L"%s\\Buy.dat", szPath);
+	_wfopen_s(&fp, szFile, L"rb");
+	if (fp)
+	{
+		int nCount = 0;
+		fread(&nCount, sizeof(int), 1, fp);
+
+		m_lstPotion.DeleteAllItems();
+
+		if (nCount > 0)
+		{
+			ITEM_BUY_W* pItemBuy = new ITEM_BUY_W[nCount];
+			if (pItemBuy)
+			{
+				memset(pItemBuy, 0, sizeof(ITEM_BUY_W) * nCount);
+				fread(pItemBuy, sizeof(ITEM_BUY_W), nCount, fp);
+
+				WCHAR szTemp[MAX_NAME];
+				for (int i = 0; i < nCount; i++)
+				{
+					m_lstPotion.InsertItem(i, L"");
+
+					swprintf_s(szTemp, L"%d", i + 1);
+					m_lstPotion.SetItemText(i, 1, szTemp);
+
+					m_lstPotion.SetItemText(i, 2, pItemBuy[i].szName);
+
+					swprintf_s(szTemp, L"%d", pItemBuy[i].nCurCount);
+					m_lstPotion.SetItemText(i, 3, szTemp);
+
+					swprintf_s(szTemp, L"%d", pItemBuy[i].nMaxCount);
+					m_lstPotion.SetItemText(i, 4, szTemp);
+
+					m_lstPotion.SetCheck(i, pItemBuy[i].bEnable);
+				}
+
+				delete[] pItemBuy;
+				pItemBuy = NULL;
+			}
+		}
+
+		nCount = 0;
+		fread(&nCount, sizeof(int), 1, fp);
+
+		m_lstExchange.DeleteAllItems();
+
+		if (nCount > 0)
+		{
+			ITEM_BUY_W* pItemBuy = new ITEM_BUY_W[nCount];
+			if (pItemBuy)
+			{
+				memset(pItemBuy, 0, sizeof(ITEM_BUY_W) * nCount);
+				fread(pItemBuy, sizeof(ITEM_BUY_W), nCount, fp);
+
+				WCHAR szTemp[MAX_NAME];
+				for (int i = 0; i < nCount; i++)
+				{
+					m_lstExchange.InsertItem(i, L"");
+
+					swprintf_s(szTemp, L"%d", i + 1);
+					m_lstExchange.SetItemText(i, 1, szTemp);
+
+					m_lstExchange.SetItemText(i, 2, pItemBuy[i].szName);
+
+					swprintf_s(szTemp, L"%d", pItemBuy[i].nCurCount);
+					m_lstExchange.SetItemText(i, 3, szTemp);
+
+					swprintf_s(szTemp, L"%d", pItemBuy[i].nMaxCount);
+					m_lstExchange.SetItemText(i, 4, szTemp);
+
+					m_lstExchange.SetCheck(i, pItemBuy[i].bEnable);
+				}
+
+				delete[] pItemBuy;
+				pItemBuy = NULL;
+			}
+		}
+
+		BUY_SETTING m_BuySetting;
+		memset(&m_BuySetting, 0, sizeof(BUY_SETTING));
+		fread(&m_BuySetting, sizeof(BUY_SETTING), 1, fp);
+		fclose(fp);
+
+		m_nSummonGold = m_BuySetting.nSummonGold;
+		m_bSummonCostume[0] = m_BuySetting.bSummonCostume[0];
+		m_bSummonCostume[1] = m_BuySetting.bSummonCostume[1];
+		m_bSummonCostume[2] = m_BuySetting.bSummonCostume[2];
+		m_bSummonPet[0] = m_BuySetting.bSummonPet[0];
+		m_bSummonPet[1] = m_BuySetting.bSummonPet[1];
+		m_bSummonPet[2] = m_BuySetting.bSummonPet[2];
+		m_bSummonMonster[0] = m_BuySetting.bSummonMonster[0];
+		m_bSummonMonster[1] = m_BuySetting.bSummonMonster[1];
+		m_bSummonMonster[2] = m_BuySetting.bSummonMonster[2];
+		m_bSummonEvent = m_BuySetting.bSummonEvent;
+
+		m_nScrollGold = m_BuySetting.nScrollGold;
+		m_bScrollBuy[0] = m_BuySetting.bScrollBuy[0];
+		m_bScrollBuy[1] = m_BuySetting.bScrollBuy[1];
+		m_nScrollBuy[0] = m_BuySetting.nScrollBuy[0];
+		m_nScrollBuy[1] = m_BuySetting.nScrollBuy[1];
+		m_bScrollElven = m_BuySetting.bScrollElven;
+		m_nScrollElven = m_BuySetting.nScrollElven;
+
+		m_nPotionGold = m_BuySetting.nPotionGold;
+		m_bBulk = m_BuySetting.bBulk;
+
+		m_bBuySkillGold = m_BuySetting.bBuySkillGold;
+		m_nBuySkillGold = m_BuySetting.nBuySkillGold;
+		m_bBuyRareSkill = m_BuySetting.bBuyRareSkill;
+
+		m_nCristalGold = m_BuySetting.nCristalGold;
+		m_bCristalBox = m_BuySetting.bCristalBox;
+		m_nCristalBox = m_BuySetting.nCristalBox;
+		m_bCristalPet1 = m_BuySetting.bCristalPet1;
+		m_bCristalPet2 = m_BuySetting.bCristalPet2;
+
+		m_nOtherGold = m_BuySetting.nOtherGold;
+		m_bEquipBox = m_BuySetting.bEquipBox;
+		m_nEquipBox = m_BuySetting.nEquipBox;
+
+
+		UpdateData(FALSE);
+
+		OnBnClickedCheckScrollweapon();
+		OnBnClickedCheckScrollarmor();
+		OnBnClickedCheckScrollelven();
+		OnBnClickedCheckCristalbox();
+		OnBnClickedCheckEquipbox();
+		OnBnClickedCheckBuyskillgold();
+	}
 }
 
 
-
-void CScheduleBuy::OnEnablePaper2()
+void CScheduleBuy::SaveSetting(WCHAR* szPath)
 {
-	UpdateData();
+	FILE* fp;
+	WCHAR szFile[MAX_PATH];
 
-	GetDlgItem(IDC_EDIT4)->EnableWindow(m_bPaperBuy[1]);
+	swprintf_s(szFile, L"%s\\Buy.dat", szPath);
+	_wfopen_s(&fp, szFile, L"wb");
+	if (fp)
+	{
+		UpdateData(TRUE);
+
+		int nCount = m_lstPotion.GetItemCount();
+		fwrite(&nCount, sizeof(int), 1, fp);
+
+		if (nCount > 0)
+		{
+			ITEM_BUY_W* pItemBuy = new ITEM_BUY_W[nCount];
+			if (pItemBuy)
+			{
+				memset(pItemBuy, 0, sizeof(ITEM_BUY_W) * nCount);
+
+				for (int i = 0; i < nCount; i++)
+				{
+					wcscpy(pItemBuy[i].szName, m_lstPotion.GetItemText(i, 2).GetBuffer());
+
+					pItemBuy[i].nCurCount = _wtoi(m_lstPotion.GetItemText(i, 3).GetBuffer());
+					pItemBuy[i].nMaxCount = _wtoi(m_lstPotion.GetItemText(i, 4).GetBuffer());
+					pItemBuy[i].bEnable = m_lstPotion.GetCheck(i);
+				}
+
+				fwrite(pItemBuy, sizeof(ITEM_BUY_W), nCount, fp);
+
+				delete[] pItemBuy;
+				pItemBuy = NULL;
+			}
+		}
+
+		nCount = m_lstExchange.GetItemCount();
+		fwrite(&nCount, sizeof(int), 1, fp);
+
+		if (nCount > 0)
+		{
+			ITEM_BUY_W* pItemBuy = new ITEM_BUY_W[nCount];
+			if (pItemBuy)
+			{
+				memset(pItemBuy, 0, sizeof(ITEM_BUY_W) * nCount);
+
+				for (int i = 0; i < nCount; i++)
+				{
+					wcscpy(pItemBuy[i].szName, m_lstExchange.GetItemText(i, 2).GetBuffer());
+
+					pItemBuy[i].nCurCount = _wtoi(m_lstExchange.GetItemText(i, 3).GetBuffer());
+					pItemBuy[i].nMaxCount = _wtoi(m_lstExchange.GetItemText(i, 4).GetBuffer());
+					pItemBuy[i].bEnable = m_lstExchange.GetCheck(i);
+				}
+
+				fwrite(pItemBuy, sizeof(ITEM_BUY_W), nCount, fp);
+
+				delete[] pItemBuy;
+				pItemBuy = NULL;
+			}
+		}
+
+		BUY_SETTING m_BuySetting;
+		memset(&m_BuySetting, 0, sizeof(BUY_SETTING));
+
+		m_BuySetting.nSummonGold = m_nSummonGold;
+		m_BuySetting.bSummonCostume[0] = m_bSummonCostume[0];
+		m_BuySetting.bSummonCostume[1] = m_bSummonCostume[1];
+		m_BuySetting.bSummonCostume[2] = m_bSummonCostume[2];
+		m_BuySetting.bSummonPet[0] = m_bSummonPet[0];
+		m_BuySetting.bSummonPet[1] = m_bSummonPet[1];
+		m_BuySetting.bSummonPet[2] = m_bSummonPet[2];
+		m_BuySetting.bSummonMonster[0] = m_bSummonMonster[0];
+		m_BuySetting.bSummonMonster[1] = m_bSummonMonster[1];
+		m_BuySetting.bSummonMonster[2] = m_bSummonMonster[2];
+		m_BuySetting.bSummonEvent = m_bSummonEvent;
+
+		m_BuySetting.nScrollGold = m_nScrollGold;
+		m_BuySetting.bScrollBuy[0] = m_bScrollBuy[0];
+		m_BuySetting.bScrollBuy[1] = m_bScrollBuy[1];
+		m_BuySetting.nScrollBuy[0] = m_nScrollBuy[0];
+		m_BuySetting.nScrollBuy[1] = m_nScrollBuy[1];
+		m_BuySetting.bScrollElven = m_bScrollElven;
+		m_BuySetting.nScrollElven = m_nScrollElven;
+
+		m_BuySetting.nPotionGold = m_nPotionGold;
+		m_BuySetting.bBulk = m_bBulk;
+
+		m_BuySetting.bBuySkillGold = m_bBuySkillGold;
+		m_BuySetting.nBuySkillGold = m_nBuySkillGold;
+		m_BuySetting.bBuyRareSkill = m_bBuyRareSkill;
+
+		m_BuySetting.nCristalGold = m_nCristalGold;
+		m_BuySetting.bCristalBox = m_bCristalBox;
+		m_BuySetting.nCristalBox = m_nCristalBox;
+		m_BuySetting.bCristalPet1 = m_bCristalPet1;
+		m_BuySetting.bCristalPet2 = m_bCristalPet2;
+
+		m_BuySetting.nOtherGold = m_nOtherGold;
+		m_BuySetting.bEquipBox = m_bEquipBox;
+		m_BuySetting.nEquipBox = m_nEquipBox;
+
+		fwrite(&m_BuySetting, sizeof(BUY_SETTING), 1, fp);
+		fclose(fp);
+	}
 }
 
 
-void CScheduleBuy::OnEnablePaper3()
+void CScheduleBuy::OnBnClickedCheckScrollweapon()
 {
-	UpdateData();
+	UpdateData(TRUE);
 
-	GetDlgItem(IDC_EDIT5)->EnableWindow(m_bPaperBuy[2]);
+	GetDlgItem(IDC_EDIT_SCROLLWEAPONCOUNT)->EnableWindow(m_bScrollBuy[0]);
 }
 
 
-void CScheduleBuy::OnEnablePaper4()
+void CScheduleBuy::OnBnClickedCheckScrollarmor()
 {
-	UpdateData();
+	UpdateData(TRUE);
 
-	GetDlgItem(IDC_EDIT6)->EnableWindow(m_bPaperBuy[3]);
+	GetDlgItem(IDC_EDIT_SCROLLARMORCOUNT)->EnableWindow(m_bScrollBuy[1]);
 }
 
 
-void CScheduleBuy::OnSkillGold()
+void CScheduleBuy::OnBnClickedCheckScrollelven()
 {
-	UpdateData();
+	UpdateData(TRUE);
 
-	GetDlgItem(IDC_EDIT7)->EnableWindow(m_bSkillGold);
+	GetDlgItem(IDC_EDIT_SCROLLELVENCOUNT)->EnableWindow(m_bScrollElven);
 }
 
+
+void CScheduleBuy::OnBnClickedCheckCristalbox()
+{
+	UpdateData(TRUE);
+
+	GetDlgItem(IDC_EDIT_CRISTALBOX)->EnableWindow(m_bCristalBox);
+}
+
+
+void CScheduleBuy::OnBnClickedCheckEquipbox()
+{
+	UpdateData(TRUE);
+
+	GetDlgItem(IDC_EDIT_EQUIPBOX)->EnableWindow(m_bEquipBox);
+}
+
+
+void CScheduleBuy::OnBnClickedCheckBuyskillgold()
+{
+	UpdateData(TRUE);
+
+	GetDlgItem(IDC_EDIT_BUYSKILLGOLD)->EnableWindow(m_bBuySkillGold);
+	GetDlgItem(IDC_CHECK_BUYRARESKILL)->EnableWindow(m_bBuySkillGold);
+}
 
 
 void CScheduleBuy::OnAddPotionItem()
 {
 	CItemBuy dlgItem;
-	if(dlgItem.DoModal() != IDOK)
+	dlgItem.m_bPotion = TRUE;
+	if (dlgItem.DoModal() != IDOK)
 		return;
 
-	for(int i = 0; i < m_lstPotion.GetItemCount(); i++)
+	for (int i = 0; i < m_lstPotion.GetItemCount(); i++)
 	{
-		if(!m_lstPotion.GetItemText(i, 2).Compare(dlgItem.m_szName.GetBuffer()))
+		if (!m_lstPotion.GetItemText(i, 2).Compare(dlgItem.m_szName.GetBuffer()))
 			return;
 	}
 
-	WCHAR szTmp[MAX_NAME];
+	WCHAR szTemp[MAX_NAME];
 
 	m_lstPotion.InsertItem(m_lstPotion.GetItemCount(), L"");
 
-	swprintf(szTmp, L"%d", m_lstPotion.GetItemCount());
-	m_lstPotion.SetItemText(m_lstPotion.GetItemCount() - 1, 1, szTmp);
+	swprintf_s(szTemp, L"%d", m_lstPotion.GetItemCount());
+	m_lstPotion.SetItemText(m_lstPotion.GetItemCount() - 1, 1, szTemp);
 
 	m_lstPotion.SetItemText(m_lstPotion.GetItemCount() - 1, 2, dlgItem.m_szName.GetBuffer());
 
-	swprintf(szTmp, L"%d", dlgItem.m_nCurCount);
-	m_lstPotion.SetItemText(m_lstPotion.GetItemCount() - 1, 3, szTmp);
+	swprintf_s(szTemp, L"%d", dlgItem.m_nCurCount);
+	m_lstPotion.SetItemText(m_lstPotion.GetItemCount() - 1, 3, szTemp);
 
-	swprintf(szTmp, L"%d", dlgItem.m_nTarCount);
-	m_lstPotion.SetItemText(m_lstPotion.GetItemCount() - 1, 4, szTmp);
+	swprintf_s(szTemp, L"%d", dlgItem.m_nTarCount);
+	m_lstPotion.SetItemText(m_lstPotion.GetItemCount() - 1, 4, szTemp);
 
 	m_lstPotion.SetCheck(m_lstPotion.GetItemCount() - 1);
 }
@@ -358,106 +540,105 @@ void CScheduleBuy::OnAddPotionItem()
 void CScheduleBuy::OnDelPotionItem()
 {
 	POSITION Pos = m_lstPotion.GetFirstSelectedItemPosition();
-	if(Pos == NULL)
+	if (Pos == NULL)
 		return;
 
-	CString strLabel;
-	strLabel.LoadString(NULL, IDS_REALLYDELETE, g_wLanguageID);
+	CString sLabel;
+	sLabel.LoadString(NULL, IDS_REALLYDELETE, g_wLanguageID);
 
-	CString strNotice;
-	strNotice.LoadString(NULL, IDS_NOTICE, g_wLanguageID);
+	CString sNotice;
+	sNotice.LoadString(NULL, IDS_NOTICE, g_wLanguageID);
 
-	if(MessageBox(strLabel.GetBuffer(), strNotice.GetBuffer(), MB_YESNO) != IDYES)
+	if (MessageBox(sLabel, sNotice, MB_YESNO) != IDYES)
 		return;
 
 	int nIndex = m_lstPotion.GetNextSelectedItem(Pos);
 	m_lstPotion.DeleteItem(nIndex);
 
-	WCHAR szTmp[MAX_NAME];
-	for(int i = nIndex; i < m_lstPotion.GetItemCount(); i++)
+	WCHAR szTemp[MAX_NAME];
+	for (int i = nIndex; i < m_lstPotion.GetItemCount(); i++)
 	{
-		swprintf(szTmp, L"%d", i + 1);
-		m_lstPotion.SetItemText(i, 1, szTmp);
+		swprintf_s(szTemp, L"%d", i + 1);
+		m_lstPotion.SetItemText(i, 1, szTemp);
 	}
 }
 
 
-void CScheduleBuy::OnChangePotionItem(NMHDR *pNMHDR, LRESULT *pResult)
+void CScheduleBuy::OnChangePotionItem(NMHDR* pNMHDR, LRESULT* pResult)
 {
 	LPNMITEMACTIVATE pNMItemActivate = reinterpret_cast<LPNMITEMACTIVATE>(pNMHDR);
-	if(pNMItemActivate->iItem < 0)
+	if (pNMItemActivate->iItem < 0)
 		return;
 
 	CItemBuy dlgItem;
-	
+
 	dlgItem.m_szName = m_lstPotion.GetItemText(pNMItemActivate->iItem, 2);
+	dlgItem.m_bPotion = TRUE;
 	dlgItem.m_nCurCount = _wtoi(m_lstPotion.GetItemText(pNMItemActivate->iItem, 3).GetBuffer());
 	dlgItem.m_nTarCount = _wtoi(m_lstPotion.GetItemText(pNMItemActivate->iItem, 4).GetBuffer());
 
-	if(dlgItem.DoModal() != IDOK)
+	if (dlgItem.DoModal() != IDOK)
 		return;
 
-	for(int i = 0; i < m_lstPotion.GetItemCount(); i++)
+	for (int i = 0; i < m_lstPotion.GetItemCount(); i++)
 	{
-		if(i == pNMItemActivate->iItem)
+		if (i == pNMItemActivate->iItem)
 			continue;
 
-		if(!m_lstPotion.GetItemText(i, 2).Compare(dlgItem.m_szName.GetBuffer()))
+		if (!m_lstPotion.GetItemText(i, 2).Compare(dlgItem.m_szName.GetBuffer()))
 			return;
 	}
 
-	WCHAR szTmp[MAX_NAME];
-	
+	WCHAR szTemp[MAX_NAME];
+
 	m_lstPotion.SetItemText(pNMItemActivate->iItem, 2, dlgItem.m_szName.GetBuffer());
 
-	swprintf(szTmp, L"%d", dlgItem.m_nCurCount);
-	m_lstPotion.SetItemText(pNMItemActivate->iItem, 3, szTmp);
+	swprintf_s(szTemp, L"%d", dlgItem.m_nCurCount);
+	m_lstPotion.SetItemText(pNMItemActivate->iItem, 3, szTemp);
 
-	swprintf(szTmp, L"%d", dlgItem.m_nTarCount);
-	m_lstPotion.SetItemText(pNMItemActivate->iItem, 4, szTmp);
-	
+	swprintf_s(szTemp, L"%d", dlgItem.m_nTarCount);
+	m_lstPotion.SetItemText(pNMItemActivate->iItem, 4, szTemp);
+
 	*pResult = 0;
 }
-
 
 
 void CScheduleBuy::OnAddExchangeItem()
 {
 	CItemBuy dlgItem;
-	dlgItem.m_bExpendable = FALSE;
-	if(dlgItem.DoModal() != IDOK)
+	dlgItem.m_bPotion = FALSE;
+	if (dlgItem.DoModal() != IDOK)
 		return;
 
-	for(int i = 0; i < m_lstExchange.GetItemCount(); i++)
+	for (int i = 0; i < m_lstExchange.GetItemCount(); i++)
 	{
-		if(!m_lstExchange.GetItemText(i, 2).Compare(dlgItem.m_szName.GetBuffer()))
+		if (!m_lstExchange.GetItemText(i, 2).Compare(dlgItem.m_szName.GetBuffer()))
 			return;
 	}
 
-	WCHAR szTmp[MAX_NAME];
+	WCHAR szTemp[MAX_NAME];
 
 	m_lstExchange.InsertItem(m_lstExchange.GetItemCount(), L"");
 
-	swprintf(szTmp, L"%d", m_lstExchange.GetItemCount());
-	m_lstExchange.SetItemText(m_lstExchange.GetItemCount() - 1, 1, szTmp);
+	swprintf_s(szTemp, L"%d", m_lstExchange.GetItemCount());
+	m_lstExchange.SetItemText(m_lstExchange.GetItemCount() - 1, 1, szTemp);
 
 	m_lstExchange.SetItemText(m_lstExchange.GetItemCount() - 1, 2, dlgItem.m_szName.GetBuffer());
 
-	swprintf(szTmp, L"%d", dlgItem.m_nCurCount);
-	m_lstExchange.SetItemText(m_lstExchange.GetItemCount() - 1, 3, szTmp);
+	swprintf_s(szTemp, L"%d", dlgItem.m_nCurCount);
+	m_lstExchange.SetItemText(m_lstExchange.GetItemCount() - 1, 3, szTemp);
 
-	swprintf(szTmp, L"%d", dlgItem.m_nTarCount);
-	m_lstExchange.SetItemText(m_lstExchange.GetItemCount() - 1, 4, szTmp);
+	swprintf_s(szTemp, L"%d", dlgItem.m_nTarCount);
+	m_lstExchange.SetItemText(m_lstExchange.GetItemCount() - 1, 4, szTemp);
 
 	m_lstExchange.SetCheck(m_lstExchange.GetItemCount() - 1);
 }
 
 
-
 void CScheduleBuy::OnDelExchangeItem()
 {
 	POSITION Pos = m_lstExchange.GetFirstSelectedItemPosition();
-	if(Pos == NULL)
+	if (Pos == NULL)
 		return;
 
 	CString strLabel;
@@ -466,404 +647,54 @@ void CScheduleBuy::OnDelExchangeItem()
 	CString strNotice;
 	strNotice.LoadString(NULL, IDS_NOTICE, g_wLanguageID);
 
-	if(MessageBox(strLabel.GetBuffer(), strNotice.GetBuffer(), MB_YESNO) != IDYES)
+	if (MessageBox(strLabel.GetBuffer(), strNotice.GetBuffer(), MB_YESNO) != IDYES)
 		return;
 
 	int nIndex = m_lstExchange.GetNextSelectedItem(Pos);
 	m_lstExchange.DeleteItem(nIndex);
 
-	WCHAR szTmp[MAX_NAME];
-	for(int i = nIndex; i < m_lstExchange.GetItemCount(); i++)
+	WCHAR szTemp[MAX_NAME];
+	for (int i = nIndex; i < m_lstExchange.GetItemCount(); i++)
 	{
-		swprintf(szTmp, L"%d", i + 1);
-		m_lstExchange.SetItemText(i, 1, szTmp);
+		swprintf_s(szTemp, L"%d", i + 1);
+		m_lstExchange.SetItemText(i, 1, szTemp);
 	}
 }
 
 
-
-void CScheduleBuy::OnChangeExchangeItem(NMHDR *pNMHDR, LRESULT *pResult)
+void CScheduleBuy::OnChangeExchangeItem(NMHDR* pNMHDR, LRESULT* pResult)
 {
 	LPNMITEMACTIVATE pNMItemActivate = reinterpret_cast<LPNMITEMACTIVATE>(pNMHDR);
-	if(pNMItemActivate->iItem < 0)
+	if (pNMItemActivate->iItem < 0)
 		return;
 
 	CItemBuy dlgItem;
-	dlgItem.m_bExpendable = FALSE;
 	dlgItem.m_szName = m_lstExchange.GetItemText(pNMItemActivate->iItem, 2);
+	dlgItem.m_bPotion = FALSE;
 	dlgItem.m_nCurCount = _wtoi(m_lstExchange.GetItemText(pNMItemActivate->iItem, 3).GetBuffer());
 	dlgItem.m_nTarCount = _wtoi(m_lstExchange.GetItemText(pNMItemActivate->iItem, 4).GetBuffer());
 
-	if(dlgItem.DoModal() != IDOK)
+	if (dlgItem.DoModal() != IDOK)
 		return;
 
-	for(int i = 0; i < m_lstExchange.GetItemCount(); i++)
+	for (int i = 0; i < m_lstExchange.GetItemCount(); i++)
 	{
-		if(i == pNMItemActivate->iItem)
+		if (i == pNMItemActivate->iItem)
 			continue;
 
-		if(!m_lstExchange.GetItemText(i, 2).Compare(dlgItem.m_szName.GetBuffer()))
+		if (!m_lstExchange.GetItemText(i, 2).Compare(dlgItem.m_szName.GetBuffer()))
 			return;
 	}
 
-	WCHAR szTmp[MAX_NAME];
+	WCHAR szTemp[MAX_NAME];
 
 	m_lstExchange.SetItemText(pNMItemActivate->iItem, 2, dlgItem.m_szName.GetBuffer());
 
-	swprintf(szTmp, L"%d", dlgItem.m_nCurCount);
-	m_lstExchange.SetItemText(pNMItemActivate->iItem, 3, szTmp);
+	swprintf_s(szTemp, L"%d", dlgItem.m_nCurCount);
+	m_lstExchange.SetItemText(pNMItemActivate->iItem, 3, szTemp);
 
-	swprintf(szTmp, L"%d", dlgItem.m_nTarCount);
-	m_lstExchange.SetItemText(pNMItemActivate->iItem, 4, szTmp);
-	
+	swprintf_s(szTemp, L"%d", dlgItem.m_nTarCount);
+	m_lstExchange.SetItemText(pNMItemActivate->iItem, 4, szTemp);
+
 	*pResult = 0;
-}
-
-
-void CScheduleBuy::LoadSetting(WCHAR *szPath)
-{
-	WCHAR szFile[MAX_PATH];
-	swprintf(szFile, L"%s\\Buy.dat", szPath);
-
-	FILE *fp = _wfopen(szFile, L"rb");
-	if(!fp)
-		return;
-
-	int nCount = 0;
-	fread(&nCount, sizeof(int), 1, fp);
-
-	m_lstPotion.DeleteAllItems();
-
-	if(nCount > 0)
-	{
-		ITEM_BUY *pItemBuy = new ITEM_BUY[nCount];
-		if(pItemBuy)
-		{
-			memset(pItemBuy, 0, sizeof(ITEM_BUY) * nCount);
-			fread(pItemBuy, sizeof(ITEM_BUY), nCount, fp);
-
-			WCHAR szTmp[MAX_NAME];
-			for(int i = 0; i < nCount; i++)
-			{
-				m_lstPotion.InsertItem(i, L"");
-
-				swprintf(szTmp, L"%d", i + 1);
-				m_lstPotion.SetItemText(i, 1, szTmp);
-
-				m_lstPotion.SetItemText(i, 2, pItemBuy[i].szName);
-
-				swprintf(szTmp, L"%d", pItemBuy[i].nCurCount);
-				m_lstPotion.SetItemText(i, 3, szTmp);
-
-				swprintf(szTmp, L"%d", pItemBuy[i].nMaxCount);
-				m_lstPotion.SetItemText(i, 4, szTmp);
-
-				m_lstPotion.SetCheck(i, pItemBuy[i].bEnable);
-			}
-
-			delete[] pItemBuy;
-			pItemBuy = NULL;
-		}
-	}
-
-	nCount = 0;
-	fread(&nCount, sizeof(int), 1, fp);
-
-	m_lstExchange.DeleteAllItems();
-
-	if(nCount > 0)
-	{
-		ITEM_BUY *pItemBuy = new ITEM_BUY[nCount];
-		if(pItemBuy)
-		{
-			memset(pItemBuy, 0, sizeof(ITEM_BUY) * nCount);
-			fread(pItemBuy, sizeof(ITEM_BUY), nCount, fp);
-
-			WCHAR szTmp[MAX_NAME];
-			for(int i = 0; i < nCount; i++)
-			{
-				m_lstExchange.InsertItem(i, L"");
-
-				swprintf(szTmp, L"%d", i + 1);
-				m_lstExchange.SetItemText(i, 1, szTmp);
-
-				m_lstExchange.SetItemText(i, 2, pItemBuy[i].szName);
-
-				swprintf(szTmp, L"%d", pItemBuy[i].nCurCount);
-				m_lstExchange.SetItemText(i, 3, szTmp);
-
-				swprintf(szTmp, L"%d", pItemBuy[i].nMaxCount);
-				m_lstExchange.SetItemText(i, 4, szTmp);
-
-				m_lstExchange.SetCheck(i, pItemBuy[i].bEnable);
-			}
-
-			delete[] pItemBuy;
-			pItemBuy = NULL;
-		}
-	}
-
-	BUY_SETTING m_BuySetting;
-	memset(&m_BuySetting, 0, sizeof(BUY_SETTING));
-
-	fread(&m_BuySetting, sizeof(BUY_SETTING), 1, fp);
-
-	m_nSummonGold = m_BuySetting.nSummonGold;
-
-	m_bSummonAvatar[0] = m_BuySetting.bSummonAvatar[0];
-	m_bSummonAvatar[1] = m_BuySetting.bSummonAvatar[1];
-	m_bSummonAvatar[2] = m_BuySetting.bSummonAvatar[2];
-
-	m_bSummonRiding[0] = m_BuySetting.bSummonRiding[0];
-	m_bSummonRiding[1] = m_BuySetting.bSummonRiding[1];
-	m_bSummonRiding[2] = m_BuySetting.bSummonRiding[2];
-
-	m_bSummonRune[0] = m_BuySetting.bSummonRune[0];
-	m_bSummonRune[1] = m_BuySetting.bSummonRune[1];
-
-	m_nPaperGold = m_BuySetting.nPaperGold;
-
-	m_bPaperBuy[0] = m_BuySetting.bPaperBuy[0];
-	m_bPaperBuy[1] = m_BuySetting.bPaperBuy[1];
-	m_bPaperBuy[2] = m_BuySetting.bPaperBuy[2];
-	m_bPaperBuy[3] = m_BuySetting.bPaperBuy[3];
-
-	m_nPaperCount[0] = m_BuySetting.nPaperCount[0];
-	m_nPaperCount[1] = m_BuySetting.nPaperCount[1];
-	m_nPaperCount[2] = m_BuySetting.nPaperCount[2];
-	m_nPaperCount[3] = m_BuySetting.nPaperCount[3];
-
-	m_bCashItemBuy[0] = m_BuySetting.bCashItemBuy[0];
-	m_bCashItemBuy[1] = m_BuySetting.bCashItemBuy[1];
-	m_bCashItemBuy[2] = m_BuySetting.bCashItemBuy[2];
-
-	m_nCashItemBuy[0] = m_BuySetting.nCashItemBuy[0];
-	m_nCashItemBuy[1] = m_BuySetting.nCashItemBuy[1];
-	m_nCashItemBuy[2] = m_BuySetting.nCashItemBuy[2];
-
-	m_bSkillGold = m_BuySetting.bSkillGold;
-	m_nSkillGold = m_BuySetting.nSkillGold;
-
-	m_nExpendGold = m_BuySetting.nExpendGold;
-	m_bBuyHighSkill = m_BuySetting.bBuyHighSkill;
-
-	m_bWeaponType[0] = m_BuySetting.bWeaponType[0];
-	m_bWeaponType[1] = m_BuySetting.bWeaponType[1];
-	m_bWeaponType[2] = m_BuySetting.bWeaponType[2];
-
-	m_bMimirPotion[0] = m_BuySetting.bMimirPotion[0];
-	m_bMimirPotion[1] = m_BuySetting.bMimirPotion[1];
-	m_bMimirPotion[2] = m_BuySetting.bMimirPotion[2];
-	m_bMimirPotion[3] = m_BuySetting.bMimirPotion[3];
-	m_bMimirPotion[4] = m_BuySetting.bMimirPotion[4];
-
-	m_bBlessingStone[0] = m_BuySetting.bBlessingStone[0];
-	m_bBlessingStone[1] = m_BuySetting.bBlessingStone[1];
-
-	fclose(fp);
-
-	UpdateData(FALSE);
-
-	OnEnablePaper1();
-	OnEnablePaper2();
-	OnEnablePaper3();
-	OnEnablePaper4();
-	OnSkillGold();
-	OnEnableCashBuy1();
-	OnEnableCashBuy2();
-	OnEnableMimir1();
-}
-
-
-void CScheduleBuy::SaveSetting(WCHAR *szPath)
-{
-	WCHAR szFile[MAX_PATH];
-	swprintf(szFile, L"%s\\Buy.dat", szPath);
-
-	FILE *fp = _wfopen(szFile, L"wb");
-	if(!fp)
-		return;
-
-	UpdateData();
-
-	int nCount = m_lstPotion.GetItemCount();
-	fwrite(&nCount, sizeof(int), 1, fp);
-
-	if(nCount > 0)
-	{
-		ITEM_BUY *pItemBuy = new ITEM_BUY[nCount];
-		if(pItemBuy)
-		{
-			memset(pItemBuy, 0, sizeof(ITEM_BUY) * nCount);
-
-			for(int i = 0; i < nCount; i++)
-			{
-				wcscpy(pItemBuy[i].szName, m_lstPotion.GetItemText(i, 2).GetBuffer());				
-
-				pItemBuy[i].nCurCount = _wtoi(m_lstPotion.GetItemText(i, 3).GetBuffer());
-				pItemBuy[i].nMaxCount = _wtoi(m_lstPotion.GetItemText(i, 4).GetBuffer());
-				pItemBuy[i].bEnable = m_lstPotion.GetCheck(i);
-			}
-
-			fwrite(pItemBuy, sizeof(ITEM_BUY), nCount, fp);
-
-			delete[] pItemBuy;
-			pItemBuy = NULL;
-		}
-	}
-
-	nCount = m_lstExchange.GetItemCount();
-	fwrite(&nCount, sizeof(int), 1, fp);
-
-	if(nCount > 0)
-	{
-		ITEM_BUY *pItemBuy = new ITEM_BUY[nCount];
-		if(pItemBuy)
-		{
-			memset(pItemBuy, 0, sizeof(ITEM_BUY) * nCount);
-			
-			for(int i = 0; i < nCount; i++)
-			{
-				wcscpy(pItemBuy[i].szName, m_lstExchange.GetItemText(i, 2).GetBuffer());				
-
-				pItemBuy[i].nCurCount = _wtoi(m_lstExchange.GetItemText(i, 3).GetBuffer());
-				pItemBuy[i].nMaxCount = _wtoi(m_lstExchange.GetItemText(i, 4).GetBuffer());
-				pItemBuy[i].bEnable = m_lstExchange.GetCheck(i);
-			}
-
-			fwrite(pItemBuy, sizeof(ITEM_BUY), nCount, fp);
-
-			delete[] pItemBuy;
-			pItemBuy = NULL;
-		}
-	}
-
-	BUY_SETTING m_BuySetting;
-	memset(&m_BuySetting, 0, sizeof(BUY_SETTING));
-
-	m_BuySetting.nSummonGold = m_nSummonGold;
-
-	m_BuySetting.bSummonAvatar[0] = m_bSummonAvatar[0];
-	m_BuySetting.bSummonAvatar[1] = m_bSummonAvatar[1];
-	m_BuySetting.bSummonAvatar[2] = m_bSummonAvatar[2];
-
-	m_BuySetting.bSummonRiding[0] = m_bSummonRiding[0];
-	m_BuySetting.bSummonRiding[1] = m_bSummonRiding[1];
-	m_BuySetting.bSummonRiding[2] = m_bSummonRiding[2];
-
-	m_BuySetting.bSummonRune[0] = m_bSummonRune[0];
-	m_BuySetting.bSummonRune[1] = m_bSummonRune[1];
-
-	m_BuySetting.nPaperGold = m_nPaperGold;
-
-	m_BuySetting.bPaperBuy[0] = m_bPaperBuy[0];
-	m_BuySetting.bPaperBuy[1] = m_bPaperBuy[1];
-	m_BuySetting.bPaperBuy[2] = m_bPaperBuy[2];
-	m_BuySetting.bPaperBuy[3] = m_bPaperBuy[3];
-
-	m_BuySetting.nPaperCount[0] = m_nPaperCount[0];
-	m_BuySetting.nPaperCount[1] = m_nPaperCount[1];
-	m_BuySetting.nPaperCount[2] = m_nPaperCount[2];
-	m_BuySetting.nPaperCount[3] = m_nPaperCount[3];
-
-	m_BuySetting.bCashItemBuy[0] = m_bCashItemBuy[0];
-	m_BuySetting.bCashItemBuy[1] = m_bCashItemBuy[1];
-	m_BuySetting.bCashItemBuy[2] = m_bCashItemBuy[2];
-
-	m_BuySetting.nCashItemBuy[0] = m_nCashItemBuy[0];
-	m_BuySetting.nCashItemBuy[1] = m_nCashItemBuy[1];
-	m_BuySetting.nCashItemBuy[2] = m_nCashItemBuy[2];
-
-	m_BuySetting.bSkillGold = m_bSkillGold;
-	m_BuySetting.nSkillGold = m_nSkillGold;
-
-	m_BuySetting.nExpendGold = m_nExpendGold;
-	m_BuySetting.bBuyHighSkill = m_bBuyHighSkill;
-
-	m_BuySetting.bWeaponType[0] = m_bWeaponType[0];
-	m_BuySetting.bWeaponType[1] = m_bWeaponType[1];
-	m_BuySetting.bWeaponType[2] = m_bWeaponType[2];
-
-	m_BuySetting.bMimirPotion[0] = m_bMimirPotion[0];
-	m_BuySetting.bMimirPotion[1] = m_bMimirPotion[1];
-	m_BuySetting.bMimirPotion[2] = m_bMimirPotion[2];
-	m_BuySetting.bMimirPotion[3] = m_bMimirPotion[3];
-	m_BuySetting.bMimirPotion[4] = m_bMimirPotion[4];
-
-	m_BuySetting.bBlessingStone[0] = m_bBlessingStone[0];
-	m_BuySetting.bBlessingStone[1] = m_bBlessingStone[1];
-
-	fwrite(&m_BuySetting, sizeof(BUY_SETTING), 1, fp);
-	fclose(fp);
-}
-
-void CScheduleBuy::OnEnableCashBuy1()
-{
-	UpdateData();
-
-	GetDlgItem(IDC_EDIT9)->EnableWindow(m_bCashItemBuy[0]);
-}
-
-
-void CScheduleBuy::OnEnableCashBuy2()
-{
-	UpdateData();
-
-	GetDlgItem(IDC_EDIT10)->EnableWindow(m_bCashItemBuy[1]);
-}
-
-
-void CScheduleBuy::OnEnableMimir1()
-{
-	UpdateData();
-
-	GetDlgItem(IDC_CHECK21)->EnableWindow(m_bMimirPotion[0]);
-
-	if (!m_bMimirPotion[0])
-	{
-		GetDlgItem(IDC_CHECK22)->EnableWindow(m_bMimirPotion[0]);
-		GetDlgItem(IDC_CHECK23)->EnableWindow(m_bMimirPotion[0]);
-		GetDlgItem(IDC_CHECK24)->EnableWindow(m_bMimirPotion[0]);
-	}
-	else
-		OnEnableMimir2();
-}
-
-
-void CScheduleBuy::OnEnableMimir2()
-{
-	UpdateData();
-
-	GetDlgItem(IDC_CHECK22)->EnableWindow(m_bMimirPotion[1]);
-
-	if (!m_bMimirPotion[1])
-	{
-		GetDlgItem(IDC_CHECK23)->EnableWindow(m_bMimirPotion[1]);
-		GetDlgItem(IDC_CHECK24)->EnableWindow(m_bMimirPotion[1]);
-	}
-	else
-		OnEnableMimir3();
-}
-
-
-void CScheduleBuy::OnEnableMimir3()
-{
-	UpdateData();
-
-	GetDlgItem(IDC_CHECK23)->EnableWindow(m_bMimirPotion[2]);
-
-	if (!m_bMimirPotion[2])
-	{
-		GetDlgItem(IDC_CHECK24)->EnableWindow(m_bMimirPotion[2]);
-	}
-	else
-		OnEnableMimir4();
-}
-
-
-void CScheduleBuy::OnEnableMimir4()
-{
-	UpdateData();
-
-	GetDlgItem(IDC_CHECK24)->EnableWindow(m_bMimirPotion[3]);
 }
